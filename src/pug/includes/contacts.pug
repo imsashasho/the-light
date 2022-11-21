@@ -1,0 +1,18 @@
+section.contacts#contacts
+  .contacts__title-block
+    h1.contacts__page-title  contacts
+    h2.contacts__second-title Контакти
+  ul.contacts__list
+    li.contacts__list-item
+      h3.contacts__list-item-title Зв'язатися з нами:
+      a.contacts__list-item-content.contacts__list-item-content-tel(href="tel: +380445000001") (044) 500-00-01
+    li.contacts__list-item
+      h3.contacts__list-item-title Центр продажів:
+      a.contacts__list-item-content.contacts__list-item-content-mail(href="https://goo.gl/maps/LdoGQTpo8fbhMfAE6" target="_blank") Київ, вул. Саперне поле, 3
+    li.contacts__list-item
+      h3.contacts__list-item-title Графік роботи:
+      .contacts__list-item-content.contacts__list-item-content-list
+        span Пн-пт: 10:00-15:00
+        //- span Сб: 10:00-16:00
+  .contacts__form-block
+    include ../components/form/contact-screen-form.pug

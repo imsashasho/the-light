@@ -1,0 +1,97 @@
+.parallax-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 224px;
+  position: relative;
+  // background: url('../images/paralax-logo/Pen.svg');
+  // background-repeat: no-repeat;
+  // background-size: 240px 102px;
+  // background-position: top center;
+  overflow: hidden;
+  perspective: 1px;
+
+  @include from(768px) {
+    // background-size: 510px 218px;
+    height: 456px;
+  }
+  @include from(1366px) {
+    // background-size: 530px 226px;
+    height: 470px;
+  }
+  @include from(1920px) {
+    // background-size: 750px 320px;
+    height: 660px;
+  }
+
+  &__feather {
+    position: relative;
+    bottom: 75%;
+    width: 100%;
+    height: 368px;
+    z-index: -10;
+    background: url('../images/paralax-logo/Pen.svg');
+    background-repeat: no-repeat;
+    background-size: 240px 368px;
+    background-position: top center;
+    @include from(768px) {
+      background-size: 510px 783px;
+      height: 783px;
+    }
+    @include from(1366px) {
+      background-size: 530px 814px;
+      height: 814px;
+    }
+    @include from(1920px) {
+      background-size: 750px 1152px;
+      height: 1152px;
+    }
+  }
+
+  &__light {
+    position: absolute;
+    z-index: 1;
+    width: 360px;
+    height: 78px;
+    background: url('../images/paralax-logo/Logo.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    @include from(768px) {
+      width: 768px;
+      height: 134px;
+    }
+    @include from(1366px) {
+      width: 800px;
+      height: 140px;
+    }
+    @include from(1920px) {
+      width: 1130px;
+      height: 196px;
+    }
+  }
+
+  &__the {
+    position: absolute;
+    z-index: 2;
+    width: 128px;
+    height: 96px;
+    background: url('../images/paralax-logo/The.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+    @include from(768px) {
+      width: 270px;
+      height: 164px;
+    }
+    @include from(1366px) {
+      width: 282px;
+      height: 170px;
+    }
+    @include from(1920px) {
+      width: 400px;
+      height: 240px;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+form.manager-feedback-form(autocomplete="off" data-manager-feedback-form)
+  h3.manager-feedback-form__title Зв`язатись з менеджером
+  .manager-feedback-form__input-wrapper
+    label.manager-feedback-form__label(data-field-input data-field-name data-status="field--inactive")
+      span.manager-feedback-form__label-required *
+      input.manager-feedback-form__input(type="text" name="name" placeholder="")
+      .manager-feedback-form__label-wrap  Ваше ім'я
+      .input-message(data-input-message)
+    label.manager-feedback-form__label(data-field-input data-field-phone data-status="field--inactive")
+      span.manager-feedback-form__label-required *
+      input.manager-feedback-form__input(type="text" name="phone" placeholder="")
+      .manager-feedback-form__label-wrap Номер телефону
+      .input-message(data-input-message)
+  button.manager-feedback-form__btn(type="submit" data-btn-submit) 
+    span(data-btn-submit-text).link__text.usn Надіслати
+  
+  button.btn-manager-feedback-form-close.js-manager-feedback-form-close(type="button")
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 13L13 1M1 1L13 13" stroke="#0E0F10" stroke-width="2"/>
+    </svg>

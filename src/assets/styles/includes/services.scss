@@ -1,0 +1,136 @@
+.services {
+    padding-top: 100px;
+    @include from(768px) {
+      padding-top: 150px;
+    }
+    @include from(1920px) {
+      padding-top: 210px;
+    }
+    &__title-block {
+      padding: 0 12px;
+      margin-bottom: 40px;
+      @include from(1280px) {
+        margin-bottom: 50px;
+      }
+    }
+    &__page-title {
+      font-family: 'Palace Script MT';
+      font-style: italic;
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 0.85;
+      text-align: center;
+      color: var(--light);
+      // background: linear-gradient(235.14deg, #a2bdca 0%, #bcd6df 100.03%);
+      // -webkit-background-clip: text;
+      // -webkit-text-fill-color: transparent;
+      // background-clip: text;
+      // text-fill-color: transparent;
+      @include from(768px) {
+        font-size: 48px;
+      }
+      @include from(1920px) {
+        font-size: 64px;
+      }
+    }
+    &__second-title {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.2;
+      text-align: center;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+      @include from(768px) {
+        font-size: 32px;
+      }
+      @include from(1920px) {
+        font-size: 48px;
+      }
+    }
+
+    &-main {
+        padding-bottom: 150px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-filter {
+        display: flex;
+        flex-direction: column;
+        padding: 24px;
+        background: #0E0F10;
+        border: 1px solid rgba(89, 118, 122, 0.5);
+        width: 23%;
+
+    }
+
+    &-filter-btn {
+        text-decoration: none;
+        border: none;
+        background: transparent;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 140%;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+
+        color: #A2BDCA;
+        margin-bottom: 18px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+    }
+
+    &-list  {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 74.6%;
+
+    }
+
+    &-card {
+        width: 32.15%;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    &-card-img {
+        height: 250px;
+         img {
+            height: 250px;
+            object-fit: cover;
+         }
+
+    }
+
+    &-card-title {
+
+
+    }
+
+    &-card-inner {
+        padding: 24px;
+
+    }
+
+    &-card-adress {
+
+    }
+
+    &-card-phone {
+
+    }
+
+    &-card-site {
+
+    }
+
+
+}

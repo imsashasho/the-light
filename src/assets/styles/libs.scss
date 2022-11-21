@@ -1,0 +1,20 @@
+@import '../scripts/libs/swiper/swiper';
+@import '../../../node_modules/intl-tel-input/build/css/intlTelInput.min';
+
+.iti__flag {
+    height: 15px;
+    box-shadow: 0 0 1px 0 #888;
+    background-image: url(../images/flags.png);
+    background-repeat: no-repeat;
+    background-color: #dbdbdb;
+    background-position: 20px 0;
+}
+.iti__arrow {
+    display: none;
+}
+.iti {
+    
+    input {
+        width: 100%;
+    }
+}

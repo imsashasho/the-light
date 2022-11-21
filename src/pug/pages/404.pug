@@ -1,0 +1,30 @@
+extends ../layout/main
+	
+block meta
+	title= '404'
+	meta(name='description', content='')
+
+block head
+	<link rel="stylesheet" href="node_modules/modern-normalize/modern-normalize.css">
+	link(rel='stylesheet', href="./assets/styles/main.min.css")
+
+
+block scripts
+	script(defer src='./assets/scripts/404.bundle.js')
+
+
+block header
+	include ../includes/header.pug
+
+block content
+	section.error-pages
+		.error-pages__wrapper
+			.error-pages__content
+				.error-pages__pen
+					img(src="./assets/images/Pen-404.png", alt="")
+				.error-pages__title.news__title-block-title error
+				.error-pages__hero-title 404
+				.error-pages__text.news__content-item-text Такої сторінки не існує
+				button.error-pages__btn.manager-feedback-form__btn(type="button") на головну
+			.error-pages__img-block 
+				img.error-pages__img(src="./assets/images/404.jpg", alt="images 404")

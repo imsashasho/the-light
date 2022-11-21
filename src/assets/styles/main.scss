@@ -1,0 +1,51 @@
+// assets
+@import './assets/fonts'; // шрифты
+@import './assets/vars'; // переменные
+@import './assets/smart-grid'; // mixins smartgrid.js
+@import './assets/mixins'; // миксины
+@import './assets/base'; // общие стили
+@import './assets/class'; // main style
+@import './assets/animation'; // анимации
+@import './libs'; // анимации
+
+// sass pages
+@import './pages/index';
+
+// sass components
+@import './components/page-container';
+@import './components/pop-up-thanks';
+@import './components/swiper';
+@import '../../pug/components/toster/toster';
+@import '../../pug/components/form/form';
+@import '../../pug/components/form/manager-form';
+@import '../../pug/components/pop-up-news/pop-up-news';
+
+// sass includes
+@import './includes/header';
+@import './includes/hero';
+@import './includes/about';
+@import './includes/benefits';
+@import './includes/numbers';
+@import './includes/parallax-logo';
+@import './includes/layout';
+@import './includes/location';
+@import './includes/gallery';
+@import './includes/developer';
+@import './includes/our_projects';
+@import './includes/news';
+@import './includes/documents';
+@import './includes/contacts';
+@import './includes/maps.scss';
+@import './includes/construction.scss';
+@import './includes/services.scss';
+
+@import './includes/footer';
+
+@import './404';
+
+@import '../../pug/components/menu/menu';
+// @import '../../pug/components/toster/toster';
+
+//@import 'pages/contacts';
+//@import 'pages/contact';
+//@import 'pages/home';

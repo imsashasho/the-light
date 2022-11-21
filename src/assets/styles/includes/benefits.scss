@@ -1,0 +1,199 @@
+.benefits {
+  position: relative;
+  padding: 0 0 260px;
+
+  @include from(768px) {
+    padding: 150px 0 100px;
+  }
+  @include from(1280px) {
+    padding: 150px 0;
+    background: url('../images/benefits/feather.png');
+    background-repeat: no-repeat;
+    background-size: 540px 562px;
+    background-position: bottom 100px center;
+  }
+  @include from(1920px) {
+    padding: 150px 0 250px;
+    background-size: 750px 782px;
+    background-position: bottom 78px center;
+  }
+
+  &__swiper-block {
+    width: 100%;
+    height: 280px;
+    @include from(768px) {
+      height: 554px;
+    }
+    @include from(1280px) {
+      height: 540px;
+    }
+    @include from(1920px) {
+      height: 760px;
+    }
+  }
+
+  &__slider-fraction {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    bottom: 0%;
+    z-index: 1;
+    font-family: 'Century Gothic';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--white);
+
+    @include from(768px) {
+      width: fit-content;
+      font-size: 24px;
+      bottom: 0%;
+      // right: 72%;
+      right: calc(50% + 166px);
+    }
+    @include from(1280px) {
+      right: calc(50% + 170px);
+    }
+    @include from(1920px) {
+      font-size: 32px;
+      bottom: -8px;
+      right: calc(50% + 236px);
+    }
+  }
+  &__slider-total {
+    margin-left: 8px;
+  }
+  .swiper-pagination {
+    display: flex;
+    .swiper-pagination-current {
+      position: absolute;
+      font-size: 200px;
+      line-height: 0.8;
+    }
+    .swiper-pagination-total {
+      margin-left: 8px;
+    }
+  }
+
+  &__text-block {
+    width: 100%;
+    padding: 0 12px;
+    z-index: 8;
+    display: flex;
+    position: absolute;
+    bottom: -160px;
+    text-align: center;
+
+    @include from(768px) {
+      width: 50%;
+      padding: 0 20px;
+      bottom: 15%;
+      right: 68%;
+    }
+    @include from(1280px) {
+      top: 304px;
+      right: calc(50% + 172px);
+      width: 238px;
+      padding: 0;
+    }
+    @include from(1920px) {
+      top: 440px;
+      right: calc(50% + 250px);
+      width: 348px;
+    }
+    .text-in-slide {
+      font-family: 'Century Gothic';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 140%;
+      text-align: center;
+      color: var(--light);
+
+      // background: linear-gradient(235.14deg, #a2bdca 0%, #bcd6df 100.03%);
+      // -webkit-background-clip: text;
+      // -webkit-text-fill-color: transparent;
+      // background-clip: text;
+      // text-fill-color: transparent;
+      @include from(768px) {
+        font-size: 16px;
+      }
+      @include from(1920px) {
+        font-size: 18px;
+      }
+    }
+  }
+  &__title-block {
+    z-index: 8;
+    position: absolute;
+    bottom: -94px;
+    right: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    @include from(768px) {
+      bottom: 160px;
+      right: 68%;
+      width: 50%;
+      padding: 0 20px;
+    }
+    @include from(1280px) {
+      width: 270px;
+      padding: 0;
+      top: 284px;
+      right: calc(50% - 688px);
+    }
+    @include from(1920px) {
+      width: 380px;
+      top: 420px;
+      right: calc(50% - 970px);
+    }
+  }
+  &__page-title {
+    font-family: 'Palace Script MT', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 0.85;
+    color: var(--light);
+    // background: linear-gradient(235.14deg, #a2bdca 0%, #bcd6df 100.03%);
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    // background-clip: text;
+    // text-fill-color: transparent;
+    @include from(768px) {
+      font-size: 48px;
+    }
+    @include from(1920px) {
+      font-size: 64px;
+    }
+  }
+  &__page-second-title {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    @include from(768px) {
+      font-size: 32px;
+    }
+    @include from(1920px) {
+      font-size: 48px;
+    }
+  }
+
+  & .swiper_benefits_text .swiper-slide {
+    opacity: 1;
+    animation: fade-out-animation 1s forwards;
+  }
+  & .swiper_benefits_text .swiper-slide.swiper-slide-visible.swiper-slide-active {
+    opacity: 0;
+    animation: fade-in-animation 1s forwards;
+  }
+}

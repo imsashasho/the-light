@@ -1,0 +1,238 @@
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  transition: all 1s var(--cubic);
+  @include from(1280px) {
+    height: calc(100vw / 1.5737);
+  }
+
+  .img-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    pointer-events: none;
+
+    picture {
+      position: relative;
+      z-index: -1;
+      width: 100%;
+      @include from(1280px) {
+        height: fit-content;
+      }
+      img {
+        width: 100%;
+        @include to(1279px) {
+          height: 100%;
+        }
+      }
+    }
+  }
+  .img-container picture::before {
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: url('../images/hero/Rectangle-4050-mob.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: left;
+
+    @include from(768px) {
+      background: url('../images/hero/Rectangle-4050-tab.png');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: left;
+    }
+
+    @include from(1280px) {
+      background: url('../images/hero/Rectangle-4050.png');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: top;
+    }
+  }
+
+  .page-container {
+    position: sticky;
+    top: 100px;
+    bottom: 50px;
+    z-index: 5;
+    height: 50%;
+    background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: initial;
+    justify-content: initial;
+    @include from(768px) {
+      top: 130px;
+    }
+    @include from(1920px) {
+      top: 180px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 50px;
+    width: 100%;
+    @include from(768px) {
+      padding-right: 65%;
+      margin-bottom: 200px;
+    }
+    @include from(1280px) {
+      margin-bottom: 40px;
+    }
+    @include from(1920px) {
+      margin-bottom: 155px;
+    }
+
+    & span {
+      font-family: 'Century Gothic';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 96px;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--white);
+      @include from(768px) {
+        font-size: 140px;
+      }
+      @include from(1920px) {
+        font-size: 200px;
+      }
+    }
+  }
+  &__btn-scroll {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background: inherit;
+    @include from(768px) {
+      width: 140px;
+      height: 140px;
+      margin-right: 70%;
+    }
+    @include from(1280px) {
+      margin-right: 0;
+    }
+    @include from(1920px) {
+      width: 180px;
+      height: 180px;
+    }
+
+    svg stop {
+      stop-color: var(--light);
+    }
+    svg stop + stop {
+      stop-color: #bcd6df;
+    }
+  }
+
+  &__btn-scroll:hover {
+    svg stop {
+      stop-color: var(--white);
+    }
+    svg stop + stop {
+      stop-color: var(--white);
+    }
+  }
+
+  &__svg-circle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  &__svg-arow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 9px;
+    height: 18px;
+
+    @include from(768px) {
+      width: 15px;
+      height: 32px;
+    }
+    @include from(1920px) {
+      width: 19px;
+      height: 40px;
+    }
+
+    & path {
+      animation: moving-up-and-down 3s infinite;
+    }
+  }
+
+  &__text-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @include from(768px) {
+      width: 400px;
+    }
+    @include from(1280px) {
+      text-align: end;
+      margin-left: auto;
+    }
+    @include from(1920px) {
+      width: 500px;
+    }
+  }
+  &__text {
+    margin-bottom: 10px;
+    font-size: 20px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--white);
+    @include from(768px) {
+      font-size: 24px;
+    }
+    @include from(1920px) {
+      font-size: 32px;
+    }
+  }
+  &__text-address-link {
+    display: flex;
+    align-items: center;
+    @include from(1280px) {
+      justify-content: flex-end;
+    }
+
+    &:hover {
+      .hero__text-address {
+        color: var(--light);
+      }
+      svg path {
+        stroke: var(--light);
+      }
+    }
+
+    & svg {
+      width: 24px;
+      height: 24px;
+      margin-right: 18px;
+    }
+  }
+  &__text-address {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.7;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    @include from(1920px) {
+      font-size: 14px;
+    }
+  }
+}

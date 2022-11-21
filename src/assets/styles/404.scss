@@ -1,0 +1,71 @@
+.error-pages {
+  width: 100vw;
+  height: 100vh;
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    @include from(1280px) {
+      flex-direction: row;
+    }
+  }
+  &__content {
+    position: relative;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include from(1280px) {
+      width: 50%;
+      height: 100%;
+    }
+  }
+
+  &__pen {
+    position: absolute;
+    top: 0;
+    width: 60%;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__hero-title {
+    font-weight: 400;
+    font-size: 100px;
+    line-height: 1;
+    margin-bottom: 20px;
+    @include from(768px) {
+      font-size: 200px;
+    }
+  }
+  &__text {
+    margin-bottom: 20px;
+  }
+  &__img-block {
+    height: 50vh;
+    @include from(1280px) {
+      width: 50%;
+      height: 100%;
+    }
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__btn.manager-feedback-form__btn {
+    background: var(--white);
+    color: var(--black);
+    &:hover {
+      background: var(--blue);
+      color: var(--white);
+    }
+  }
+}

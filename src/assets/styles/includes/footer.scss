@@ -1,0 +1,191 @@
+.footer {
+  padding-top: 50px;
+  &__content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 12px;
+    @include from(768px) {
+      padding: 0 20px;
+    }
+    @include from(1280px) {
+      padding: 0 36px;
+    }
+    @include from(1920px) {
+      padding: 0 50px;
+    }
+  }
+  &__menu-block {
+  }
+  &__address-list {
+  }
+  &__address-item {
+    &-title {
+      margin-bottom: 16px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.4;
+      text-transform: uppercase;
+      color: var(--white);
+      @include from(768px) {
+        font-size: 20px;
+      }
+      @include from(1920px) {
+        font-size: 24px;
+      }
+    }
+    &-content-timetable {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    &-content-address:hover {
+      color: var(--blue);
+    }
+    &-content-address,
+    &-content-timetable {
+      margin-bottom: 30px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--light);
+      @include from(768px) {
+        font-size: 16px;
+      }
+      @include from(1920px) {
+        font-size: 18px;
+      }
+    }
+
+    &-button {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      // padding: 13px 20px;
+      width: 184px;
+      height: 40px;
+      background: var(--white);
+      color: var(--black);
+      border-radius: 30px;
+      border: none;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 1.7;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      @include from(768px) {
+        width: 200px;
+        height: 40px;
+      }
+      @include from(1920px) {
+        width: 243px;
+        height: 50px;
+        font-size: 14px;
+      }
+
+      &:hover {
+        background: var(--blue);
+        color: var(--white);
+      }
+    }
+  }
+  &__social-links-list {
+    @include to(767px) {
+      margin-top: 40px;
+    }
+  }
+  &__social-links-item {
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+  &__social-link {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--white);
+    @include from(768px) {
+      font-size: 32px;
+    }
+    @include from(1920px) {
+      font-size: 48px;
+    }
+    &:hover {
+      color: var(--blue);
+    }
+  }
+  &__up-arrow {
+    @include to(767px) {
+      margin-top: 40px;
+    }
+    .btn-swiper.btn-back-to-top {
+      margin: 0;
+      background: var(--white);
+      transform: rotate(90deg);
+      rect {
+        fill: var(--white);
+      }
+      path {
+        stroke: var(--black);
+      }
+
+      &:hover {
+        background: var(--blue);
+        rect {
+          fill: var(--blue);
+        }
+        path {
+          stroke: var(--white);
+        }
+      }
+    }
+  }
+  &__footer-block {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    align-items: center;
+    @include from(768px) {
+      margin-top: 50px;
+    }
+    @include from(1920px) {
+      margin-top: 100px;
+    }
+
+    .footer__law-text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--light);
+    }
+
+    .logo-smartOrange {
+      width: 54px;
+      height: 60px;
+      @include from(1920px) {
+        width: 64px;
+        height: 71px;
+      }
+
+      & path {
+        &:first-child {
+          fill: var(--white);
+        }
+      }
+    }
+
+    .link-to-smart-orange:hover {
+      .logo-smartOrange {
+        & path {
+          &:first-child {
+            fill: var(--blue);
+          }
+        }
+      }
+    }
+  }
+}

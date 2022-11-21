@@ -1,0 +1,300 @@
+.our_projects {
+  position: relative;
+  padding: 0 0 320px;
+
+  @include from(768px) {
+    padding: 0 0 20px;
+  }
+  @include from(1280px) {
+    padding: 0 0 70px;
+  }
+  @include from(1920px) {
+    padding: 0 0 110px;
+  }
+
+  &__swiper-block {
+    width: 100%;
+    height: 280px;
+    @include from(768px) {
+      height: 700px;
+    }
+    @include from(1280px) {
+      height: 540px;
+    }
+    @include from(1920px) {
+      height: 760px;
+    }
+  }
+
+  &__slider-fraction {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    bottom: 0%;
+    z-index: 1;
+    font-family: 'Century Gothic';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--white);
+
+    @include from(768px) {
+      width: fit-content;
+      font-size: 24px;
+      bottom: 0%;
+      right: calc(50% + 166px);
+    }
+    @include from(1280px) {
+      right: calc(50% + 170px);
+    }
+    @include from(1920px) {
+      font-size: 32px;
+      bottom: -8px;
+      right: calc(50% + 236px);
+    }
+  }
+  &__slider-total {
+    margin-left: 8px;
+  }
+  .swiper-pagination {
+    display: flex;
+    .swiper-pagination-current {
+      position: absolute;
+      font-size: 200px;
+      line-height: 0.8;
+    }
+    .swiper-pagination-total {
+      margin-left: 8px;
+    }
+  }
+
+  &__text-block {
+    word-wrap: break-word;
+    width: 100%;
+    padding: 0 12px;
+    z-index: 8;
+    display: flex;
+    position: absolute;
+    bottom: -244px;
+    text-align: center;
+    @include from(768px) {
+      width: 50%;
+      padding: 0 20px;
+      bottom: 110px;
+      right: 68%;
+    }
+    @include from(1280px) {
+      bottom: 44px;
+      right: calc(50% + 150px);
+      width: 270px;
+      padding: 0;
+    }
+    @include from(1920px) {
+      bottom: 76px;
+      right: calc(50% + 250px);
+      width: 348px;
+    }
+    .text-in-slide {
+      font-family: 'Century Gothic';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 140%;
+      text-align: center;
+      text-transform: uppercase;
+      color: var(--light);
+
+      @include from(768px) {
+        font-size: 24px;
+      }
+      @include from(1280px) {
+        text-align: left;
+      }
+      @include from(1920px) {
+        font-size: 32px;
+      }
+    }
+
+    .text-in-slide-little-text {
+      @include from(1280px) {
+        font-size: 20px;
+      }
+      @include from(1920px) {
+        font-size: 26px;
+      }
+    }
+
+    .address-block {
+      margin: 16px 0;
+      display: flex;
+      justify-content: center;
+      @include from(1280px) {
+        justify-content: flex-start;
+      }
+      &__metro {
+        margin-right: 16px;
+
+        @include from(1920px) {
+          margin-right: 24px;
+        }
+      }
+      &__metro,
+      &__time {
+        display: flex;
+        color: var(--light);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.4;
+        text-align: center;
+        @include from(768px) {
+          font-size: 16px;
+        }
+        @include from(1920px) {
+          font-size: 18px;
+        }
+        svg {
+          width: 26px;
+          height: 26px;
+          margin-right: 6px;
+          @include from(1920px) {
+            width: 36px;
+            height: 36px;
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+    .swiper-slide.swiper-slide-visible.swiper-slide-active .project-website-button {
+      pointer-events: auto;
+    }
+
+    .project-website-button {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+
+      width: 180px;
+      height: 40px;
+      background: var(--white);
+      color: var(--black);
+      border-radius: 22px;
+      z-index: 15;
+      pointer-events: none;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 1.7;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+
+      @include from(1280px) {
+        margin: 0;
+      }
+      @include from(1920px) {
+        width: 200px;
+        height: 50px;
+        border-radius: 30px;
+        font-size: 14px;
+      }
+    }
+  }
+  &__title-block {
+    word-wrap: break-word;
+    z-index: 8;
+    position: absolute;
+    bottom: -94px;
+    right: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 12px;
+    @include from(768px) {
+      bottom: 270px;
+      right: 68%;
+      width: 50%;
+      padding: 0 20px;
+    }
+    @include from(1280px) {
+      padding: 0;
+      bottom: 138px;
+      right: calc(50% - 690px);
+      width: 270px;
+    }
+    @include from(1920px) {
+      width: 380px;
+      bottom: 170px;
+      right: calc(50% - 970px);
+    }
+  }
+  &__page-title {
+    font-family: 'Palace Script MT', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 0.85;
+    color: var(--light);
+    // background: linear-gradient(235.14deg, #a2bdca 0%, #bcd6df 100.03%);
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    // background-clip: text;
+    // text-fill-color: transparent;
+    @include from(768px) {
+      font-size: 48px;
+    }
+    @include from(1920px) {
+      font-size: 64px;
+    }
+  }
+  .swiper_our_projects_title_text {
+    height: 2.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-align: center;
+
+    @include from(768px) {
+      font-size: 32px;
+    }
+    @include from(1920px) {
+      font-size: 48px;
+    }
+    .text-in-slide-little {
+      @include from(1280px) {
+        font-size: 30px;
+      }
+      @include from(1920px) {
+        font-size: 42px;
+      }
+    }
+  }
+
+  & .swiper_our_projects_text .swiper-slide,
+  & .swiper_our_projects_title_text .swiper-slide {
+    opacity: 1;
+    animation: fade-out-animation 1s forwards;
+  }
+  & .swiper_our_projects_text .swiper-slide.swiper-slide-visible.swiper-slide-active,
+  & .swiper_our_projects_title_text .swiper-slide.swiper-slide-visible.swiper-slide-active {
+    opacity: 0;
+    animation: fade-in-animation 1s forwards;
+  }
+  .our_projects__text-block .swiper_our_projects_text .swiper-slide-active {
+    z-index: 20;
+  }
+  .our_projects__text-block
+    .swiper_our_projects_text
+    .swiper-slide-active
+    .project-website-button:hover {
+    background: var(--blue);
+    color: var(--white);
+  }
+}

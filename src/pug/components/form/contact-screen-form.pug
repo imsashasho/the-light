@@ -1,0 +1,20 @@
+form.feedback-form(autocomplete="off" data-feedback-contact-screen-form)
+  h3.feedback-form__title Зворотній дзвінок
+  .feedback-form__input-wrapper
+    label.feedback-form__label(data-field-input data-field-name data-status="field--inactive")
+      span.feedback-form__label-required *
+      input.feedback-form__input(type="text" name="name" placeholder="")
+      .feedback-form__label-wrap  Ваше ім'я
+      .input-message(data-input-message)
+    label.feedback-form__label(data-field-input data-field-phone data-status="field--inactive")
+      span.feedback-form__label-required *
+      input.feedback-form__input(type="text" name="phone" placeholder="")
+      .feedback-form__label-wrap Номер телефону
+      .input-message(data-input-message)
+  button.feedback-form__btn(type="submit" data-btn-submit) 
+    span(data-btn-submit-text).link__text.usn Надіслати
+  
+  button.btn-feedback-form-close.js-feedback-form-close(type="button")
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 13L13 1M1 1L13 13"  stroke-width="2"/>
+    </svg>
