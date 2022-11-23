@@ -24,7 +24,7 @@ function menuClose(menu) {
 }
 
 function init() {
-  const unSelectHandler = container => {
+  const unSelectHandler = (container) => {
     const elem = container.querySelector('.select-items');
     if (!elem.classList.contains('select-hide')) {
       container.classList.remove('select-arrow-active');
@@ -48,7 +48,7 @@ function init() {
 /** ******************************* */
 
 function handlerClickMenu(callback) {
-  [...document.querySelector('.header').querySelectorAll('.js-menu-item')].forEach(link => {
+  [...document.querySelector('.header').querySelectorAll('.js-menu-item')].forEach((link) => {
     link.addEventListener('click', callback);
   });
 }

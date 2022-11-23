@@ -322,7 +322,7 @@ export const mapMock = [
     ],
   },
 
-  
+
 ];
 export const galleryMock = [
   {

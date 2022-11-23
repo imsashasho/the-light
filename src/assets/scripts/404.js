@@ -12,7 +12,7 @@ const formsWithRedirect = [
   '[data-feedback-contact-screen-form]',
 ];
 
-formsWithRedirect.forEach(form => {
+formsWithRedirect.forEach((form) => {
   const $form = document.querySelector(form);
   if ($form) {
     /* eslint-disable */
@@ -64,7 +64,7 @@ formsWithRedirect.forEach(form => {
 /** ******************************* */
 
 function handlerClickMenu(callback) {
-  [...document.querySelector('.header').querySelectorAll('.js-menu-item')].forEach(link => {
+  [...document.querySelector('.header').querySelectorAll('.js-menu-item')].forEach((link) => {
     link.addEventListener('click', callback);
   });
 }
@@ -121,7 +121,7 @@ const inputArrey = [
   ...document.querySelectorAll('.feedback-form__input'),
   ...document.querySelectorAll('.manager-feedback-form__input'),
 ];
-inputArrey.forEach(input => {
+inputArrey.forEach((input) => {
   if (input.value.length > 0) input.classList.add('input-with-text');
   input.addEventListener('change', () => {
     if (input.value.length > 0) {

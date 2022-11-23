@@ -2,8 +2,7 @@ import mapStyles from './style.json';
 import { getMarkers } from '../api';
 import { MARKER_ICONS } from './iconsMap';
 
-const mapSrc =
-  'https://maps.googleapis.com/maps/api/js?key=AIzaSyBc_rcO6jcFuCN8AJ9EZLlXENtUDSAcuiw&ver=1655409542';
+const mapSrc = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBc_rcO6jcFuCN8AJ9EZLlXENtUDSAcuiw&ver=1655409542';
 
 const mapScript = document.createElement('script');
 mapScript.src = mapSrc;
@@ -34,11 +33,11 @@ async function initMap() {
   });
   const marker = new google.maps.Marker({
     position: uluru,
-    map: map,
-    icon: MARKER_ICONS['main'],
+    map,
+    icon: MARKER_ICONS.main,
   });
 
-  const locations = markers.map(item => {
+  const locations = markers.map((item) => {
     const { type, coords } = item;
     const iconUrl = MARKER_ICONS[type];
     const coordsList = coords.split(', ');
@@ -47,7 +46,7 @@ async function initMap() {
         lat: +coordsList[0],
         lng: +coordsList[1],
       },
-      map: map,
+      map,
       icon: iconUrl,
       title: item.title,
     });
@@ -64,15 +63,15 @@ async function initMap() {
   const filterMarkersListRef = document.querySelector('.map-navigation__markers');
   let activeFilterRef = null;
 
-  const filterMarkers = type => {
+  const filterMarkers = (type) => {
     if (type === null) {
-      locations.map(location => {
+      locations.map((location) => {
         location.marker.setMap(map);
       });
       return locations;
     }
 
-    return locations.filter(location => {
+    return locations.filter((location) => {
       if (location.type === type) {
         location.marker.setMap(map);
       } else {
@@ -82,12 +81,12 @@ async function initMap() {
     });
   };
 
-  const handleFilterChange = e => {
+  const handleFilterChange = (e) => {
     const { target } = e;
     const btn = target.closest('.map-navigation__button');
 
     if (!btn) return;
-    const type = btn.dataset.type;
+    const { type } = btn.dataset;
 
     if (activeFilterRef && activeFilterRef.dataset.type === type) {
       btn.classList.remove('active');
@@ -98,7 +97,7 @@ async function initMap() {
     }
 
     const items = filterMarkers(btn.dataset.type);
-    const markersList = items.map(item => {
+    const markersList = items.map((item) => {
       const button = document.createElement('button');
       button.classList.add('map-marker-active');
       button.addEventListener('click', () => {

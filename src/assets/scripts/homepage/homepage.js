@@ -2,7 +2,7 @@ import i18next from 'i18next';
 import { gsap, ScrollTrigger } from 'gsap/all';
 import axios from 'axios';
 import $ from 'jquery';
-import {
+import Swiper, {
   Navigation,
   Controller,
   EffectFade,
@@ -12,7 +12,6 @@ import {
   Parallax,
 } from 'swiper';
 
-import Swiper from 'swiper';
 
 import { horizontal } from 'gsap/Observer';
 
@@ -93,7 +92,7 @@ const switchAllSlidesToPrevInAbout = () => {
   swiper_1.slidePrev(1000);
 };
 
-swiper_1.on('activeIndexChange', e => {
+swiper_1.on('activeIndexChange', (e) => {
   swiper_2.slideTo(e.realIndex, 1000);
   swiper_number_about.slideTo(e.realIndex, 1000);
   swiper_text.slideTo(e.realIndex, 1000);
@@ -102,8 +101,7 @@ swiper_1.on('activeIndexChange', e => {
 const aboutSliderTotal = document.querySelector('.about__slider-total');
 // const aboutSliderCurrent = document.querySelector('.about__slider-current');
 
-aboutSliderTotal.innerHTML =
-  swiper_1.slides.length < 10 ? `0${swiper_1.slides.length}` : `${swiper_1.slides.length}`;
+aboutSliderTotal.innerHTML = swiper_1.slides.length < 10 ? `0${swiper_1.slides.length}` : `${swiper_1.slides.length}`;
 
 [
   ...document
@@ -175,7 +173,7 @@ const swiper_benefits_text = new Swiper('.swiper_benefits_text', {
 });
 
 // swiper_benefits.controller.control = swiper_number_benefits;
-swiper_benefits.on('activeIndexChange', e => {
+swiper_benefits.on('activeIndexChange', (e) => {
   swiper_number_benefits.slideTo(e.realIndex, 1000);
   swiper_benefits_text.slideTo(e.realIndex, 1000);
 });
@@ -201,14 +199,13 @@ const benefitsSliderTotal = document.querySelector('.benefits__slider-total');
 const totalSlideFromFraction = document
   .querySelector('.benefits__slider-fraction')
   .querySelector('.swiper-pagination-total').innerHTML;
-benefitsSliderTotal.innerHTML =
-  totalSlideFromFraction < 10 ? `0${totalSlideFromFraction}` : `${totalSlideFromFraction}`;
+benefitsSliderTotal.innerHTML = totalSlideFromFraction < 10 ? `0${totalSlideFromFraction}` : `${totalSlideFromFraction}`;
 
 // ---------------------- paralax-logo ---------------------
 gsap.registerPlugin(ScrollTrigger);
 export default function paralax(selector, scroller, amplitude = 35) {
   const paralaxImages = document.querySelectorAll(selector);
-  paralaxImages.forEach(image => {
+  paralaxImages.forEach((image) => {
     gsap
       .timeline({
         ease: 'none',
@@ -234,7 +231,7 @@ export default function paralax(selector, scroller, amplitude = 35) {
 
 function paralaxFeather(selector, scroller, amplitude = 35) {
   const paralaxImages = document.querySelectorAll(selector);
-  paralaxImages.forEach(image => {
+  paralaxImages.forEach((image) => {
     gsap
       .timeline({
         ease: 'none',
@@ -304,8 +301,8 @@ if (window.matchMedia('(max-width: 767px)').matches) {
   paralax('.parallax-logo__feather', '', 70);
 }
 if (
-  window.matchMedia('(min-width: 768px)').matches &&
-  window.matchMedia('(max-width: 1279px)').matches
+  window.matchMedia('(min-width: 768px)').matches
+  && window.matchMedia('(max-width: 1279px)').matches
 ) {
   paralax('.parallax-logo__light', '', 30);
   paralax('.parallax-logo__the', '', 90);
@@ -313,8 +310,8 @@ if (
 }
 
 if (
-  window.matchMedia('(min-width: 1280px)').matches &&
-  window.matchMedia('(max-width: 1920px)').matches
+  window.matchMedia('(min-width: 1280px)').matches
+  && window.matchMedia('(max-width: 1920px)').matches
 ) {
   paralax('.parallax-logo__light', '', 60);
   paralax('.parallax-logo__the', '', 100);
@@ -380,7 +377,7 @@ const big_swiper_gallery = new Swiper('.big-swiper_gallery', {
   },
 });
 
-[...document.querySelector('.big-swiper_gallery').querySelectorAll('img')].forEach(img => {
+[...document.querySelector('.big-swiper_gallery').querySelectorAll('img')].forEach((img) => {
   img.addEventListener('click', () => {
     big_swiper_gallery.slideNext(1000);
   });
@@ -454,7 +451,7 @@ const swiper_our_projects_title_text = new Swiper('.swiper_our_projects_title_te
 });
 
 // swiper_our_projects.controller.control = swiper_number_our_projects;
-swiper_our_projects.on('activeIndexChange', e => {
+swiper_our_projects.on('activeIndexChange', (e) => {
   swiper_number_our_projects.slideTo(e.realIndex, 1000);
   swiper_our_projects_text.slideTo(e.realIndex, 1000);
   swiper_our_projects_title_text.slideTo(e.realIndex, 1000);
@@ -483,10 +480,9 @@ const our_projectsSliderTotal = document.querySelector('.our_projects__slider-to
 const ourProjectsTotalSlideFromFraction = document
   .querySelector('.our_projects__slider-fraction')
   .querySelector('.swiper-pagination-total').innerHTML;
-our_projectsSliderTotal.innerHTML =
-  ourProjectsTotalSlideFromFraction < 10
-    ? `0${ourProjectsTotalSlideFromFraction}`
-    : `${ourProjectsTotalSlideFromFraction}`;
+our_projectsSliderTotal.innerHTML = ourProjectsTotalSlideFromFraction < 10
+  ? `0${ourProjectsTotalSlideFromFraction}`
+  : `${ourProjectsTotalSlideFromFraction}`;
 
 // ------------------------------- show active news on mobile ----------------------------------------
 if (window.matchMedia('(max-width: 767px)').matches) {
@@ -499,13 +495,13 @@ if (window.matchMedia('(max-width: 767px)').matches) {
   }
   const switchingNewsOnMobileNext = () => {
     let activeId = 1;
-    arrNews.forEach(item => {
+    arrNews.forEach((item) => {
       if (item.classList.contains('active-news')) {
         activeId = +item.dataset.id === arrNews.length ? 1 : +item.dataset.id + 1;
         item.classList.remove('active-news');
       }
     });
-    arrNews.forEach(item => {
+    arrNews.forEach((item) => {
       if (+item.dataset.id === activeId) {
         item.classList.add('active-news');
       }
@@ -514,13 +510,13 @@ if (window.matchMedia('(max-width: 767px)').matches) {
 
   const switchingNewsOnMobilePrev = () => {
     let activeId = 1;
-    arrNews.forEach(item => {
+    arrNews.forEach((item) => {
       if (item.classList.contains('active-news')) {
         activeId = +item.dataset.id === 1 ? arrNews.length : +item.dataset.id - 1;
         item.classList.remove('active-news');
       }
     });
-    arrNews.forEach(item => {
+    arrNews.forEach((item) => {
       if (+item.dataset.id === activeId) {
         item.classList.add('active-news');
       }
@@ -566,18 +562,16 @@ const layout__swiper = new Swiper('.layout__swiper', {
 });
 const leftBtnPopUpLayout = document.querySelector('.floor-btn-left');
 const rightBtnPopUpLayout = document.querySelector('.floor-btn-right');
-layout__swiper.on('activeIndexChange', e => {
+layout__swiper.on('activeIndexChange', (e) => {
   leftBtnPopUpLayout.classList.toggle('active-floor-btn');
   rightBtnPopUpLayout.classList.toggle('active-floor-btn');
 });
-[leftBtnPopUpLayout, rightBtnPopUpLayout].forEach(btn =>
-  btn.addEventListener('click', () => {
-    if (btn.classList.contains('active-floor-btn')) return;
-    layout__swiper.slideNext(1000);
-  }),
-);
+[leftBtnPopUpLayout, rightBtnPopUpLayout].forEach(btn => btn.addEventListener('click', () => {
+  if (btn.classList.contains('active-floor-btn')) return;
+  layout__swiper.slideNext(1000);
+}));
 
-const openLayoutPopUpWithData = path => {
+const openLayoutPopUpWithData = (path) => {
   layout__swiper.slideTo(0);
   const dataForLayoutPopUp = layoutData[path.dataset.id];
   const layoutSwiper = document.querySelector('.layout-beckdrop').querySelector('.layout__swiper');
@@ -621,7 +615,7 @@ const openLayoutPopUpWithData = path => {
   document.querySelector('.layout-beckdrop').classList.toggle('is-hidden');
 };
 
-[...arrPathMobile, ...arrPathDesctop].forEach(path => {
+[...arrPathMobile, ...arrPathDesctop].forEach((path) => {
   path.addEventListener('click', () => openLayoutPopUpWithData(path));
 });
 
@@ -631,16 +625,13 @@ const arrLayoutPopUpImages = document
   .querySelector('.layout-beckdrop')
   .querySelectorAll('.layout__swiper-slide img');
 
-arrLayoutPopUpImages.forEach(img =>
-  img.addEventListener('click', () => {
-    const activeImg = document
-      .querySelector('.layout-beckdrop')
-      .querySelector('.layout__swiper-slide.swiper-slide-active img');
-    document.querySelector('.layout-img-beckdrop').querySelector('.layout-img-big').src =
-      activeImg.src;
-    document.querySelector('.layout-img-beckdrop').classList.toggle('is-hidden');
-  }),
-);
+arrLayoutPopUpImages.forEach(img => img.addEventListener('click', () => {
+  const activeImg = document
+    .querySelector('.layout-beckdrop')
+    .querySelector('.layout__swiper-slide.swiper-slide-active img');
+  document.querySelector('.layout-img-beckdrop').querySelector('.layout-img-big').src = activeImg.src;
+  document.querySelector('.layout-img-beckdrop').classList.toggle('is-hidden');
+}));
 
 document
   .querySelector('.layout-img-beckdrop')
@@ -650,7 +641,7 @@ document
   });
 //--------------------------------------------------------
 
-[...arrPathMobile, ...arrPathDesctop].forEach(path => {
+[...arrPathMobile, ...arrPathDesctop].forEach((path) => {
   path.addEventListener('mouseover', () => {
     path.classList.add('hover');
     document
@@ -676,42 +667,40 @@ const fillDataNewsPopup = () => {
   const elem = document.querySelector(
     '.pop-up-news-beckdrop .page-container .pop-up-news .pop-up-news__content-block',
   );
-  arrNewsItem.forEach(item =>
-    item.addEventListener('click', () => {
-      const dataFromItem = JSON.parse(item.dataset.dataForPopUp);
-      const arrSecondTextBlock = [];
-      [...dataFromItem.dataArray].map(({ title, text, img }) => {
-        const secondTextBlock = `<li class="pop-up-news__content-item"> 
+  arrNewsItem.forEach(item => item.addEventListener('click', () => {
+    const dataFromItem = JSON.parse(item.dataset.dataForPopUp);
+    const arrSecondTextBlock = [];
+    [...dataFromItem.dataArray].map(({ title, text, img }) => {
+      const secondTextBlock = `<li class="pop-up-news__content-item"> 
                                 ${
-                                  title
-                                    ? `<h2 class="pop-up-news__content-item-title">${title}</h2>`
-                                    : ''
-                                }
+  title
+    ? `<h2 class="pop-up-news__content-item-title">${title}</h2>`
+    : ''
+}
                                   ${
-                                    text
-                                      ? `<p class="pop-up-news__content-item-text">${text}</p>`
-                                      : ''
-                                  }
+  text
+    ? `<p class="pop-up-news__content-item-text">${text}</p>`
+    : ''
+}
                                     ${
-                                      img
-                                        ? `<img class="pop-up-news__content-item-img" src=${img} alt=""/>`
-                                        : ''
-                                    }
+  img
+    ? `<img class="pop-up-news__content-item-img" src=${img} alt=""/>`
+    : ''
+}
                               </li>`;
-        arrSecondTextBlock.push(secondTextBlock);
-      });
-      const markup = `<div class="pop-up-news__content-wrapper">
+      arrSecondTextBlock.push(secondTextBlock);
+    });
+    const markup = `<div class="pop-up-news__content-wrapper">
                           <div class="pop-up-news__content-header">
                             <div class="pop-up-news__content-date">${dataFromItem.date}</div>
                             <h1 class="pop-up-news__content-title">${dataFromItem.title}</h1>
                             <ul class="pop-up-news__content-list">${arrSecondTextBlock.join(
-                              '',
-                            )}</ul>
+    '',
+  )}</ul>
                           </div>
                         </div>`;
-      elem.innerHTML = markup;
-    }),
-  );
+    elem.innerHTML = markup;
+  }));
 };
 fillDataNewsPopup();
 
@@ -722,7 +711,7 @@ if (window.matchMedia('(min-width: 1280px)').matches) {
 
   if (arrNewsItem.length === 1) {
     arrNewsItem.forEach((item, index) => {
-      item.addEventListener('mouseover', e => {
+      item.addEventListener('mouseover', (e) => {
         item.classList.remove('news__content-item-mouseout');
         item.classList.add('news__content-item-mouseover');
       });
@@ -734,10 +723,10 @@ if (window.matchMedia('(min-width: 1280px)').matches) {
     });
   }
   arrNewsItem.forEach((item, index) => {
-    item.addEventListener('mouseover', e => {
+    item.addEventListener('mouseover', (e) => {
       IndexMouseover = index;
       if (!firstOver && IndexMouseover === IndexMouseout) return;
-      arrNewsItem.forEach(item => {
+      arrNewsItem.forEach((item) => {
         item.classList.remove('news__content-item-mouseover');
         item.classList.remove('news__content-item-mouseout');
         firstOver = null;
@@ -754,12 +743,10 @@ if (window.matchMedia('(min-width: 1280px)').matches) {
 
 // ----------------------------- open and close big_swiper_gallery ---------------------------
 
-[...document.querySelectorAll('.js-open-big-gallery')].forEach(img =>
-  img.addEventListener('click', () => {
-    document.body.classList.toggle('modal-open');
-    document.querySelector('.gallery-beckdrop').classList.toggle('is-hidden');
-  }),
-);
+[...document.querySelectorAll('.js-open-big-gallery')].forEach(img => img.addEventListener('click', () => {
+  document.body.classList.toggle('modal-open');
+  document.querySelector('.gallery-beckdrop').classList.toggle('is-hidden');
+}));
 document.querySelector('.js-close-big-gallery').addEventListener('click', () => {
   document.body.classList.toggle('modal-open');
   document.querySelector('.gallery-beckdrop').classList.toggle('is-hidden');
@@ -775,7 +762,7 @@ const inputArrey = [
   ...document.querySelectorAll('.manager-feedback-form__input'),
 ];
 
-inputArrey.forEach(input => {
+inputArrey.forEach((input) => {
   if (input.value.length > 0) input.classList.add('input-with-text');
   input.addEventListener('change', () => {
     if (input.value.length > 0) {

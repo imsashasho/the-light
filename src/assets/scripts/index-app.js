@@ -65,7 +65,7 @@ const formsWithRedirect = [
 // }
 // putValueFromSelectToInput('[data-feedback-form] select');
 // putValueFromSelectToInput('[data-feedback-form-footer] select');
-formsWithRedirect.forEach(form => {
+formsWithRedirect.forEach((form) => {
   const $form = document.querySelector(form);
   if ($form) {
     /* eslint-disable */
