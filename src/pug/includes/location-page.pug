@@ -1,13 +1,21 @@
-section.contacts#contacts
-    .contacts__title-block
-        h1.contacts__page-title  contacts
-        h2.contacts__second-title Контакти
-    .map-main 
+section.location-page#location-page
+    .main-deco
+        img(src="./assets/images/feather.png", alt="")
+    .location-page__title-block
+        h1.location-page__page-title  contacts
+        h2.location-page__second-title Контакти
+    .location-page-main.map-main.container 
         .map-wrapper
             #map.map 
         .map-navigation
             .map-navigation__wrap
+                //- .map-navigation__header-wrap 
+                //-     +svg('map-logo')
+                //-     h3.map-navigation__header жк The Light
                 .map-navigation__main
+                    .map-navigation__item
+
+
                     //- .map-navigation__item
                     //-     button.map-navigation__button.js-button-map-navigation(data-type="school")
                     //-         +svg ('school')

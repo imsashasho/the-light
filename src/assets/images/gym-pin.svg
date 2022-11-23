@@ -1,0 +1,10 @@
+<svg width="64" height="80" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M64 32C64 56 32 80 32 80C32 80 0 56 0 32C0 23.5131 3.37142 15.3737 9.37258 9.37258C15.3737 3.37142 23.5131 0 32 0C40.4869 0 48.6263 3.37142 54.6274 9.37258C60.6286 15.3737 64 23.5131 64 32Z" fill="black"/>
+<rect x="28.25" y="27.25" width="7.5" height="4.5" stroke="white" stroke-width="1.5"/>
+<rect x="19.25" y="21.25" width="3.5" height="16.5" rx="1.25" stroke="white" stroke-width="1.5"/>
+<rect x="41.25" y="21.25" width="3.5" height="16.5" rx="1.25" stroke="white" stroke-width="1.5"/>
+<rect x="36.25" y="20.25" width="4.5" height="18.5" rx="1.25" stroke="white" stroke-width="1.5"/>
+<rect x="23.25" y="20.25" width="4.5" height="18.5" rx="1.25" stroke="white" stroke-width="1.5"/>
+<path d="M18.75 28V27.25H18H17.5C16.8096 27.25 16.25 27.8096 16.25 28.5V30.5C16.25 31.1904 16.8096 31.75 17.5 31.75H18H18.75V31V28Z" stroke="white" stroke-width="1.5"/>
+<path d="M46 27.25H45.25V28V31V31.75H46H46.5C47.1904 31.75 47.75 31.1904 47.75 30.5V28.5C47.75 27.8096 47.1904 27.25 46.5 27.25H46Z" stroke="white" stroke-width="1.5"/>
+</svg>

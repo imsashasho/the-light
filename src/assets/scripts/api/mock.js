@@ -162,6 +162,19 @@ export const mockDataConstruction = {
 
 export const mapMock = [
   {
+    name: 'жк The Light',
+    code: 'main',
+    list: [
+      {
+        name: 'Infinity Clinic - 10 хв на авто 093 500 0090',
+        coordinations: {
+          latitude: '50.22241606840825',
+          elevation: '30.57392429635527',
+        },
+      },
+    ],
+  },
+  {
     name: 'Дитячі садочки',
     code: 'kindergarten',
     list: [
@@ -217,7 +230,7 @@ export const mapMock = [
   },
   {
     name: 'Магазин',
-    code: 'shop',
+    code: 'shopping',
     list: [
       {
         name: 'ТЦ «Мануфактура» - 11 хв на авто 044 200 9909',
@@ -270,8 +283,8 @@ export const mapMock = [
     ],
   },
   {
-    name: 'Лікарні',
-    code: 'hospitals',
+    name: 'Парки',
+    code: 'recreation',
     list: [
       {
         name: 'Infinity Clinic - 10 хв на авто 093 500 0090',
@@ -282,6 +295,34 @@ export const mapMock = [
       },
     ],
   },
+  {
+    name: 'Спортклуби',
+    code: 'gym',
+    list: [
+      {
+        name: 'Infinity Clinic - 10 хв на авто 093 500 0090',
+        coordinations: {
+          latitude: '50.2621999111705',
+          elevation: '30.556187012303994',
+        },
+      },
+    ],
+  },
+  {
+    name: 'Ресторани',
+    code: 'dinning',
+    list: [
+      {
+        name: 'Infinity Clinic - 10 хв на авто 093 500 0090',
+        coordinations: {
+          latitude: '50.2621999111705',
+          elevation: '30.556187012303994',
+        },
+      },
+    ],
+  },
+
+  
 ];
 export const galleryMock = [
   {

@@ -29,4 +29,9 @@ export const MAP_MARKERS = [
     title: 'Way',
     coords: '50.2408411473329, 30.568932052181193',
   },
+  {
+    type: 'shopping',
+    title: 'Дитячий садок Wonderland',
+    coords: '50.23, 30.56777',
+  },
 ];

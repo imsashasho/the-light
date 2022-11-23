@@ -33,13 +33,7 @@ global.axios = axios;
 // ------------ Запуск функций для desctop -------------
 if (window.matchMedia('(min-width: 1280px)').matches) {
 }
-// ------------------------ btn-back-to-top -------------------
-document.querySelector('.btn-back-to-top').addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
-});
+
 
 // ******************** SWIPER ***********************************************************
 

@@ -4,7 +4,7 @@ import { MARKER_ICONS, MAP_ICONS_NAME } from './iconsMap';
 import { mapsFiltersView } from './mapsFiltersView';
 
 const mapSrc =
-  'https://maps.googleapis.com/maps/api/js?key=AIzaSyC-x3JbjNBUUm-z9duHAwjTwVkUVjerwWI';
+  'https://maps.googleapis.com/maps/api/js?key=AIzaSyBc_rcO6jcFuCN8AJ9EZLlXENtUDSAcuiw&ver=1655409542';
 
 const mapScript = document.createElement('script');
 mapScript.src = mapSrc;
@@ -39,7 +39,7 @@ async function initMap() {
   const mainMarker = {
     type: 'main',
     coords: [50.22241606840825, 30.57392429635527],
-    name: 'Romankiv Village',
+    name: 'жк the Light',
   };
   // const mainMarkerCoords = mainMarkerData.coords.split(', ');
   // const uluru = { lat: +mainMarkerCoords[0], lng: +mainMarkerCoords[1] };
