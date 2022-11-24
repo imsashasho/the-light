@@ -98,6 +98,10 @@
         color: #A2BDCA;
         margin-right: 40px;
 
+        @include tabletLarge {
+            font-size: 24px;
+        }
+
     }
 
     &-progress__update-options {
@@ -113,6 +117,11 @@
         background: #E9F6FB;
         border-radius: 30px;
         margin-right: 12px;
+
+        @include tabletLarge {
+            height: 46px;
+            width: 123px;
+        }
 
 
     }
@@ -137,6 +146,11 @@
         padding: 13px 40px;
         background: #E9F6FB;
         border-radius: 30px;
+
+        @include tabletLarge {
+            width: 270px;
+            height: 46px;
+        }
 
     }
 
