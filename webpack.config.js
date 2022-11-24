@@ -11,6 +11,8 @@ const config = {
     services: './src/assets/scripts/services.js',
     developmentProcess: './src/assets/scripts/development-process.js',
     news: './src/assets/scripts/news.js',
+    singleNews: './src/assets/scripts/single-news.js',
+    selectApartments: './src/assets/scripts/select-apartments.js',
     404: './src/assets/scripts/404.js',
   },
   output: {

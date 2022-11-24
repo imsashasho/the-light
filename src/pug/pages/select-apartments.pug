@@ -1,0 +1,29 @@
+extends ../layout/main
+block variable
+   
+block meta
+  title= 'THELIGHT'
+  meta(name='description', content='')
+
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+    <link href="http://fonts.cdnfonts.com/css/palace-script-mt" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/century-gothic" rel="stylesheet">
+                
+   
+                
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/selectApartments.bundle.js')
+  script(defer src='./assets/scripts/index.js')
+  script(defer src='./assets/scripts/libs.js')
+
+block header
+  .mask 
+    .loader-block
+      img.header__logo-img.loader-block__logo-img(src="./assets/images/header/logo-header.svg")
+      .loader
+  include ../includes/header.pug
+
+block content
+  include ../includes/select-apartments.pug

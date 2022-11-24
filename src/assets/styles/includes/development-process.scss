@@ -51,6 +51,19 @@
 
     &-main {
         padding: 0 360px 150px 360px;
+
+        @include tabletLarge {
+        padding: 0 70px 270px 70px;
+
+        }
+
+        @include tablet {
+        padding:  0 20px 60px 20px;
+
+        }
+        @include mobile {
+
+        }
     }
 
     &-list {
@@ -67,6 +80,15 @@
         width: 100%;
         margin-bottom: 40px;
 
+        @include tablet {
+          margin-bottom: 20px;
+
+        }
+
+        @include mobile {
+          margin-bottom: 30px;
+        }
+
         &:last-child {
             margin-bottom: 0;
         }
@@ -81,6 +103,11 @@
         line-height: 140%;
         color: #A2BDCA;
         margin-bottom: 12px;
+
+        @include mobile {
+          font-size: 14px;
+          margin-bottom: 8px;
+        }
 
     }
 

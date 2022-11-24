@@ -1,0 +1,144 @@
+.single-news {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    &-main-wrap {
+        padding: 168px 360px 150px 360px;
+    }
+
+    &-main {
+
+        background: rgba(14, 15, 16, 0.1);
+        border: 1px solid #323235;
+        backdrop-filter: blur(5px);
+
+    }
+
+    &-item {
+        padding: 40px;
+
+    }
+
+    &-date {
+        margin-bottom: 40px;
+
+        span {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 140%;
+            color: #A2BDCA;
+        }
+
+    }
+
+    &-title {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 120%;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #E9F6FB;
+        margin-bottom: 40px;
+
+    }
+
+    &-subtitle {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 140%;
+        text-transform: uppercase;
+        color: #A2BDCA;
+        margin-bottom: 16px;
+
+    }
+
+    &-description {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 140%;
+        color: #A2BDCA;
+    }
+
+    &-img {
+        margin-top: 40px;
+        margin-bottom: 40px;
+
+        img {
+            width: 100%;
+        }
+
+    }
+
+    &-list {
+        margin-top: 16px;
+
+
+    }
+
+    &-list-item {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        color: #A2BDCA;
+        margin-bottom: 16px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+    }
+
+    &-btn {
+        margin-top: 40px;
+        width: 225px;
+        height: 50px;
+        background: #E9F6FB;
+        border-radius: 30px;
+
+    }
+
+    &-btn-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: inherit;
+        text-decoration: none;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 170%;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #0E0F10;
+
+    }
+
+    &__news-content {
+        padding: 0 130px 150px 130px;
+
+    }
+
+    &__news-list-title {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 120%;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        text-align: center;
+        color: #E9F6FB;
+        margin-bottom: 32px;
+    }
+
+    &__news-list {
+        border-top: 1px solid #323235;
+        padding-top: 32px;
+    }
+}

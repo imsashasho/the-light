@@ -1,6 +1,6 @@
 .news {
   width: 100%;
-  padding: 100px 12px 0;
+  padding-top: 168px;
   @include from(768px) {
     padding: 100px 20px 0;
   }
@@ -8,7 +8,7 @@
     padding: 100px 50px 0;
   }
   @include from(1920px) {
-    padding: 100px 130px 0;
+    padding: 168px 130px 0;
   }
 
   &__title-block {
@@ -21,6 +21,10 @@
       margin-bottom: 32px;
       padding-bottom: 32px;
       border-bottom: 1px solid var(--dark);
+    }
+
+    &.news-page__title-block {
+      border-bottom: 1px solid transparent;
     }
 
     &-title {
@@ -131,6 +135,10 @@
       }
     }
 
+    &-wrapper {
+
+    }
+
     &-header {
       display: flex;
       justify-content: space-between;
@@ -167,6 +175,7 @@
       @include from(1280px) {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
       }
     }
 
@@ -212,21 +221,39 @@
         display: flex;
         justify-content: space-between;
         flex-direction: column;
+        
+
+
         &:not(:last-child) {
           padding-right: 20px;
           // margin-right: 20px;
           border-right: 1px solid var(--dark);
         }
+
+        &:nth-child(3n) {
+          border-right: none;
+          padding-right: 0;
+        }
+
         &:not(:first-child) {
           padding-left: 20px;
         }
       }
       @include from(1920px) {
         width: calc(100% / 3);
+        padding-bottom: 32px;
+        border-top: 1px solid var(--dark);
         &:not(:last-child) {
           padding-right: 32px;
+          padding-top: 32px;
           // margin-right: 32px;
         }
+
+        &:nth-child(3n) {
+          border-right: none;
+          padding-right: 0;
+        }
+
         &:not(:first-child) {
           padding-left: 32px;
         }
@@ -271,7 +298,7 @@
       }
       @include from(1920px) {
         width: 100%;
-        height: 300px;
+        height: 270px;
       }
       & img {
         width: 100%;
