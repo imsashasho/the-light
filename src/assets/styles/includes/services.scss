@@ -1,18 +1,37 @@
 .services {
-    padding-top: 100px;
-    @include from(768px) {
-      padding-top: 150px;
+    padding-top: 168px;
+
+    @include tabletLarge {
+      padding-top: 100px;
     }
-    @include from(1920px) {
-      padding-top: 210px;
+
+    @include tablet {
+      padding-top: 92px;
     }
+
+    @include mobile {
+      padding-top: 76px;
+    }
+
+
     &__title-block {
       padding: 0 12px;
       margin-bottom: 40px;
-      @include from(1280px) {
-        margin-bottom: 50px;
+
+      @include tabletLarge {
+        margin-bottom: 40px;
       }
+
+      @include tablet {
+        margin-bottom: 20px;
+      }
+
+      @include mobile {
+        margin-bottom: 30px;
+      }
+  
     }
+
     &__page-title {
       font-family: 'Palace Script MT';
       font-style: italic;
@@ -53,6 +72,16 @@
         padding-bottom: 150px;
         display: flex;
         justify-content: space-between;
+
+        @include tabletLarge {
+          padding-bottom: 80px;
+        }
+
+        @include tablet {
+          padding-bottom: 60px;
+        }
+
+
     }
 
     &-filter {
@@ -63,6 +92,10 @@
         border: 1px solid rgba(89, 118, 122, 0.5);
         width: 23%;
         height: fit-content;
+        
+        @include tablet {
+          width: 32.41%;
+        }
 
     }
 
@@ -77,9 +110,13 @@
         text-transform: uppercase;
         display: flex;
         align-items: center;
-
         color: #A2BDCA;
         margin-bottom: 18px;
+
+        @include tabletLarge {
+          font-size: 16px;
+          margin-bottom: 12px;
+        }
 
         &:last-child {
             margin-bottom: 0;
@@ -91,6 +128,10 @@
       display: flex;
       flex-direction: column;
       width: 74.6%;
+
+      @include tablet {
+        width: 65.9%;
+      }
 
     }
 
@@ -108,6 +149,12 @@
         flex-direction: column;
         border: 1px solid rgba(89, 118, 122, 0.5);
         margin-bottom: 24px;
+
+        @include tablet {
+          width: 48.75%;
+          margin-bottom: 12px;
+
+        }
 
         // &:nth-last-child(-n+3) {
         //   margin-bottom: 0;
@@ -130,6 +177,10 @@
       font-size: 18px;
       line-height: 140%;
       color: #E9F6FB;
+
+      @include tabletLarge {
+        font-size: 16px;
+      }
 
     }
 
@@ -238,6 +289,10 @@
   align-items: center;
   position: relative;
   justify-content: center;
+
+  @include tablet {
+    margin-top: 60px;
+  }
 }
 
 .pagination-number,
@@ -254,6 +309,12 @@
   line-height: 140%;
   text-transform: uppercase;
   color: #59767A;
+
+  @include tabletLarge {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
 
 }
 
@@ -278,6 +339,11 @@
   svg {
     width: 20px;
     height: 20px;
+
+    @include tabletLarge {
+      width: 12px;
+      height: 12px;
+    }
   }
 }
 
@@ -290,6 +356,11 @@
   svg {
     width: 20px;
     height: 20px;
+
+    @include tabletLarge {
+      width: 12px;
+      height: 12px;
+    }
   }
 
 }

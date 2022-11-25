@@ -1,11 +1,18 @@
 .development-process {
+  padding-top: 168px;
+
+  @include tabletLarge {
     padding-top: 100px;
-    @include from(768px) {
-      padding-top: 150px;
-    }
-    @include from(1920px) {
-      padding-top: 210px;
-    }
+  }
+
+  @include tablet {
+    padding-top: 92px;
+  }
+
+  @include mobile {
+    padding-top: 76px;
+  }
+  
     &__title-block {
       padding: 0 12px;
       margin-bottom: 40px;

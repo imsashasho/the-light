@@ -1,15 +1,18 @@
 .news {
   width: 100%;
   padding-top: 168px;
-  @include from(768px) {
-    padding: 100px 20px 0;
-  }
-  @include from(1280px) {
-    padding: 100px 50px 0;
-  }
-  @include from(1920px) {
-    padding: 168px 130px 0;
-  }
+
+    @include tabletLarge {
+      padding-top: 100px;
+    }
+
+    @include tablet {
+      padding-top: 92px;
+    }
+
+    @include mobile {
+      padding-top: 76px;
+    }
 
   &__title-block {
     position: relative;
