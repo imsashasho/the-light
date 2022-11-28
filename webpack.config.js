@@ -9,6 +9,7 @@ const config = {
     location: './src/assets/scripts/location.js',
     construction: './src/assets/scripts/construction.js',
     services: './src/assets/scripts/services.js',
+    contacts: './src/assets/scripts/contacts.js',
     developmentProcess: './src/assets/scripts/development-process.js',
     news: './src/assets/scripts/news.js',
     singleNews: './src/assets/scripts/single-news.js',
