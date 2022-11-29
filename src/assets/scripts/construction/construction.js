@@ -1,5 +1,5 @@
-import { modalFactory } from '../gulp-modules/modal';
 import Swiper from 'swiper';
+import { modalFactory } from '../gulp-modules/modal';
 
 
 const SWIPER_GALLERY = '.swiper-gallery';

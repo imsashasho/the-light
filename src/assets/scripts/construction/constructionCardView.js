@@ -1,6 +1,6 @@
 export const constructionCardView = ({
-    previewSrc, month, date, id,
-  }) => `
+  previewSrc, month, date, id,
+}) => `
       <div class="construction-month__card-wrap">
           <a class="construction-month__card" href="" data-month="${month}" data-id="${id}"> 
               <div class="construction-month__card-img"> 
@@ -13,6 +13,5 @@ export const constructionCardView = ({
           </a>
       </div>
       `;
-  
-  export const cardsListView = items => items.map(item => constructionCardView(item)).join('');
-  
+
+export const cardsListView = items => items.map(item => constructionCardView(item)).join('');

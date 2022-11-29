@@ -96,6 +96,15 @@ header.header.header-start-position
                             <path d="M1 13L13 1M1 1L13 13"  stroke-width="2"/>
                         </svg>
 
+    .video-popup.is-hidden
+        .modal.video-modal
+            .page-container
+                iframe(width="560" height="315" src="https://www.youtube.com/embed/wrFfW8Yulsc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen) 
+                button.video__btn-close-menu.js-video-popup-close(type="button")
+                    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 13L13 1M1 1L13 13"  stroke-width="2"/>
+                    </svg>
+
 
     //- Layout
     .layout-beckdrop.is-hidden

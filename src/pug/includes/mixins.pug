@@ -67,3 +67,21 @@ mixin newsBlock(data)
 			if data.img
 				.news__content-item-img-wrapper
 					img.news__content-item-img(src=data.img, alt="")
+
+mixin newsBlockSeparate(data)
+	if data 
+		li.news__content-item.news__content-item-separate.pagination-card(data-data-for-pop-up=data data-id=data.id)
+			.news__content-item-inner
+				.news__content-item-wrapper
+					.news__content-header
+						button.news__content-item-btn
+							<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M0 6H12M6 12V0"/>
+							</svg>
+						if data.date
+							.news__content-item-date=data.date
+					if data.title
+						p.news__content-item-text=data.title
+				if data.img
+					.news__content-item-img-wrapper
+						img.news__content-item-img(src=data.img, alt="")

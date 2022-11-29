@@ -34,6 +34,21 @@ if (window.matchMedia('(min-width: 1280px)').matches) {
 }
 
 
+(() => {
+  const refs = {
+    openModalBtn: document.querySelectorAll('.hero__text-block-btn'),
+    closeModalBtn: document.querySelector('.js-video-popup-close'),
+    modal: document.querySelector('.video-popup'),
+  };
+
+  function toggleModal() {
+    document.body.classList.toggle('modal-open');
+    refs.modal.classList.toggle('is-hidden');
+  }
+  [...refs.openModalBtn].map(btn => btn.addEventListener('click', toggleModal));
+  refs.closeModalBtn.addEventListener('click', toggleModal);
+})();
+
 // ******************** SWIPER ***********************************************************
 
 // -------------------swiper in about section -------------------------
