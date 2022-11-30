@@ -53,7 +53,7 @@ mixin RangeSlider(options)
 //- --------------------------------------------------------------------------
 mixin newsBlock(data)
 	if data 
-		li.news__content-item.js-open-pop-up-news.js-news__content-item.pagination-card(data-data-for-pop-up=data data-id=data.id)
+		a.news__content-item.js-open-pop-up-news.js-news__content-item.pagination-card(data-data-for-pop-up=data data-id=data.id href="./single-news.html")
 			.news__content-item-wrapper
 				.news__content-header
 					button.news__content-item-btn
@@ -68,9 +68,10 @@ mixin newsBlock(data)
 				.news__content-item-img-wrapper
 					img.news__content-item-img(src=data.img, alt="")
 
+
 mixin newsBlockSeparate(data)
 	if data 
-		li.news__content-item.news__content-item-separate.pagination-card(data-data-for-pop-up=data data-id=data.id)
+		a.news__content-item.news__content-item-separate.pagination-card(data-data-for-pop-up=data data-id=data.id href="./single-news.html")
 			.news__content-item-inner
 				.news__content-item-wrapper
 					.news__content-header
@@ -84,4 +85,4 @@ mixin newsBlockSeparate(data)
 						p.news__content-item-text=data.title
 				if data.img
 					.news__content-item-img-wrapper
-						img.news__content-item-img(src=data.img, alt="")
+						img.news__content-item-img(src=data.img, alt="") 

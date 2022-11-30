@@ -146,7 +146,7 @@
          ]
 
 
-section#news.news
+section#news-page.news
   .main-deco
         img(src="./assets/images/feather.png", alt="")
   .news__title-block.news-page__title-block 
@@ -157,9 +157,9 @@ section#news.news
     .news__title-block-btn-right
       include ../components/btn-swiper.pug
   .news__content-wrapper 
-    ul.news__content-list.pagination-list
+    .news__content-list.pagination-list
       each item in data 
-        +newsBlock(item)
+        +newsBlockSeparate(item)
 
 
       //- li.news__content-item(data-id="1")

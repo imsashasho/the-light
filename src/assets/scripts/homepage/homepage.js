@@ -500,54 +500,54 @@ our_projectsSliderTotal.innerHTML = ourProjectsTotalSlideFromFraction < 10
   : `${ourProjectsTotalSlideFromFraction}`;
 
 // ------------------------------- show active news on mobile ----------------------------------------
-if (window.matchMedia('(max-width: 767px)').matches) {
-  const arrNews = [
-    ...document.querySelector('.news .news__content-list').querySelectorAll('.news__content-item'),
-  ];
+// if (window.matchMedia('(max-width: 767px)').matches) {
+//   const arrNews = [
+//     ...document.querySelector('.news .news__content-list').querySelectorAll('.news__content-item'),
+//   ];
 
-  if (arrNews.length > 0) {
-    arrNews[0].classList.add('active-news');
-  }
-  const switchingNewsOnMobileNext = () => {
-    let activeId = 1;
-    arrNews.forEach((item) => {
-      if (item.classList.contains('active-news')) {
-        activeId = +item.dataset.id === arrNews.length ? 1 : +item.dataset.id + 1;
-        item.classList.remove('active-news');
-      }
-    });
-    arrNews.forEach((item) => {
-      if (+item.dataset.id === activeId) {
-        item.classList.add('active-news');
-      }
-    });
-  };
+//   if (arrNews.length > 0) {
+//     arrNews[0].classList.add('active-news');
+//   }
+//   const switchingNewsOnMobileNext = () => {
+//     let activeId = 1;
+//     arrNews.forEach((item) => {
+//       if (item.classList.contains('active-news')) {
+//         activeId = +item.dataset.id === arrNews.length ? 1 : +item.dataset.id + 1;
+//         item.classList.remove('active-news');
+//       }
+//     });
+//     arrNews.forEach((item) => {
+//       if (+item.dataset.id === activeId) {
+//         item.classList.add('active-news');
+//       }
+//     });
+//   };
 
-  const switchingNewsOnMobilePrev = () => {
-    let activeId = 1;
-    arrNews.forEach((item) => {
-      if (item.classList.contains('active-news')) {
-        activeId = +item.dataset.id === 1 ? arrNews.length : +item.dataset.id - 1;
-        item.classList.remove('active-news');
-      }
-    });
-    arrNews.forEach((item) => {
-      if (+item.dataset.id === activeId) {
-        item.classList.add('active-news');
-      }
-    });
-  };
+//   const switchingNewsOnMobilePrev = () => {
+//     let activeId = 1;
+//     arrNews.forEach((item) => {
+//       if (item.classList.contains('active-news')) {
+//         activeId = +item.dataset.id === 1 ? arrNews.length : +item.dataset.id - 1;
+//         item.classList.remove('active-news');
+//       }
+//     });
+//     arrNews.forEach((item) => {
+//       if (+item.dataset.id === activeId) {
+//         item.classList.add('active-news');
+//       }
+//     });
+//   };
 
-  const newsBtnNext = document
-    .querySelector('.news .news__title-block')
-    .querySelector('.news__title-block-btn-right');
-  newsBtnNext.addEventListener('click', () => switchingNewsOnMobileNext());
+//   const newsBtnNext = document
+//     .querySelector('.news .news__title-block')
+//     .querySelector('.news__title-block-btn-right');
+//   newsBtnNext.addEventListener('click', () => switchingNewsOnMobileNext());
 
-  const newsBtnPrev = document
-    .querySelector('.news .news__title-block')
-    .querySelector('.news__title-block-btn-left');
-  newsBtnPrev.addEventListener('click', () => switchingNewsOnMobilePrev());
-}
+//   const newsBtnPrev = document
+//     .querySelector('.news .news__title-block')
+//     .querySelector('.news__title-block-btn-left');
+//   newsBtnPrev.addEventListener('click', () => switchingNewsOnMobilePrev());
+// }
 // -----------------------------------------------------------------------
 
 const arrPathMobile = document.querySelector('#layout_svg-mobile').querySelectorAll('.svg-path');
@@ -676,85 +676,85 @@ document
 //---------------------------------------------------------------------
 
 // ------------------------------- news pop-up ------------------------------------------------------
-const arrNewsItem = document.querySelector('.news').querySelectorAll('.js-news__content-item');
+// const arrNewsItem = document.querySelector('.news').querySelectorAll('.js-news__content-item');
 
-const fillDataNewsPopup = () => {
-  const elem = document.querySelector(
-    '.pop-up-news-beckdrop .page-container .pop-up-news .pop-up-news__content-block',
-  );
-  arrNewsItem.forEach(item => item.addEventListener('click', () => {
-    const dataFromItem = JSON.parse(item.dataset.dataForPopUp);
-    const arrSecondTextBlock = [];
-    [...dataFromItem.dataArray].map(({ title, text, img }) => {
-      const secondTextBlock = `<li class="pop-up-news__content-item"> 
-                                ${
-  title
-    ? `<h2 class="pop-up-news__content-item-title">${title}</h2>`
-    : ''
-}
-                                  ${
-  text
-    ? `<p class="pop-up-news__content-item-text">${text}</p>`
-    : ''
-}
-                                    ${
-  img
-    ? `<img class="pop-up-news__content-item-img" src=${img} alt=""/>`
-    : ''
-}
-                              </li>`;
-      arrSecondTextBlock.push(secondTextBlock);
-    });
-    const markup = `<div class="pop-up-news__content-wrapper">
-                          <div class="pop-up-news__content-header">
-                            <div class="pop-up-news__content-date">${dataFromItem.date}</div>
-                            <h1 class="pop-up-news__content-title">${dataFromItem.title}</h1>
-                            <ul class="pop-up-news__content-list">${arrSecondTextBlock.join(
-    '',
-  )}</ul>
-                          </div>
-                        </div>`;
-    elem.innerHTML = markup;
-  }));
-};
-fillDataNewsPopup();
+// const fillDataNewsPopup = () => {
+//   const elem = document.querySelector(
+//     '.pop-up-news-beckdrop .page-container .pop-up-news .pop-up-news__content-block',
+//   );
+//   arrNewsItem.forEach(item => item.addEventListener('click', () => {
+//     const dataFromItem = JSON.parse(item.dataset.dataForPopUp);
+//     const arrSecondTextBlock = [];
+//     [...dataFromItem.dataArray].map(({ title, text, img }) => {
+//       const secondTextBlock = `<li class="pop-up-news__content-item"> 
+//                                 ${
+//   title
+//     ? `<h2 class="pop-up-news__content-item-title">${title}</h2>`
+//     : ''
+// }
+//                                   ${
+//   text
+//     ? `<p class="pop-up-news__content-item-text">${text}</p>`
+//     : ''
+// }
+//                                     ${
+//   img
+//     ? `<img class="pop-up-news__content-item-img" src=${img} alt=""/>`
+//     : ''
+// }
+//                               </li>`;
+//       arrSecondTextBlock.push(secondTextBlock);
+//     });
+//     const markup = `<div class="pop-up-news__content-wrapper">
+//                           <div class="pop-up-news__content-header">
+//                             <div class="pop-up-news__content-date">${dataFromItem.date}</div>
+//                             <h1 class="pop-up-news__content-title">${dataFromItem.title}</h1>
+//                             <ul class="pop-up-news__content-list">${arrSecondTextBlock.join(
+//     '',
+//   )}</ul>
+//                           </div>
+//                         </div>`;
+//     elem.innerHTML = markup;
+//   }));
+// };
+// fillDataNewsPopup();
 
-if (window.matchMedia('(min-width: 1280px)').matches) {
-  let IndexMouseover = 0;
-  let IndexMouseout;
-  let firstOver = true;
+// if (window.matchMedia('(min-width: 1280px)').matches) {
+//   let IndexMouseover = 0;
+//   let IndexMouseout;
+//   let firstOver = true;
 
-  if (arrNewsItem.length === 1) {
-    arrNewsItem.forEach((item, index) => {
-      item.addEventListener('mouseover', (e) => {
-        item.classList.remove('news__content-item-mouseout');
-        item.classList.add('news__content-item-mouseover');
-      });
+//   if (arrNewsItem.length === 1) {
+//     arrNewsItem.forEach((item, index) => {
+//       item.addEventListener('mouseover', (e) => {
+//         item.classList.remove('news__content-item-mouseout');
+//         item.classList.add('news__content-item-mouseover');
+//       });
 
-      item.addEventListener('mouseout', () => {
-        item.classList.remove('news__content-item-mouseover');
-        item.classList.add('news__content-item-mouseout');
-      });
-    });
-  }
-  arrNewsItem.forEach((item, index) => {
-    item.addEventListener('mouseover', (e) => {
-      IndexMouseover = index;
-      if (!firstOver && IndexMouseover === IndexMouseout) return;
-      arrNewsItem.forEach((item) => {
-        item.classList.remove('news__content-item-mouseover');
-        item.classList.remove('news__content-item-mouseout');
-        firstOver = null;
-      });
-      arrNewsItem[IndexMouseover].classList.add('news__content-item-mouseover');
-      arrNewsItem[IndexMouseout].classList.add('news__content-item-mouseout');
-    });
+//       item.addEventListener('mouseout', () => {
+//         item.classList.remove('news__content-item-mouseover');
+//         item.classList.add('news__content-item-mouseout');
+//       });
+//     });
+//   }
+//   arrNewsItem.forEach((item, index) => {
+//     item.addEventListener('mouseover', (e) => {
+//       IndexMouseover = index;
+//       if (!firstOver && IndexMouseover === IndexMouseout) return;
+//       arrNewsItem.forEach((item) => {
+//         item.classList.remove('news__content-item-mouseover');
+//         item.classList.remove('news__content-item-mouseout');
+//         firstOver = null;
+//       });
+//       arrNewsItem[IndexMouseover].classList.add('news__content-item-mouseover');
+//       arrNewsItem[IndexMouseout].classList.add('news__content-item-mouseout');
+//     });
 
-    item.addEventListener('mouseout', () => {
-      IndexMouseout = index;
-    });
-  });
-}
+//     item.addEventListener('mouseout', () => {
+//       IndexMouseout = index;
+//     });
+//   });
+// }
 
 // ----------------------------- open and close big_swiper_gallery ---------------------------
 

@@ -36,7 +36,7 @@ section#news.news
     .news__title-block-btn-right
       include ../components/btn-swiper.pug
   .news__content-wrapper 
-    ul.news__content-list
+    .news__content-list
       each item in data 
         +newsBlock(item)
 
