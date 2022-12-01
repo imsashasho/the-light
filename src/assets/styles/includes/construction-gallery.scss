@@ -1,0 +1,297 @@
+.gallery-wrap {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+.gallery-overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+  opacity: 0;
+	transition: ease-in-out visibility 0s, opacity 0.5s linear;
+	background-color: rgba(0, 0, 0, .8);
+  z-index: 10;
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &.modal-open {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+.swiper-container {
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 100%;
+}
+
+.swiper-gallery {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    // @include mobile {
+    //   width: 100%;
+    // }
+
+    &__wrp {
+        height: 100%;
+        width: 100%;
+        > .swiper-slide-active {
+            height: 100% !important;
+            position: relative;
+        }
+    }
+
+    &-slide {
+      height: 100%;
+      width: 100%;
+    }
+
+    img {
+        // max-height: 100%;
+        // max-width: 100%;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+
+        @include mobile {
+          height: 83vh;
+        }
+    }
+
+    video {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }    
+}
+
+.building-swiper-video {
+  &__button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-image: url(../images/video-button.png);
+    transform: translate(-50%, -50%);
+    background-position: center;
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 1;
+    transition: all ease-in-out 0.3s;
+
+    @include tablet {
+      width: 100px;
+      height: 100px;
+    }
+
+    &.playing {
+      opacity: 0;
+    }
+
+  }
+  &__triangle {
+    position: absolute;
+    top: 50%;
+    left: 53%;
+    transform: translate(-50%, -50%);
+    height: 0;
+    width: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 15px solid $bTitle;
+    @include tablet {
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 13px solid $bTitle;
+    }
+  }
+
+}
+
+
+.gallery-slider {
+    &__ctr-wrap {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 30%;
+        height: 300px;
+        background-image: url(../images/gallery-text-bg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        z-index: 12;
+        padding: 50px 110px;
+        @include tabletLarge {
+          width: 40%;
+          padding: 30px 50px;
+        }
+        @include mobile {
+          width: 100%;
+          height: auto;
+          padding: 30px 20px;
+          position: relative;
+        }
+
+    }
+
+    &__link-back {
+        text-decoration: none;
+        font-family: $default-font;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 120%;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: #F0F0F0;
+        position: relative;
+        margin-left: 18px;
+        @include mobile {
+          font-size: 10px;
+        }
+        &::before {
+            content: '';
+            background-image: url(../images/arrow-back-gallery.svg);
+            width: 8px;
+            height: 10px;
+            background-position: center;
+            background-size: contain;
+            position: absolute;
+            left: -18px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+    }
+
+    &__date {
+        font-family: $default-font;
+        font-size: 12px;
+        font-weight: 500;
+        transition: opacity 0.3s;
+        position: relative;
+        color: #F0F0F0;
+        margin-left: 22px;
+        margin-top: 50px;
+        
+        @include mobile {
+          font-size: 10px;
+          margin-top: 30px;
+        }
+          &::before {
+            content: '';
+            background-image: url(../images/clock.svg);
+            width: 12px;
+            height: 12px;
+            background-position: center;
+            background-size: contain;
+            position: absolute;
+            left: -22px;
+            bottom: 0;
+            transform: translateY(-50%);
+                @include mobile {
+                height: 10px;
+                width: 10px;
+                }
+          }
+    }
+
+    &__title {
+        font-family: $default-font;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 110%;
+        color: $wc;
+        margin-top: 10px;
+        @include mobile {
+          font-size: 24px;
+        }
+
+    }
+
+
+    &__ctr {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 50px;
+        
+        @include tablet {
+          justify-content: space-between;
+        }
+        @include mobile {
+          margin-top: 30px;
+        }
+      }
+  
+  
+      &__arrow {
+        
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 12;
+        cursor: pointer;
+        outline: none !important;
+        padding: 0;
+  
+        &:focus {
+          outline: none !important;
+        }
+  
+        .icon-font {
+          display: inline-flex;
+        }
+
+        &.gallery-slider-next {
+          margin-left: 30px;
+          @include tablet {
+            margin-left: 20px;
+          }
+        }
+      }
+  
+      &__pagination {
+        text-align: center;
+        width: 70%;
+        @include tablet {
+          width: 65%;
+        }
+  
+        // @media screen and (max-width: 576px) {
+        //   margin-top: 50px;
+        // }
+  
+        &.swiper-pagination-progressbar {
+          position: relative;
+          height: 1px;
+          display: inline-block;
+          opacity: 1;
+          background: $wc;
+          margin: 0 5px;
+          border-radius: 20px;
+          transition: opacity 0.5s, background-color 0.5s, width 0.5s;
+          transition-delay: 0.5s, 0.5s, 0s;
+        }
+  
+        > .swiper-pagination-progressbar-fill {
+          opacity: 1;
+          background: $wc;
+          height: 2px;
+          transition-delay: 0s;
+        }
+      }
+}
