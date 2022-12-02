@@ -4,9 +4,9 @@ import Swiper from 'swiper';
 
 const SWIPER_GALLERY = '.swiper-gallery';
 const POPUP_GALLERY = '.gallery-overlay';
-const CLOSE_GALLERY = '.gallery-slider__link-back';
+// const CLOSE_GALLERY = '.gallery-slider__link-back';
 
-const constructionCloseBtnRef = document.querySelector(CLOSE_GALLERY);
+// const constructionCloseBtnRef = document.querySelector(CLOSE_GALLERY);
 const galleryModal = modalFactory(POPUP_GALLERY);
 
 const swiperGallery = new Swiper(SWIPER_GALLERY, {
@@ -80,10 +80,10 @@ swiperGallery.on('slideChange', (slider) => {
   playBtnRef.classList.remove('playing');
 });
 
-constructionCloseBtnRef.addEventListener('click', (e) => {
-  e.preventDefault();
-  closePopup();
-});
+// constructionCloseBtnRef.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   closePopup();
+// });
 
 export const constructionPopup = {
   gallery: swiperGallery,

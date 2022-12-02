@@ -36,7 +36,7 @@
 
   async function newsRendering() {
     const sendData = new FormData();
-    sendData.append('action', 'getNews');
+    sendData.append('action', 'services');
     let newsData = await fetch('/wp-admin/admin-ajax.php', {
       method: 'POST',
       body: sendData,

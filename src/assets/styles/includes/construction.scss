@@ -191,6 +191,10 @@
 
     }
 
+    &-progress__years-list-mobile {
+        display: none;
+    }
+
     &-progress__years-item {
         display: flex;
         align-items: center;
@@ -234,6 +238,12 @@
         }
 
     }
+
+    &-progress__months-list-mobile {
+        display: none;
+    }
+
+
 
     &-progress__months-item {
 

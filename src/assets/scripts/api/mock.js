@@ -7,6 +7,9 @@ export const mockDataConstruction = {
         month_in_digits: '06',
         month: 'червень',
         year: '2022',
+        photo_count: '3',
+        video_count: '4',
+        descr: 'Виконується монтаж ліфтів. Триває влаштування систем опалення, вентиляції, водопроводу, каналізації та електрики. Проходять фасадні роботи на торцях. Виконується влаштування утеплення на балконах.',
         gallery: [
           false,
           'http://romankiv-wp.smarto.com.ua/wp-content/uploads/2022/06/DJI_0392.jpg',

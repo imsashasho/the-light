@@ -12,6 +12,8 @@ export const transformConstructionResponse = (response) => {
       month: data.month,
       year: data.year,
       previewSrc: data.gallery && data.gallery[0],
+      day: data.day,
+      descr: data.descr,
       date: `${data.day}.${data.month_in_digits}.${data.year}`,
     };
   });

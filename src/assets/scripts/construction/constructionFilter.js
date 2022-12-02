@@ -24,14 +24,14 @@ import { monthDescriptionView } from './monthDescriptionView';
   const monthListRef = document.querySelector('.construction-month');
   const yearListMobileRef = document.querySelector('.construction-year-mobile');
   const monthListMobileRef = document.querySelector('.construction-month-mobile');
-  const constructionListRef = document.querySelector('.construction-right__inner');
+  const constructionListRef = document.querySelector('.construction-list');
   const descriptionRef = document.querySelector('.construction-description-mobile');
 
   const filters = {
     constructions,
     yearsList,
     years,
-    cardListRef: document.querySelector('.construction-right__inner'),
+    cardListRef: document.querySelector('.construction-list'),
     currentYear: yearsList[0],
     currentMonth: '',
     get currentSlides() {

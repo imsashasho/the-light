@@ -14,14 +14,18 @@ section.construction#construction
                                 +svg('camera')
                                 span веб камери
                     .construction-progress__update-options 
-                        .construction-progress__years-list 
-                            .construction-progress__years-item 
+                        .construction-progress__years-list.construction-year 
+                            .construction-progress__years-item(data-year="2022") 
                                 span 2022
                                 +svg('small-arrow')
-                        .construction-progress__months-list
-                            .construction-progress__months-item 
+                        select(name="month").construction-select.construction-progress__years-list-mobile.construction-year-mobile
+                            option(value="2022") 2022
+                        .construction-progress__months-list.construction-month
+                            .construction-progress__months-item.construction-month__item 
                                 span 2 черга (4 квартал 2024)
                                 +svg('small-arrow') 
+                        select(name="month").construction-select.construction-month-mobile.construction-progress__months-list-mobile
+                            option(value="january") Січень     
                         .construction-progress__figures-cam.camera-btn.camera-btn-tablet 
                             a(href="#").camera-btn-link 
                                 +svg('camera')
