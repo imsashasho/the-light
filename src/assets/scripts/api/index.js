@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { mockDataConstruction, mapMock, galleryMock } from './mock';
+axios.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
+
+
 
 const baseUrl = '/wp-admin/admin-ajax.php';
 const isDev = window.location.href.match('localhost');
@@ -8,7 +11,7 @@ export const getMarkers = () => (isDev ? Promise.resolve({ data: mapMock }) : ax
 
 export const getConstructionGallery = () => (isDev
   ? Promise.resolve({ data: mockDataConstruction })
-  : axios.post(baseUrl, { action: 'construction' }));
+  : axios.post(baseUrl, { action: 'constructions' }));
 
 export const getGalleryById = id => (isDev
   ? Promise.resolve({ data: galleryMock })

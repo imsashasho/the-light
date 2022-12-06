@@ -1,9 +1,138 @@
-.gallery-wrap {
+.gallery {
+  &-wrap {
     position: relative;
     width: 100%;
     height: 100vh;
     display: flex;
+    padding: 50px;
+
+
+  }
+  &-item-intro {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+        width: 48.87%;
+    }
+
+    @include mobile {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
 }
+
+&-item__title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+    @include mobile {
+        margin-bottom: 12px;
+    }
+
+}
+
+&-item__title-day {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 200px;
+    line-height: 80%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #323235;
+
+    @include mobile {
+        font-size: 72px;
+    }
+
+
+}
+
+&-item__title-inner{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+&-item__title-month {
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    text-transform: uppercase; 
+    color: #323235;
+
+    @include tabletLarge {
+        font-size: 20px;
+    }
+    
+
+}
+
+&-item__title-year {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+    color: #323235;
+
+    @include tabletLarge {
+        font-size: 16px;
+    }
+
+    @include mobile {
+        font-size: 14px;
+    }
+
+}
+
+&-item__descr {
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    color: #323235;
+    margin-bottom: 20px;
+
+    @include tabletLarge {
+        font-size: 16px;
+    }
+
+    @include mobile {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+}
+
+&-item__details {
+
+    span {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 140%;
+        color: #59767A;
+
+        @include tabletLarge {
+            font-size: 16px;
+        }
+
+        @include mobile {
+            font-size: 14px;
+        }
+
+    }
+
+}
+}
+
 .gallery-overlay {
 	position: fixed;
 	width: 100%;
@@ -20,6 +149,13 @@
     flex-direction: column;
   }
 
+  &-inner {
+    display: flex;
+    background-color: #E9F6FB;
+    padding: 32px;
+    width: 100%;
+  }
+
   &.modal-open {
     visibility: visible;
     opacity: 1;
@@ -33,7 +169,6 @@
 }
 
 .swiper-gallery {
-    height: 100vh;
     width: 100%;
     position: relative;
     // @include mobile {
@@ -121,22 +256,12 @@
 
 .gallery-slider {
     &__ctr-wrap {
-        position: absolute;
-        bottom: 0;
-        left: 0;
         width: 30%;
-        height: 300px;
-        background-image: url(../images/gallery-text-bg.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        flex-direction: column;
+        height: 100%;
         z-index: 12;
-        padding: 50px 110px;
+        margin-right: 30px;
         @include tabletLarge {
           width: 40%;
-          padding: 30px 50px;
         }
         @include mobile {
           width: 100%;
@@ -225,9 +350,10 @@
 
     &__ctr {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
-        align-items: center;
-        margin-top: 50px;
+        height: 100%;
+        
         
         @include tablet {
           justify-content: space-between;
@@ -239,7 +365,6 @@
   
   
       &__arrow {
-        
         display: inline-flex;
         justify-content: center;
         align-items: center;
@@ -247,17 +372,29 @@
         cursor: pointer;
         outline: none !important;
         padding: 0;
+        height: 40px;
+        width: 40px;
+        background-color: #0E0F10;
+        border-radius: 40px;
   
         &:focus {
           outline: none !important;
         }
   
-        .icon-font {
-          display: inline-flex;
+        svg{
+          height: 14px;
+          width: 12px;
+        }
+
+        &.gallery-slider-prev {
+          svg {
+            transform: rotate(180deg);
+          }
+
         }
 
         &.gallery-slider-next {
-          margin-left: 30px;
+          margin-left: 10px;
           @include tablet {
             margin-left: 20px;
           }

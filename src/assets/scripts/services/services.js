@@ -32,22 +32,22 @@
     });
   });
 
-  const newsContainer = document.querySelector('.services-list');
+  const servicesContainerRef = document.querySelector('.services-list');
 
-  async function newsRendering() {
+  async function servicesRendering() {
     const sendData = new FormData();
     sendData.append('action', 'services');
-    let newsData = await fetch('/wp-admin/admin-ajax.php', {
+    let servicesData = await fetch('/wp-admin/admin-ajax.php', {
       method: 'POST',
       body: sendData,
     });
-    newsData = await newsData.json();
-    newsContainer.innerHTML = '';
+    servicesData = await servicesData.json();
+    servicesContainerRef.innerHTML = '';
 
-    newsData.dataSmall.forEach((card) => {
-      newsContainer.innerHTML += card;
+    servicesData.forEach((card) => {
+      servicesContainerRef.innerHTML += card;
     });
   }
 
-  newsRendering();
+  servicesRendering();
 }

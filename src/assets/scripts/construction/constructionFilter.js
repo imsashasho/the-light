@@ -6,7 +6,7 @@ import { monthListButtonsView } from './monthListButtonsView';
 import { monthListSelectView } from './monthListSelectView';
 import { yearListSelectView } from './yearListSelectView';
 import { slidesView } from './slidesView';
-import { monthDescriptionView } from './monthDescriptionView';
+
 
 (async function () {
   let galleryData = [];
@@ -20,12 +20,12 @@ import { monthDescriptionView } from './monthDescriptionView';
 
   const { years, constructions } = transformConstructionResponse(galleryData);
   const yearsList = years.map(item => item.year);
-  const yearListRef = document.querySelector('.construction-year');
-  const monthListRef = document.querySelector('.construction-month');
+  const yearListRef = document.querySelector('.construction-progress__years-list');
+  const monthListRef = document.querySelector('.construction-progress__months-list');
   const yearListMobileRef = document.querySelector('.construction-year-mobile');
   const monthListMobileRef = document.querySelector('.construction-month-mobile');
   const constructionListRef = document.querySelector('.construction-list');
-  const descriptionRef = document.querySelector('.construction-description-mobile');
+
 
   const filters = {
     constructions,
@@ -67,7 +67,6 @@ import { monthDescriptionView } from './monthDescriptionView';
     setCurrentMonth(month) {
       this.currentMonth = this.currentMonth === month ? '' : month;
       this.render();
-      this.renderMobileDescription();
     },
     render() {
       this.cardListRef.innerHTML = cardsListView(this.currentSlides);
@@ -76,14 +75,6 @@ import { monthDescriptionView } from './monthDescriptionView';
       const currentMonths = this.years.find(item => item.year === this.currentYear);
       monthListRef.innerHTML = monthListButtonsView(currentMonths.months);
       monthListMobileRef.innerHTML = monthListSelectView(currentMonths.months);
-    },
-    renderMobileDescription() {
-      const activeMonth = this.getActiveMonthData();
-      if (!activeMonth) {
-        descriptionRef.innerHTML = '';
-        return;
-      }
-      descriptionRef.innerHTML = monthDescriptionView({ description: activeMonth.description });
     },
   };
 

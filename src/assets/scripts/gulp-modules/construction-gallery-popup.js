@@ -24,12 +24,12 @@ const swiperGallery = new Swiper(SWIPER_GALLERY, {
     prevEl: '.gallery-slider-prev',
     nextEl: '.gallery-slider-next',
   },
-  pagination: {
-    el: '.gallery-slider__pagination',
-    clickable: true,
-    type: 'progressbar',
-    direction: 'horizontal',
-  },
+  // pagination: {
+  //   el: '.gallery-slider__pagination',
+  //   clickable: true,
+  //   type: 'progressbar',
+  //   direction: 'horizontal',
+  // },
 });
 
 const openPopup = () => {
@@ -41,11 +41,10 @@ const closePopup = () => {
 };
 
 const openPopupWithSlides = (slides) => {
+  console.log(swiperGallery)
   openPopup();
-  swiperGallery.removeAllSlides();
-  swiperThumbnails.removeAllSlides();
-  swiperGallery.appendSlide(slides);
-  swiperThumbnails.appendSlide(slides);
+  // swiperGallery.removeAllSlides();
+  // swiperGallery.appendSlide(slides);
   swiperGallery.slideToLoop(0);
 };
 
