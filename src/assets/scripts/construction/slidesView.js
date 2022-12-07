@@ -1,4 +1,4 @@
-export const slideView = ({ src }) => {
+export const slideView =  (src) => {
   const isYoutube = src.includes('youtube');
   const isEmbedVideo = src.includes('mp4');
   if (isEmbedVideo) {
@@ -27,4 +27,4 @@ export const slideView = ({ src }) => {
   `;
 };
 
-export const slidesView = (slidesSrc) => slidesSrc.map(src => slideView({ src }));
+export const slidesView = (slidesSrc) => slidesSrc.map(src => slideView(src));

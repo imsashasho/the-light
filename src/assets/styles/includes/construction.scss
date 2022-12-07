@@ -21,6 +21,15 @@
     transform: translateX(-50%);
     opacity: 0.35;
     z-index: -1;
+
+    @include tabletLarge {
+        width: 426px;
+
+    }
+
+    @include mobile {
+        width: 360px;
+    }
 }
 .construction {
     padding-top: 168px;

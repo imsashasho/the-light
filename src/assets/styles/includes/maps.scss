@@ -1,20 +1,26 @@
 .location-page {
 
+    &-inner {
+        padding-top: 168px;
+        padding-bottom: 50px;
+
+        @include tabletLarge {
+        padding-top: 100px;
+        }
+
+        @include tablet {
+        padding-top: 92px;
+        }
+
+        @include mobile {
+        padding-top: 76px;
+        padding-bottom: 12px;
+        }
+
+    }
+
     
-    padding-top: 168px;
-
-    @include tabletLarge {
-      padding-top: 100px;
-    }
-
-    @include tablet {
-      padding-top: 92px;
-    }
-
-    @include mobile {
-      padding-top: 76px;
-      padding-bottom: 12px;
-    }
+    
     &__title-block {
       padding: 0 12px;
       margin-bottom: 40px;
