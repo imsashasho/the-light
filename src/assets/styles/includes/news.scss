@@ -12,6 +12,8 @@
 
     @include mobile {
       padding-top: 76px;
+      padding-left: 12px;
+      padding-right: 12px;
     }
 
   &__title-block {
@@ -200,9 +202,14 @@
       }
     }
 
+  
+
     &-item {
       @include to(767px) {
         display: none;
+        &:first-child {
+          display: block;
+        }
         &.active-news {
           display: block;
         }
@@ -357,6 +364,19 @@
 
   .news__content-wrapper {
     padding: 0 160px;
+
+    @include mobile {
+      padding: 0;
+    }
+  }
+
+  .news__title-block-btn-left {
+    display: none;
+  }
+
+  .news__title-block-btn-right {
+    display: none;
+
   }
 
   .news__content-list {

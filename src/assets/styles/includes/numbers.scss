@@ -2,6 +2,11 @@
   width: 100%;
   height: auto;
   padding-top: 200px;
+
+  @include mobile {
+    padding-top: 80px;
+  }
+  
   @include from(768px) {
     padding-top: 250px;
   }
