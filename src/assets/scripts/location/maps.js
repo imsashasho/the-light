@@ -3,7 +3,7 @@ import { getMarkers } from '../api';
 import { MARKER_ICONS, MAP_ICONS_NAME } from './iconsMap';
 import { mapsFiltersView } from './mapsFiltersView';
 
-const mapSrc = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBc_rcO6jcFuCN8AJ9EZLlXENtUDSAcuiw&ver=1655409542';
+const mapSrc = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBxK12fUzstWEjwLBlJU_ZxJE8fUAeH48I';
 
 const mapScript = document.createElement('script');
 mapScript.src = mapSrc;

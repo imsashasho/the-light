@@ -16,6 +16,12 @@
       padding-right: 12px;
     }
 
+  &__content-wrapper {
+    padding: 0 130px;
+
+  }
+
+
   &__title-block {
     position: relative;
     display: flex;
@@ -25,7 +31,7 @@
     @include from(768px) {
       margin-bottom: 32px;
       padding-bottom: 32px;
-      border-bottom: 1px solid var(--dark);
+      // border-bottom: 1px solid var(--dark);
     }
 
     &.news-page__title-block {
@@ -109,7 +115,7 @@
   &__content {
     &-item {
       cursor: pointer;
-      @include from(1280px) {
+      @include from(1366px) {
         .news__content-item-img-wrapper {
           clip-path: polygon(0 40%, 100% 40%, 100% 100%, 0% 100%);
           transition: all 2.5s var(--cubic);
@@ -177,6 +183,7 @@
     }
 
     &-list {
+      border-top: 1px solid var(--dark);
       @include from(1280px) {
         display: flex;
         justify-content: center;
@@ -193,7 +200,7 @@
         margin-bottom: 0;
         width: calc((100% - 40px) / 2);
       }
-      @include from(1280px) {
+      @include from(1366px) {
         width: 100%;
         margin-bottom: 42px;
       }
@@ -365,6 +372,14 @@
   .news__content-wrapper {
     padding: 0 160px;
 
+    @include tabletLarge {
+      padding: 0 80px;
+    }
+
+    @include tablet {
+      padding: 0 20px;
+    }
+
     @include mobile {
       padding: 0;
     }
@@ -382,6 +397,11 @@
   .news__content-list {
     margin-left: -32px;
     margin-right: -32px;
+
+    @include tablet {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 
   .news__content-item {
@@ -389,6 +409,16 @@
     padding: 32px 0;
     border-right: none;
     border-top: 1px solid #323235;
+
+    @include tablet {
+      width: 100%;
+      border-top: none;
+      padding: 0;
+    }
+
+    @include mobile {
+      display: block;
+    }
 
     &:nth-child(3n) {
       .news__content-item-inner {
@@ -409,6 +439,27 @@
   .news__content-item-inner {
     padding: 0 32px;
     border-right: 1px solid #323235;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+      @include tabletLarge {
+        height: 460px;
+        padding: 0 20px;
+      }
+      @include tablet {
+        height: 290px;
+        flex-direction: row;
+        border-right: none;
+        border-top: 1px solid #323235;
+        padding: 20px 0;
+        width: 100%;
+
+      }
+      @include mobile {
+        height: auto;
+        flex-direction: column;
+      }
 
   }
 

@@ -1,7 +1,7 @@
 {
   const filters = document.querySelectorAll('.services-filter-btn');
   const filtersMobRef = document.getElementById('filter-select');
-  const mediaQuery = window.matchMedia('(max-width: 768px)')
+  const mediaQuery = window.matchMedia('(max-width: 768px)');
   let activeFilter = filters[0];
   console.log(filters[0]);
 
@@ -35,23 +35,18 @@
   });
 
 
-  
-
-if (mediaQuery.matches) {
-
-
-
+  if (mediaQuery.matches) {
     const handleClickChange = (e) => {
       const { target } = e;
       const btn = target.options[target.selectedIndex];
-      console.log(btn)
+      console.log(btn);
       if (btn) {
         const selectedFilter = btn.dataset.type;
         let itemsToHide = document.querySelectorAll(
           `.services-list .services-card:not([data-type='${selectedFilter}'])`,
         );
         let itemsToShow = document.querySelectorAll(`.services-list [data-type='${selectedFilter}']`);
-        const { currentTarget } = event;
+        const { currentTarget } = e;
         currentTarget.classList.add('active');
         activeFilter.classList.remove('active');
         activeFilter = currentTarget;
@@ -72,12 +67,10 @@ if (mediaQuery.matches) {
         });
       }
     };
-  
-    filtersMobRef.addEventListener('change', handleClickChange);
- 
-}
 
-  
+    filtersMobRef.addEventListener('change', handleClickChange);
+  }
+
 
   const servicesContainerRef = document.querySelector('.services-list');
 

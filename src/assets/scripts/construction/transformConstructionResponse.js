@@ -23,5 +23,4 @@ export const transformConstructionResponse = (response) => {
   });
 
   return { years, constructions };
-  
 };

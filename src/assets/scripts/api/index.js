@@ -1,7 +1,5 @@
 import axios from 'axios';
 import { mockDataConstruction, mapMock, galleryMock } from './mock';
-axios.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
-
 
 
 const baseUrl = '/wp-admin/admin-ajax.php';

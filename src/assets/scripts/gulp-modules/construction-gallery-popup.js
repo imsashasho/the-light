@@ -1,5 +1,5 @@
-import { modalFactory } from './modal';
 import Swiper from 'swiper';
+import { modalFactory } from './modal';
 
 
 const SWIPER_GALLERY = '.swiper-gallery';
@@ -41,7 +41,7 @@ const closePopup = () => {
 };
 
 const openPopupWithSlides = (slides) => {
-  console.log(swiperGallery)
+  console.log(swiperGallery);
   openPopup();
   swiperGallery.removeAllSlides();
   swiperGallery.appendSlide(slides);

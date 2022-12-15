@@ -2,7 +2,7 @@ import mapStyles from '../location/style.json';
 import { getMarkers } from '../api';
 import { MARKER_ICONS } from './iconsMap';
 
-const mapSrc = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBc_rcO6jcFuCN8AJ9EZLlXENtUDSAcuiw&ver=1655409542';
+const mapSrc = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBxK12fUzstWEjwLBlJU_ZxJE8fUAeH48I';
 
 const mapScript = document.createElement('script');
 mapScript.src = mapSrc;

@@ -686,7 +686,7 @@ document
 //     const dataFromItem = JSON.parse(item.dataset.dataForPopUp);
 //     const arrSecondTextBlock = [];
 //     [...dataFromItem.dataArray].map(({ title, text, img }) => {
-//       const secondTextBlock = `<li class="pop-up-news__content-item"> 
+//       const secondTextBlock = `<li class="pop-up-news__content-item">
 //                                 ${
 //   title
 //     ? `<h2 class="pop-up-news__content-item-title">${title}</h2>`

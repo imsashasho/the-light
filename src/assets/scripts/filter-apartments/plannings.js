@@ -22,7 +22,7 @@ class Plannings {
   init() {
     this.subscribeFilterFlat();
 
-    $('.js-s3d-pl__list').on('click', '.js-s3d-card', event => {
+    $('.js-s3d-pl__list').on('click', '.js-s3d-card', (event) => {
       if (event.target.closest('.js-s3d-add__favourite')) {
         return;
       }
@@ -31,7 +31,7 @@ class Plannings {
       this.updateFsm({ type: 'flat', id });
     });
 
-    this.wrapperNode.addEventListener('scroll', event => {
+    this.wrapperNode.addEventListener('scroll', (event) => {
       paginationScroll(event.target, this.showFlatList, this.currentShowAmount, this.createListCard.bind(this));
     });
   }
@@ -41,7 +41,7 @@ class Plannings {
   }
 
   subscribeFilterFlat() {
-    this.currentFilteredFlatIds$.subscribe(flats => {
+    this.currentFilteredFlatIds$.subscribe((flats) => {
       this.wrapperNode.scrollTop = 0;
       this.wrapperNode.textContent = '';
       this.currentShowAmount = 0;
@@ -74,7 +74,7 @@ class Plannings {
 
   selectRandomAvailableFlats(count = 4) {
     let selectedFlatsCount = 0;
-    const selectedFlats = this.defaultShowingFlats.filter(flatId => {
+    const selectedFlats = this.defaultShowingFlats.filter((flatId) => {
       const flat = this.getFlat(flatId);
       if (flat.sale !== 1 || selectedFlatsCount >= count) return false;
       selectedFlatsCount += 1;
