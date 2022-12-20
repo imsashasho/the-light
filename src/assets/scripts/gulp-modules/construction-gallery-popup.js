@@ -43,7 +43,8 @@ const closePopup = () => {
 const openPopupWithSlides = (slides) => {
   console.log(swiperGallery);
   openPopup();
-  swiperGallery.removeAllSlides();
+
+  document.querySelector('.swiper-container').removeAllSlides();
   swiperGallery.appendSlide(slides);
   swiperGallery.slideToLoop(0);
 };

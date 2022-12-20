@@ -9,7 +9,7 @@ export const transformConstructionResponse = (response) => {
     return {
       id,
       countPics: data.count_gallery,
-      countVideos: data.count_videos,
+      countVideos: data.count_videos, 
       gallery: data.gallery,
       month: data.month,
       year: data.year,

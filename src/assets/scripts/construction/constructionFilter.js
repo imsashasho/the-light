@@ -83,7 +83,7 @@ import { slidesView } from './slidesView';
 
   const handleFilterByYear = (event) => {
     const { target } = event;
-    const btnRef = target.closest('.construction-year__item');
+    const btnRef = target.closest('.construction-progress__years-item');
     if (!btnRef) return;
 
     const { year } = btnRef.dataset;
