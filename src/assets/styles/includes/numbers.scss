@@ -138,6 +138,99 @@
   cursor: default;
   overflow: hidden;
 
+  &:hover .numbers__img {
+    transform: scale(1);
+    animation: fade-in-bg-img-animation 1.5s var(--cubic);
+  }
+
+  &:nth-child(2) {
+    .numbers__item-blue-text {
+      font-family: 'Palace Script MT', sans-serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 85%;
+      background: linear-gradient(235.14deg, #A2BDCA 0%, #BCD6DF 100.03%);
+      -webkit-background-clip: text;
+      text-transform: lowercase;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+
+    }
+
+    .numbers__item-white-text {
+      font-family: 'Century Gothic';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 48px;
+      line-height: 120%;
+      text-align: center;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #E9F6FB;
+
+    }
+
+
+  }
+
+  @include tablet {
+    &:nth-child(2) {
+      order: 1;
+      flex: 1 1 100%;
+    }
+
+    &:nth-child(1) {
+      order: 2;
+    }
+
+    &:nth-child(3) {
+      order: 3;
+    }
+
+    &:nth-child(4) {
+      order: 4;
+    }
+
+    &:nth-child(5) {
+      order: 5;
+    }
+
+    &:nth-child(6) {
+      order: 6;
+    }
+
+    &:nth-child(7) {
+      order: 7;
+    }
+
+    &:nth-child(8) {
+      order: 8;
+    }
+
+    &:nth-child(9) {
+      order: 9;
+    }
+
+    &:nth-child(10) {
+      order: 10;
+    }
+
+    &:nth-child(11) {
+      order: 11;
+    }
+    &:nth-child(12) {
+      order: 12;
+    }
+    &:nth-child(13) {
+      order: 13;
+    }
+
+  }
+
+  
+
   .numbers__img {
     position: absolute;
     top: 0;
@@ -149,12 +242,12 @@
     height: 100%;
     z-index: -1;
     transform: scale(0);
-    animation: fade-out-bg-img-animation 0.75s var(--cubic);
+    animation: fade-out-bg-img-animation 1.5s var(--cubic);
   }
-  & .numbers__item-blue-text:hover ~ .numbers__img {
-    transform: scale(1);
-    animation: fade-in-bg-img-animation 0.75s var(--cubic);
-  }
+  // & .numbers__item-blue-text:hover ~ .numbers__img {
+  //   transform: scale(1);
+  //   animation: fade-in-bg-img-animation 1s var(--cubic);
+  // }
 
   &:nth-child(1) .numbers__img {
     background: url('../images/numbers/8.jpg');

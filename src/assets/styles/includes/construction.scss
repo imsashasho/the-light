@@ -231,12 +231,14 @@
 
     }
 
-    &-progress__months-list {
-        width: fit-content;
+    &-progress__months-list-wrap {
+        width: 100px;
         height: 50px;
         padding: 13px 40px;
         background: #E9F6FB;
         border-radius: 30px;
+        transition: all ease-in-out 0.3s;
+        position: relative;
 
         @include tabletLarge {
             height: 46px;
@@ -245,6 +247,25 @@
         @include tablet {
             padding: 13px 20px;
         }
+
+        &:hover .construction-progress__months-list {
+            overflow: visible;
+            height: auto;
+        }
+
+    }
+
+    &-progress__months-list {
+        position: absolute;
+        width: fit-content;
+        top: 13px;
+        height: 20px;
+        overflow: hidden;
+        padding: 13px 40px;
+        background: #E9F6FB;
+        border-radius: 30px;
+        transition: all ease-in-out 0.3s;
+        
 
     }
 

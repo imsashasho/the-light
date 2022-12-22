@@ -1,13 +1,19 @@
 .news {
   width: 100%;
   padding-top: 168px;
+  padding-left: 130px;
+  padding-right: 130px;
 
     @include tabletLarge {
       padding-top: 100px;
+      padding-left: 50px;
+      padding-right: 50px;
     }
 
     @include tablet {
       padding-top: 92px;
+      padding-left: 20px;
+  padding-right: 2 0px;
     }
 
     @include mobile {
