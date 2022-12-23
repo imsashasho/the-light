@@ -770,46 +770,7 @@ document.querySelector('.js-close-big-gallery').addEventListener('click', () => 
 swiper_gallery.controller.control = big_swiper_gallery;
 big_swiper_gallery.controller.control = swiper_gallery;
 
-// ---------------------------------- feedback form input handler ------------------------------
 
-const inputArrey = [
-  ...document.querySelectorAll('.feedback-form__input'),
-  ...document.querySelectorAll('.manager-feedback-form__input'),
-];
-
-inputArrey.forEach((input) => {
-  if (input.value.length > 0) input.classList.add('input-with-text');
-  input.addEventListener('change', () => {
-    if (input.value.length > 0) {
-      input.classList.add('input-with-text');
-      return;
-    }
-    if (input.value.length === 0) {
-      input.classList.remove('input-with-text');
-    }
-  });
-});
-const btnCloseFeedbackForm = document.querySelector('.js-feedback-form-close');
-const feedbackForm = document.querySelector('.feedback-modal').querySelector('.feedback-form');
-
-btnCloseFeedbackForm.addEventListener('click', () => {
-  feedbackForm.reset();
-  const inputsFeedbackForm = feedbackForm.querySelectorAll('.feedback-form__input');
-  inputsFeedbackForm[0].classList.remove('input-with-text');
-  inputsFeedbackForm[1].classList.remove('input-with-text');
-});
-
-const btnCloseManagerFeedbackForm = document.querySelector('.js-manager-feedback-form-close');
-const managerFeedbackForm = document
-  .querySelector('.manager-modal')
-  .querySelector('.manager-feedback-form');
-
-btnCloseManagerFeedbackForm.addEventListener('click', () => {
-  managerFeedbackForm.reset();
-  const inputsFeedbackForm = managerFeedbackForm.querySelectorAll('.manager-feedback-form__input');
-  inputsFeedbackForm[0].classList.remove('input-with-text');
-  inputsFeedbackForm[1].classList.remove('input-with-text');
-});
 
 // ---------------------------------------------------------------------------
 gsap

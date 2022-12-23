@@ -1,265 +1,297 @@
-/* eslint-disable linebreak-style */
+import {initFilter} from './construction-filter';
 
-/**
- * @param {Object} props
- * @namespace
- * @property {NodeElement}  props.content           - Контент попапа.
- * @property {NodeList}  props.call       - Кнопка вызова попапа
- * @property {Object}  props.styles         - Стили попапа.
- * @property {NodeElement}  [props.close]      - Кнопка закрытия.
- * @property {Function}  props.afterOpenCb - Коллбек после первого открытия попапа.
- */
-class Popup {
-  constructor(props) {
-    this.call = props.call;
-    this.overlayClass = 'my-popup-overlay';
-    this.uniqueClass = `${this.overlayClass}-${Math.random().toString().replace('.', '')}`;
-    this.styles = props.styles || {};
-    this.content = props.content;
-    this.close = props.close;
-    this.afterOpenCb = props.afterOpenCb || function () {};
-    this.init();
-  }
 
-  init() {
-    document.body.insertAdjacentHTML('beforeend', this.preparePopup());
-    this.mountedPopup = document.querySelector(`.${this.uniqueClass}`);
-    Object.entries(this.styles).forEach((el) => {
-      // eslint-disable-next-line prefer-destructuring
-      this.mountedPopup.style[el[0]] = el[1];
-    });
-    this.addContent();
-    this.handleCallButton();
-    this.mountedPopup.addEventListener('click', (evt) => {
-      if (evt.target.classList.contains(this.uniqueClass)) {
-        this.closePopup();
-      }
-    });
-    this.close.addEventListener('click', () => {
-      this.closePopup();
-    });
-    this.afterOpenCb();
-  }
-
-  handleCallButton() {
-    // eslint-disable-next-line no-prototype-builtins
-    if (NodeList.prototype.isPrototypeOf(this.call)) {
-      this.call.forEach((button) => {
-        button.addEventListener('click', () => {
-          this.openPopup();
-        });
-      });
-    } else {
-      this.call.addEventListener('click', () => {
-        this.openPopup();
-      });
-    }
-  }
-
-  // handleOpeningButtons
-  addContent() {
-    this.mountedPopup
-      .querySelector('.my-popup-content')
-      .insertAdjacentElement('beforeend', this.content);
-  }
-
-  closePopup() {
-    gsap.timeline()
-      .timeScale(2)
-      .fromTo(
-        this.mountedPopup.querySelector('.my-popup-content'),
-        { y: 0, autoAlpha: 1 },
-        { y: -100, autoAlpha: 0 },
-      )
-      .fromTo(
-        this.mountedPopup,
-        { autoAlpha: 1 },
-        { autoAlpha: 0 },
-      )
-      .set(this.mountedPopup, { display: 'none' });
-    this.opened = false;
-  }
-
-  openPopup() {
-    gsap.timeline()
-      .timeScale(1.5)
-      .set(this.mountedPopup, { display: 'flex' })
-      .fromTo(
-        this.mountedPopup,
-        { autoAlpha: 0 },
-        { autoAlpha: 1 },
-      )
-      .fromTo(
-        this.mountedPopup.querySelector('.my-popup-content'),
-        { y: -100, autoAlpha: 0 },
-        { y: 0, autoAlpha: 1 },
-      )
-      .add(() => {
-        this.afterOpenCb();
-        window.dispatchEvent(new Event('popup-opened'));
-        this.opened = true;
-      });
-  }
-
-  get popupStyles() {
-    return `
-        <style>
-          .my-popup-overlay {
-            position:fixed;
-            display: none;
-            left:0;
-            top:0;
-            width:100vw;
-            height: 100vh;
-            justify-content:center;
-            align-items: center;
-            z-index:10;
-          }
-        </style>
-      `;
-  }
-
-  preparePopup() {
-    return `
-        <div class="my-popup-overlay ${this.uniqueClass}">
-          <div class="my-popup-content">
-          </div>
-        </div>
-        ${this.popupStyles}
-      `;
-  }
+const buildPopupActive = "modal-open";
+console.log(buildPopupActive)
+let slider = null;
+let currentCountSlides = 0;
+function getBuildData(id) {
+  // const data = {
+  //   id: '723',
+  //   month: 'Травень',
+  //   slider: [
+  //     'https://kyivproekt-wp.smarto.com.ua/wp-content/uploads/2021/05/d542c09e-32bc-4bcf-bb6b-e56183f6bd65.jpg',
+  //     'https://kyivproekt-wp.smarto.com.ua/wp-content/uploads/2021/05/7693c189-52bf-48b8-a9b3-0463d9949933.jpg',
+  //     'https://kyivproekt-wp.smarto.com.ua/wp-content/uploads/2021/05/7c9de7df-bfd8-43de-b6b5-256e24a30ca9.jpg'
+  //   ],
+  //   date: {
+  //     d: '19',
+  //     m: '05',
+  //     y: '2021',
+  //   },
+  //   text: 'Проводиться демонтаж старого оздоблення, систем внутрішніх комунікацій та перегородок',
+  //   count: 3,
+  // };
+  // return new Promise((resolve, reject) => {
+  //   resolve(data);
+  // });
+  const data = new FormData();
+  data.append("action", "buildProgress");
+  data.append("id", id);
+  return fetch("/wp-admin/admin-ajax.php", {
+    method: "POST",
+    body: data,
+  });
 }
 
-const popupContentInit = {
-  title: 'Title',
-  url: 'https://google.com',
-};
+function createBuildCard(build) {
+  // return `<a class="building-progress-item-wrap js-build-card" href="#" data-build-id="${build.id}">
+  //   <div class="building-progress-item">
+  //     <div class="building-progress-img img-active">
+  //       <div class="img-active-container"><img src="${build.slider[0]}"></div></div>
+  //     <div class="building-progress-img img-2" style="background: linear-gradient(0deg, rgba(246, 246, 246, 0.3), rgba(246, 246, 246, 0.3)), url(${build.slider[1]})"></div>
+  //     <div class="building-progress-img img-3" style="background: linear-gradient(0deg, rgba(246, 246, 246, 0.6), rgba(246, 246, 246, 0.9)), url(${build.slider[2]})"></div>
+  //     <div class="building-progress-item-text">
+  //       <div class="date">${build.date.d}</div>
+  //       <hr class="building-progress-line">
+  //       <div class="month">${build.month}</div>
+  //       <div class="year">${build.date.y}</div>
+  //     </div>
+  //   </div>
+  // </a>`;
+  return `
+  <div class="construction-month__card construction-item" href="" data-filter-item data-year="${build.data.year}"  data-month="${build.data.month_in_digits}" data-build-id="${build.id}"> 
+            <div class="construction-item-intro">
+                <div class="construction-item__title">
+                    <span class="construction-item__title-day"> ${build.data.day}
+                    </span>
+                    <div class="construction-item__title-inner">
+                        <span class="construction-item__title-month">${build.data.monthString}
+                        </span>
+                        <span class="construction-item__title-year"> ${build.data.year}
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="construction-item__descr">
+                    <p>${build.data.descr}</p>
 
-const cards = document.querySelectorAll('[data-open]');
+                </div>
+                <div class="construction-item__details">
+                    <span class="construction-item__details-photo"> ${build.data.countPics} фото
+                    </span>
+                    <span class="construction-item__details-videos"> ${build.data.countVideos} відео
+                    </span>
+                </div>
 
-const renderTargets = {
-  title: (val) => {
-    document.querySelector('[data-detail-title]').innerHTML = val;
-  },
-  text: (val) => {
-    document.querySelector('[data-detail-text]').innerHTML = val;
-  },
-  date: (val) => {
-    document.querySelector('[data-detail-date]').innerHTML = val;
-  },
-  url: (val) => {
-    document.querySelector('[data-detail-frame]').src = val;
-  },
-};
+            </div> 
+            
+            <div class="construction-item__details-img">
+                <img src="${previewSrc}", alt="">
+            </div>
+        </div>`;
+}
 
-const buildPopup = new Popup({
-  call: cards,
-  content: document.querySelector('[data-build-progress]'),
-  close: document.querySelector('[data-close]'),
-});
+function createBuilds(currentCount, builds, count = 6) {
+  const renderingBuilds = [];
+  for (let i = currentCount; i < currentCount + count; i += 1) {
+    renderingBuilds.push(createBuildCard(builds[i]));
+  }
+  return renderingBuilds.join("");
+}
 
-const popupContent = new Proxy(popupContentInit, {
-  set(obj, prop, value) {
-    renderTargets[prop](value);
-    return true;
-  },
-});
+function loadMoreHandler(state, containers) {
+  const count =
+    state.countShowBuild + 6 < state.builds.length
+      ? 6
+      : state.builds.length - state.countShowBuild;
+  // if (count < 6 || state.countShowBuild + 6 === state.builds.length) {
+  //   // eslint-disable-next-line no-param-reassign
+  //   containers.loadMore.style.display = 'none';
+  // }
+  const buildsHtml = createBuilds(state.countShowBuild, state.builds, count);
+  containers.buildContainer.insertAdjacentHTML("beforeend", buildsHtml);
+}
 
+function initBuildPopup(build, containers) {
+  containers.buildPopup.classList.add(buildPopupActive);
+  updateContentPopup(build, containers);
+}
 
-// cards.forEach((card, index) => {
-//     card.addEventListener('click', () => {
-//         requestBuildDetails(card.dataset.id, (response) => {
-//             popupContent.date = response[index].data.month;
-//             popupContent.title = response[index].data.title;
-//             popupContent.text = response[index].data.text;
-//             popupContent.url = response[index].data.video;
-//         });
-//         document.body.style.overflow = 'visible';
+function buildContainerHandler(event, state, containers) {
+  const card = event.target.closest(".construction-month__card");
+  // const isTouchCard = card.classList.contains('construction-month__card');
+  const id = +card.dataset.buildId;
+  console.log(125);
+  if (!id) return;
+  state.updateCurrentId(id);
+
+  const build = state.builds.filter((build) => +build.id === +id);
+  if (build.length === 0) return;
+  console.log(125);
+  initBuildPopup(build[0], containers);
+}
+
+// function changeBuildContent(state, containers) {
+//   getBuildData(state.currentBuildId)
+//     .then(build => {
+//       console.log(build);
+//       updateContentPopup(build, containers);
+//     })
+//     .catch(error => {
+//       console.log(error);
+//       alert(error);
 //     });
-// });
+// }
 
-// // buildPopup.close.addEventListener('click', () => {
-// //     document.body.style.overflow = 'hidden';
-// // });
-
-
-function requestBuildDetails(id, cb = () => {}) {
-  const sendData = new FormData();
-  sendData.append('action', 'Constructions');
-  sendData.append('id', id);
-  let sendUrl = '/wp-admin/admin-ajax.php';
-  if (window.location.href.match(/localhost/)) sendUrl = './static/build-test.php';
-  fetch(sendUrl, {
-    method: 'POST',
-    body: sendData,
-  })
-    .then(el => el.json())
-    .then((el) => {
-      cb(el);
-    });
+function closeHandler(containers) {
+  containers.buildPopup.classList.remove(buildPopupActive);
 }
-const swiper2 = new Swiper('.mySwiper2', {
-  loop: false,
-  spaceBetween: 5,
-  slidesPerView: 4,
-  width: 400,
-  freeMode: true,
-  watchSlidesVisibility: true,
-  watchSlidesProgress: true,
 
-  breakpoints: {
-    320: {
-      width: 300,
-    },
-    575: {
-      width: 400,
-    },
-  },
-});
-const swiper = new Swiper('.mySwiper', {
-  loop: false,
-  spaceBetween: 0,
-  slidesPerView: 1,
-  centeredSlides: true,
-  navigation: {
-    // nextEl: '.swiper-button-const-next',
-    // prevEl: '.swiper-button-const-prev',
-  },
-  thumbs: {
-    swiper: swiper2,
-  },
-});
+function nextBuildHandler(state, containers) {
+  const index = state.nextBuildId();
+  updateContentPopup(state.builds[index], containers);
+}
 
-/** СТрелка переключатель в зависимости от положения на єкране */
-window.addEventListener('popup-opened', () => {
-  swiper2.update();
-  swiper.update();
-});
-function sideSwitchArrow(swiper, arrow, container) {
+function prevBuildHandler(state, containers) {
+  const index = state.prevBuildId();
+  updateContentPopup(state.builds[index], containers);
+}
+
+async function getBuilds() {
+  const data = new FormData();
+  data.append("action", "constructions");
+  console.log("data", data);
+  return fetch("/wp-admin/admin-ajax.php", {
+    method: "POST",
+    body: data,
+  });
+}
+
+async function initBuild() {
+  let builds = await getBuilds().then((res) => res.json());
+  builds = await builds;
+  const buildsId = builds.data.map((build) => +build.id);
+  const state = {
+    builds,
+    countShowBuild: 0,
+    buildsList: buildsId,
+    currentBuildId: null,
+    nextBuildId: function nextBuildId() {
+      const index = this.buildsList.indexOf(this.currentBuildId);
+      if (index >= this.buildsList.length - 1) return 0;
+      return index + 1;
+    },
+    prevBuildId: function prevBuildId() {
+      const index = this.buildsList.indexOf(this.currentBuildId);
+      if (index <= 0) return this.buildsList.length - 1;
+      return index - 1;
+    },
+    updateCurrentId: (id) => {
+      this.currentBuildId = id;
+    },
+  };
+
+  const buildPopup = document.querySelector("[data-build-popup-container]");
+  console.log(buildPopup)
+  const containers = {
+    buildContainer: document.querySelector("[data-build-container]"),
+    buildPopup,
+    closePopup: document.querySelector("[data-close-build-popup]"),
+    // nextBuildCard: document.querySelector('[data-next-build]'),
+    // prevBuildCard: document.querySelector('[data-prev-build]'),
+    buildDate: buildPopup.querySelector("[data-build-date]"),
+    buildMonth: buildPopup.querySelector("[data-build-month]"),
+    buildYear: buildPopup.querySelector("[data-build-year]"),
+    // loadMore: document.querySelector('[data-build-load-more]'),
+  };
+
+  containers.buildContainer.addEventListener(
+    "click",
+    (event) => buildContainerHandler(event, state, containers),
+    {}
+  );
+  containers.closePopup.addEventListener("click", () =>
+    closeHandler(containers)
+  );
+  // containers.nextBuildCard.addEventListener('click', () => nextBuildHandler(state, containers));
+  // containers.prevBuildCard.addEventListener('click', () => prevBuildHandler(state, containers));
+
+  // containers.loadMore.addEventListener('click', () => loadMoreHandler(state, containers));
+  loadMoreHandler(state, containers);
+  // init filter location in filter.js
+
+  initFilter();
+
+  // sideSwitchArrow(
+  //   document.querySelector('.btn-gallery'),
+  //   document.querySelector('.gallery-swiper'),
+  // );
+}
+
+window.addEventListener("DOMContentLoaded", () => {});
+initBuild();
+// ---------------------
+
+function createSliderPopup(slides) {
+  const slidesHtml = slides.map(createSlide).join("");
+  const bigSliderContainer = document.querySelector(
+    ".swiper-gallery .swiper-wrapper"
+  );
+
+  if (slider) {
+    slider.destroy();
+    document.querySelector(".swiper-gallery .swiper-pagination").innerHTML = "";
+  }
+
+  function addZero(num) {
+    return num > 9 ? num : `0${num}`;
+  }
+  bigSliderContainer.innerHTML = slidesHtml;
+  const swiperBig = new Swiper(".swiper-gallery", {
+    loop: true,
+    // spaceBetween: 10,
+    preloadImages: false,
+    lazy: true,
+    watchSlidesVisibility: true,
+    pagination: {
+      el: ".swiper-pagination",
+      type: "fraction",
+      formatFractionCurrent: addZero,
+      formatFractionTotal: addZero,
+    },
+    navigation: {
+      nextEl: ".gallery-slider-next",
+      prevEl: ".gallery-slider-prev",
+    },
+  });
+
+  return swiperBig;
+}
+
+function createSlide(src) {
+  const regExp = new RegExp(/(.jpg|.png|.jpeg)$/g);
+  const isImage = regExp.test(src);
+  return isImage
+    ? `<div class="swiper-slide"><img src="${src}" alt=""></div>`
+    : `<div class="swiper-slide"><iframe class="building-swiper-video" width="560" height="315" src="${src}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+}
+
+function sideSwitchArrow(arrow, container) {
   const mediumCordValue = document.documentElement.clientWidth / 2;
-  document.body.append(arrow);
-  container.style.cursor = 'none';
-  arrow.style.cursor = 'none';
-  arrow.style.zIndex = 10;
+  // document.body.append(arrow);
+  container.style.cursor = "none";
+  arrow.style.cursor = "none";
+  arrow.style.zIndex = 200;
   arrow.__proto__.hide = function () {
-    this.style.opacity = '0';
-    this.style.pointerEvents = 'none';
+    this.style.opacity = "0";
+    this.style.pointerEvents = "none";
   };
   arrow.__proto__.show = function () {
-    this.style.opacity = '1';
+    this.style.opacity = "1";
     // this.style.pointerEvents = 'auto';
   };
-  arrow.dataset.side = 'leftSide';
+  arrow.dataset.side = "leftSide";
 
-  container.addEventListener('mousemove', desktopNavButtonHandler);
-  container.addEventListener('mouseenter', () => {
+  container.addEventListener("mousemove", desktopNavButtonHandler);
+  container.addEventListener("mouseenter", () => {
     arrow.show();
   });
-  container.addEventListener('mouseleave', () => {
+  container.addEventListener("mouseleave", () => {
     arrow.hide();
   });
   if (document.documentElement.clientWidth < 769) {
-    window.removeEventListener('mousemove', desktopNavButtonHandler);
+    window.removeEventListener("mousemove", desktopNavButtonHandler);
     arrow.remove();
   }
 
@@ -279,136 +311,70 @@ function sideSwitchArrow(swiper, arrow, container) {
 
   function getCursorSide(x) {
     if (x < mediumCordValue) {
-      arrow.classList.add('left-side');
-      arrow.dataset.side = 'leftSide';
+      arrow.classList.add("left-side");
+      arrow.dataset.side = "leftSide";
       // switchGallerySlide('leftSide');
     } else {
-      arrow.classList.remove('left-side');
-      arrow.dataset.side = 'rightSide';
+      arrow.classList.remove("left-side");
+      arrow.dataset.side = "rightSide";
       // switchGallerySlide('rightSide')
     }
   }
-  container.addEventListener('click', () => {
+
+  function clickToChange() {
     switchGallerySlide(arrow.dataset.side);
-  });
+  }
+
+  container.addEventListener("click", clickToChange);
   if (document.documentElement.clientWidth < 576) {
-    container.removeEventListener('click', clickToChange);
+    container.removeEventListener("click", clickToChange);
   }
   const navigate = {
     leftSide: () => {
-      swiper.slidePrev();
+      slider.slidePrev();
     },
     rightSide: () => {
-      swiper.slideNext();
+      slider.slideNext();
     },
   };
 
   function switchGallerySlide(side) {
+    // console.log('cswitchGallerySlide', side);
     navigate[side]();
     return navigate.side;
   }
 
   // eslint-disable-next-line no-unused-vars
 }
-sideSwitchArrow(
-  swiper,
-  document.querySelector('.moving-arrow'),
-  document.querySelector('.swiper '),
-);
-/** СТрелка переключатель в зависимости от положения на єкране END */
 
-
-async function getDataForRenderCards() {
-  const body = new FormData();
-  body.append('action', 'Constructions');
-  const data = await fetch('/wp-admin/admin-ajax.php', {
-    method: 'POST',
-    body,
-  });
-  const response = await data.json();
-  console.log(response);
-  return response;
+function handleSlider() {
+  slider.slideTo(currentCountSlides);
 }
 
-function getCardTemplate(data) {
-  const concatedData = `${data.data.day}.${data.data.month_in_digits}.${data.data.year}`;
-  return `
-        <div class="card__wrapper">
-            <div data-id="${data.id}" class="card" data-open>
-                <div class="block-info-text">${concatedData}</div>
-                <img src="${data.data.gallery[0]}" title="foto" alt="foto"/>
-            </div>
-        </div>
-    `;
-}
-function getSingleSlideForPopup(gallery) {
-  return gallery.map(photo => `
-        <div class="swiper-slide"><img src="${photo}" alt="progress"></div>
-        `).join('');
-}
-
-async function renderCards() {
-  let startIndex = 0;
-  const portion = 6;
-  const cardsContainer = document.querySelector('[data-cards-container]');
-  cardsContainer.querySelectorAll('.card__wrapper').forEach(el => el.remove());
-  const ajaxCards = await getDataForRenderCards();
-  const $loadMore = document.querySelector('.button-load');
-  $loadMore.addEventListener('click', (evt) => {
-    for (i = startIndex; i < startIndex + portion; i++) {
-      const card = ajaxCards[i];
-      if (card === undefined) {
-        $loadMore.style.display = 'none';
-        break;
-      }
-      cardsContainer.insertAdjacentHTML('afterbegin', getCardTemplate(card));
-    }
-    startIndex += portion;
-    locoScroll.update();
-  });
-
-  for (i = startIndex; i < startIndex + portion; i++) {
-    const card = ajaxCards[i];
-    if (card === undefined) {
-      $loadMore.style.display = 'none';
-      break;
-    }
-    cardsContainer.insertAdjacentHTML('afterbegin', getCardTemplate(card));
+function updateContentPopup(build, containers) {
+  const videoBtnContainer = document.querySelector(".js-show-video-btn");
+  const { buildDate, buildMonth, buildYear } = containers;
+  buildDate.textContent = build.data.data;
+  buildMonth.textContent = build.data.month;
+  buildYear.textContent = build.data.year;
+  if (slider) {
+    videoBtnContainer.removeEventListener("click", handleSlider);
   }
-  startIndex += portion;
-  locoScroll.update();
-  cardsContainer.addEventListener('click', ({ target }) => {
-    if (target.closest('[data-id]') === null) return;
-    const $renderedCards = document.querySelectorAll('[data-id]');
-    const indexOfCurrentTarget = Array.from($renderedCards).indexOf(target.closest('[data-id]'));
-    const cardId = +target.closest('[data-id]').dataset.id;
-    const thisCardData = ajaxCards.find(el => el.id === cardId);
-    /** Обновление контента в попапе (тайтл, картинки в слайдере и т.д) */
-    popupContent.date = `${thisCardData.data.day}.${thisCardData.data.month_in_digits}.${thisCardData.data.year}`;
-    popupContent.title = thisCardData.data.month;
-    !buildPopup.opened && buildPopup.openPopup();
-    const galleryLayout = getSingleSlideForPopup(thisCardData.data.gallery);
-    swiper.wrapperEl.innerHTML = galleryLayout;
-    swiper2.wrapperEl.innerHTML = galleryLayout;
-    swiper.update();
-    swiper2.update();
-    /** END Обновление контента в попапе (тайтл, картинки в слайдере и т.д) */
+  console.log(videoBtnContainer, build.isIncludeVideo);
+  videoBtnContainer.style.visibility = build.data.isIncludeVideo
+    ? "visible"
+    : "hidden";
+  console.log(build);
+  slider = createSliderPopup(build.data.gallery);
+  currentCountSlides = build.data.gallery.length;
+  slider.updateSlides();
 
-    const prevInPoup = document.querySelector('[data-popup-icon-prev]');
-    const nextInPoup = document.querySelector('[data-popup-icon-next]');
-
-    prevInPoup.onclick = () => {
-      if ($renderedCards[indexOfCurrentTarget - 1] === undefined) return;
-      console.log('prev');
-      $renderedCards[indexOfCurrentTarget - 1].click();
-    };
-    nextInPoup.onclick = () => {
-      if ($renderedCards[indexOfCurrentTarget + 1] === undefined) return;
-      $renderedCards[indexOfCurrentTarget + 1].click();
-    };
-  });
-  return ajaxCards;
+  videoBtnContainer.addEventListener("click", handleSlider);
+  // const slidesHtml = build.slider.map(createSlide).join('');
+  // swiperBig.wrapperEl.innerHTML = slidesHtml;
+  // swiperMini.wrapperEl.innerHTML = slidesHtml;
+  // swiperBig.update();
+  // swiperMini.update();
+  // swiperBig.updateSlides();
+  // swiperMini.updateSlides();
 }
-
-
-renderCards();
