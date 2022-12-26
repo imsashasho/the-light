@@ -4,8 +4,8 @@ import { getConstructionGallery } from '../api';
 import { transformConstructionResponse } from './transformConstructionResponse';
 import { monthListButtonsView } from './monthListButtonsView';
 import { monthListSelectView } from './monthListSelectView';
-import { yearListSelectView } from './yearListSelectView';
 import { slidesView } from './slidesView';
+import { galleryIntroInnerView } from './constructionSlideDescrView'
 
 
 (async function () {
@@ -25,6 +25,7 @@ import { slidesView } from './slidesView';
   const yearListMobileRef = document.querySelector('.construction-year-mobile');
   const monthListMobileRef = document.querySelector('.construction-month-mobile');
   const constructionListRef = document.querySelector('.construction-list');
+  const sliderTextRef = document.querySelector('.gallery-item-intro');
 
 
   const filters = {
@@ -131,6 +132,8 @@ import { slidesView } from './slidesView';
     const construction = filters.currentSlides.find(slide => slide.id === id);
     if (!construction) return;
 
+
+    sliderTextRef.innerHTML = galleryIntroInnerView(construction);
     const slides = slidesView(construction.gallery);
     constructionPopup.openWithSlides(slides);
   };

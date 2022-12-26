@@ -1,14 +1,16 @@
-import Swiper from 'swiper';
+import Swiper, { Navigation } from 'swiper';
 import { modalFactory } from './modal';
+
 
 
 const SWIPER_GALLERY = '.swiper-gallery';
 const POPUP_GALLERY = '.gallery-overlay';
-// const CLOSE_GALLERY = '.gallery-slider__link-back';
+const CLOSE_GALLERY = '.gallery-close-btn'
 
-// const constructionCloseBtnRef = document.querySelector(CLOSE_GALLERY);
+const constructionCloseBtnRef = document.querySelector(CLOSE_GALLERY);
 const galleryModal = modalFactory(POPUP_GALLERY);
 
+Swiper.use([Navigation]);
 const swiperGallery = new Swiper(SWIPER_GALLERY, {
   direction: 'horizontal',
   slidesPerView: 1,
@@ -32,6 +34,8 @@ const swiperGallery = new Swiper(SWIPER_GALLERY, {
   // },
 });
 
+console.log(swiperGallery)
+
 const openPopup = () => {
   galleryModal.open();
 };
@@ -41,10 +45,8 @@ const closePopup = () => {
 };
 
 const openPopupWithSlides = (slides) => {
-  console.log(swiperGallery);
   openPopup();
-
-  document.querySelector('.swiper-container').removeAllSlides();
+  swiperGallery.removeAllSlides();
   swiperGallery.appendSlide(slides);
   swiperGallery.slideToLoop(0);
 };
@@ -80,10 +82,12 @@ swiperGallery.on('slideChange', (slider) => {
   playBtnRef.classList.remove('playing');
 });
 
-// constructionCloseBtnRef.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   closePopup();
-// });
+constructionCloseBtnRef.addEventListener('click', (e) => {
+  e.preventDefault();
+  closePopup();
+});
+
+console.log(swiperGallery.navigation)
 
 export const constructionPopup = {
   gallery: swiperGallery,

@@ -6,6 +6,10 @@
     display: flex;
     padding: 50px;
 
+    @include tablet {
+      padding: 20px;
+    }
+
 
   }
   &-item-intro {
@@ -13,14 +17,36 @@
     flex-direction: column;
 
     @include tablet {
-        width: 48.87%;
+        width: 100%;
     }
 
     @include mobile {
-        width: 100%;
+
         margin-bottom: 12px;
     }
 
+}
+
+&-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0E0F10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  z-index: 1000;
+
+  svg {
+    height: 8px;
+    width: 8px;
+    stroke: #E9F6FB;
+  }
 }
 
 &-item__title {
@@ -43,6 +69,10 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
     color: #323235;
+
+    @include tabletLarge {
+      font-size: 140px;
+    }
 
     @include mobile {
         font-size: 72px;
@@ -150,10 +180,16 @@
   }
 
   &-inner {
+    position: relative;
     display: flex;
     background-color: #E9F6FB;
     padding: 32px;
     width: 100%;
+
+    @include tablet {
+      flex-direction: column;
+      padding: 20px;
+    }
   }
 
   &.modal-open {
@@ -263,10 +299,12 @@
         @include tabletLarge {
           width: 40%;
         }
-        @include mobile {
+
+        @include tablet {
           width: 100%;
           height: auto;
-          padding: 30px 20px;
+        }
+        @include mobile {
           position: relative;
         }
 
@@ -357,10 +395,12 @@
         
         @include tablet {
           justify-content: space-between;
+          margin-bottom: 20px;
+          height: fit-content;
         }
-        @include mobile {
-          margin-top: 30px;
-        }
+        // @include mobile {
+        //   margin-top: 30px;
+        // }
       }
   
   
@@ -376,6 +416,7 @@
         width: 40px;
         background-color: #0E0F10;
         border-radius: 40px;
+        border: none;
   
         &:focus {
           outline: none !important;

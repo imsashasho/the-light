@@ -26,7 +26,7 @@ function getBuildData(id) {
   //   resolve(data);
   // });
   const data = new FormData();
-  data.append("action", "buildProgress");
+  data.append("action", "constructions");
   data.append("id", id);
   return fetch("/wp-admin/admin-ajax.php", {
     method: "POST",
@@ -109,7 +109,7 @@ function initBuildPopup(build, containers) {
 }
 
 function buildContainerHandler(event, state, containers) {
-  const card = event.target.closest(".construction-month__card");
+  const card = event.target.closest("construction-month__card");
   // const isTouchCard = card.classList.contains('construction-month__card');
   const id = +card.dataset.buildId;
   console.log(125);
