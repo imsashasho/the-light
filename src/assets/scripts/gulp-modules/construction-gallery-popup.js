@@ -1,4 +1,4 @@
-import Swiper, { Navigation } from 'swiper';
+import Swiper, { Navigation, Manipulation } from 'swiper';
 import { modalFactory } from './modal';
 
 

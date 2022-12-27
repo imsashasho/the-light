@@ -2,17 +2,8 @@ import i18next from 'i18next';
 import { gsap, ScrollTrigger } from 'gsap/all';
 import axios from 'axios';
 import $ from 'jquery';
-import Swiper, {
-  Navigation,
-  Controller,
-  EffectFade,
-  Pagination,
-  Virtual,
-  EffectCoverflow,
-  Parallax,
-} from 'swiper';
-
-
+// import Swiper from 'swiper';
+import Swiper, { Navigation, Controller, Pagination, Virtual, EffectFade, EffectCoverflow} from 'swiper';
 import { horizontal } from 'gsap/Observer';
 
 /** ******************************* */
@@ -340,15 +331,14 @@ if (window.matchMedia('(min-width: 1920px)').matches) {
 
 // ---------------------------- swiper_gallery -----------------------------------------
 
-const leftBtnGallery = document
-  .querySelector('.gallery__wrappper-buttom')
-  .querySelector('.btn-swiper-left');
-const rightBtnGallery = document
-  .querySelector('.gallery__wrappper-buttom')
-  .querySelector('.btn-swiper-right');
+// const leftBtnGallery = document
+//   .querySelector('.gallery__wrappper-buttom')
+//   .querySelector('.btn-swiper-left');
+// const rightBtnGallery = document
+//   .querySelector('.gallery__wrappper-buttom')
+//   .querySelector('.btn-swiper-right');
 
 const swiper_gallery = new Swiper('.swiper_gallery', {
-  modules: [Navigation, Controller, Pagination, EffectCoverflow],
   loop: true,
   centeredSlides: true,
   initialSlide: 0,
@@ -360,8 +350,8 @@ const swiper_gallery = new Swiper('.swiper_gallery', {
     type: 'fraction',
   },
   navigation: {
-    nextEl: rightBtnGallery,
-    prevEl: leftBtnGallery,
+    nextEl: '.btn-swiper-right',
+    prevEl: '.btn-swiper-left',
   },
   slideToClickedSlide: true,
   breakpoints: {
@@ -370,8 +360,13 @@ const swiper_gallery = new Swiper('.swiper_gallery', {
   },
 });
 
+[...document.querySelector('.swiper_gallery').querySelectorAll('img')].forEach((img) => {
+  img.addEventListener('click', () => {
+    swiper_gallery.slideNext(1000);
+  });
+});
+
 const big_swiper_gallery = new Swiper('.big-swiper_gallery', {
-  modules: [Navigation, Controller, Pagination, EffectCoverflow],
   loop: true,
   centeredSlides: true,
   initialSlide: 0,
@@ -383,12 +378,8 @@ const big_swiper_gallery = new Swiper('.big-swiper_gallery', {
     type: 'fraction',
   },
   navigation: {
-    nextEl: document
-      .querySelector('.big-swiper-gallery__wrappper-buttom')
-      .querySelector('.big-swiper-gallery-swiper-right'),
-    prevEl: document
-      .querySelector('.big-swiper-gallery__wrappper-buttom')
-      .querySelector('.big-swiper-gallery-swiper-left'),
+    nextEl: '.big-swiper-gallery-swiper-right',
+    prevEl:'.big-swiper-gallery-swiper-left',
   },
 });
 
@@ -397,6 +388,25 @@ const big_swiper_gallery = new Swiper('.big-swiper_gallery', {
     big_swiper_gallery.slideNext(1000);
   });
 });
+
+// ----------------------------- open and close big_swiper_gallery ---------------------------
+
+[...document.querySelectorAll('.js-open-big-gallery')].forEach(img => img.addEventListener('click', () => {
+  document.body.classList.toggle('modal-open');
+  document.querySelector('.gallery-beckdrop').classList.toggle('is-hidden');
+}));
+document.querySelector('.js-close-big-gallery').addEventListener('click', () => {
+  document.body.classList.toggle('modal-open');
+  document.querySelector('.gallery-beckdrop').classList.toggle('is-hidden');
+});
+console.log(swiper_gallery.params.navigation)
+console.log(big_swiper_gallery.params.navigation)
+swiper_gallery.params.control = big_swiper_gallery;
+big_swiper_gallery.params.control = swiper_gallery;
+
+
+
+// ---------------------------------------------------------------------------
 
 // -------------------------- swiper_our_projects ------------------------------------
 const swiper_our_projects = new Swiper('.swiper_our_projects', {
@@ -756,23 +766,7 @@ document
 //   });
 // }
 
-// ----------------------------- open and close big_swiper_gallery ---------------------------
 
-[...document.querySelectorAll('.js-open-big-gallery')].forEach(img => img.addEventListener('click', () => {
-  document.body.classList.toggle('modal-open');
-  document.querySelector('.gallery-beckdrop').classList.toggle('is-hidden');
-}));
-document.querySelector('.js-close-big-gallery').addEventListener('click', () => {
-  document.body.classList.toggle('modal-open');
-  document.querySelector('.gallery-beckdrop').classList.toggle('is-hidden');
-});
-
-swiper_gallery.controller.control = big_swiper_gallery;
-big_swiper_gallery.controller.control = swiper_gallery;
-
-
-
-// ---------------------------------------------------------------------------
 gsap
   .timeline({
     scrollTrigger: {
