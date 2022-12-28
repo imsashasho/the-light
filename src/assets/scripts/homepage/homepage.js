@@ -349,9 +349,11 @@ const swiper_gallery = new Swiper('.swiper_gallery', {
     el: '.swiper-pagination',
     type: 'fraction',
   },
+  // nextButton: '.btn-swiper-right',
+  // prevButton: '.btn-swiper-right',
   navigation: {
-    nextEl: '.btn-swiper-right',
-    prevEl: '.btn-swiper-left',
+    nextEl: '.about__btn-swiper-left',
+    prevEl: '.about__btn-swiper-right',
   },
   slideToClickedSlide: true,
   breakpoints: {
@@ -373,10 +375,14 @@ const big_swiper_gallery = new Swiper('.big-swiper_gallery', {
   speed: 1000,
   slidesPerView: 'auto',
   // loopedSlides: 1.2,
+
   pagination: {
     el: '.swiper-pagination.big-swiper-pagination',
     type: 'fraction',
   },
+
+  // nextButton: '.big-swiper-gallery-swiper-right',
+  // prevButton: '.big-swiper-gallery-swiper-left',
   navigation: {
     nextEl: '.big-swiper-gallery-swiper-right',
     prevEl:'.big-swiper-gallery-swiper-left',
@@ -399,10 +405,9 @@ document.querySelector('.js-close-big-gallery').addEventListener('click', () => 
   document.body.classList.toggle('modal-open');
   document.querySelector('.gallery-beckdrop').classList.toggle('is-hidden');
 });
-console.log(swiper_gallery.params.navigation)
-console.log(big_swiper_gallery.params.navigation)
-swiper_gallery.params.control = big_swiper_gallery;
-big_swiper_gallery.params.control = swiper_gallery;
+// console.log(big_swiper_gallery.params)
+// swiper_gallery.controller.control = big_swiper_gallery;
+// big_swiper_gallery.controller.control = swiper_gallery;
 
 
 
