@@ -72,7 +72,7 @@ formsWithRedirect.forEach((form) => {
             rule: yup
               .string()
               .required(i18next.t('required'))
-              .matches(/^[aA-zZа-яА-ЯёЁа-щА-ЩЬьЮюЯяЇїІіЄєҐґ'\s]+$/, 'Поле має містити лише літери')
+              .matches(/^[aA-zZа-яА-ЯёЁа-щА-ЩЬьЮюЯяЇїІіЄєҐґ'\s]+$/, 'field_only_letters')
               .trim(),
             defaultMessage: i18next.t('name'),
             valid: false,
