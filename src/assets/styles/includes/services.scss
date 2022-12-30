@@ -394,6 +394,7 @@
   align-items: center;
   position: relative;
   justify-content: center;
+  display: none;
 
   @include tablet {
     margin-top: 60px;

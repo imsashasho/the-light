@@ -4,9 +4,8 @@ import axios from 'axios';
 import * as yup from 'yup';
 import $ from 'jquery';
 import { _horizontal } from 'gsap/Observer';
-import FormMonster  from '../../../pug/components/form/form';
+import FormMonster from '../../../pug/components/form/form';
 import SexyInput from '../../../pug/components/input/input';
-
 
 /*
  * smooth scroll start
@@ -50,7 +49,7 @@ const formsWithRedirect = [
 // }
 // putValueFromSelectToInput('[data-feedback-form] select');
 // putValueFromSelectToInput('[data-feedback-form-footer] select');
-formsWithRedirect.forEach((form) => {
+formsWithRedirect.forEach(form => {
   const $form = document.querySelector(form);
   if ($form) {
     /* eslint-disable */
@@ -72,7 +71,7 @@ formsWithRedirect.forEach((form) => {
             rule: yup
               .string()
               .required(i18next.t('required'))
-              .matches(/^[aA-zZа-яА-ЯёЁа-щА-ЩЬьЮюЯяЇїІіЄєҐґ'\s]+$/, 'field_only_letters')
+              .matches(/^[aA-zZа-яА-ЯёЁа-щА-ЩЬьЮюЯяЇїІіЄєҐґ'\s]+$/, i18next.t('field_only_letters'))
               .trim(),
             defaultMessage: i18next.t('name'),
             valid: false,
@@ -99,44 +98,43 @@ formsWithRedirect.forEach((form) => {
   }
 });
 
-
 // ---------------------------------- feedback form input handler ------------------------------
 
 const inputArrey = [
-    ...document.querySelectorAll('.feedback-form__input'),
-    ...document.querySelectorAll('.manager-feedback-form__input'),
-  ];
-  
-  inputArrey.forEach((input) => {
-    if (input.value.length > 0) input.classList.add('input-with-text');
-    input.addEventListener('change', () => {
-      if (input.value.length > 0) {
-        input.classList.add('input-with-text');
-        return;
-      }
-      if (input.value.length === 0) {
-        input.classList.remove('input-with-text');
-      }
-    });
+  ...document.querySelectorAll('.feedback-form__input'),
+  ...document.querySelectorAll('.manager-feedback-form__input'),
+];
+
+inputArrey.forEach(input => {
+  if (input.value.length > 0) input.classList.add('input-with-text');
+  input.addEventListener('change', () => {
+    if (input.value.length > 0) {
+      input.classList.add('input-with-text');
+      return;
+    }
+    if (input.value.length === 0) {
+      input.classList.remove('input-with-text');
+    }
   });
-  const btnCloseFeedbackForm = document.querySelector('.js-feedback-form-close');
-  const feedbackForm = document.querySelector('.feedback-modal').querySelector('.feedback-form');
-  
-  btnCloseFeedbackForm.addEventListener('click', () => {
-    feedbackForm.reset();
-    const inputsFeedbackForm = feedbackForm.querySelectorAll('.feedback-form__input');
-    inputsFeedbackForm[0].classList.remove('input-with-text');
-    inputsFeedbackForm[1].classList.remove('input-with-text');
-  });
-  
-  const btnCloseManagerFeedbackForm = document.querySelector('.js-manager-feedback-form-close');
-  const managerFeedbackForm = document
-    .querySelector('.manager-modal')
-    .querySelector('.manager-feedback-form');
-  
-  btnCloseManagerFeedbackForm.addEventListener('click', () => {
-    managerFeedbackForm.reset();
-    const inputsFeedbackForm = managerFeedbackForm.querySelectorAll('.manager-feedback-form__input');
-    inputsFeedbackForm[0].classList.remove('input-with-text');
-    inputsFeedbackForm[1].classList.remove('input-with-text');
-  });
+});
+const btnCloseFeedbackForm = document.querySelector('.js-feedback-form-close');
+const feedbackForm = document.querySelector('.feedback-modal').querySelector('.feedback-form');
+
+btnCloseFeedbackForm.addEventListener('click', () => {
+  feedbackForm.reset();
+  const inputsFeedbackForm = feedbackForm.querySelectorAll('.feedback-form__input');
+  inputsFeedbackForm[0].classList.remove('input-with-text');
+  inputsFeedbackForm[1].classList.remove('input-with-text');
+});
+
+const btnCloseManagerFeedbackForm = document.querySelector('.js-manager-feedback-form-close');
+const managerFeedbackForm = document
+  .querySelector('.manager-modal')
+  .querySelector('.manager-feedback-form');
+
+btnCloseManagerFeedbackForm.addEventListener('click', () => {
+  managerFeedbackForm.reset();
+  const inputsFeedbackForm = managerFeedbackForm.querySelectorAll('.manager-feedback-form__input');
+  inputsFeedbackForm[0].classList.remove('input-with-text');
+  inputsFeedbackForm[1].classList.remove('input-with-text');
+});

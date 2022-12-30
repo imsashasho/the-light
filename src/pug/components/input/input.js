@@ -118,9 +118,9 @@ export default class SexyInput {
       //   autoPlaceholder: 'off',
       // });
       let cleave = new Cleave(input, {
-      /* eslint-enable */
+        /* eslint-enable */
         numericOnly: true,
-        // prefix: '+380',
+        prefix: '+380',
         blocks: [4, 2, 3, 2, 2],
         delimiters: [' ', ' ', ' ', ''],
       });
