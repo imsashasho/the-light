@@ -92,7 +92,8 @@
     "lodash.throttle": "^4.1.1",
     "on-change": "^2.2.1",
     "resolve-url-loader": "^5.0.0",
-    "swiper": "^6.4.8",
+    "swiper": "^8.4.5",
+    "swiper-legacy": "npm:swiper@^6.4.8",
     "url-loader": "^4.1.1",
     "yup": "^0.32.8"
   }

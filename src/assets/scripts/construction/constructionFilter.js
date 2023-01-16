@@ -5,10 +5,10 @@ import { transformConstructionResponse } from './transformConstructionResponse';
 import { monthListButtonsView } from './monthListButtonsView';
 import { monthListSelectView } from './monthListSelectView';
 import { slidesView } from './slidesView';
-import { galleryIntroInnerView } from './constructionSlideDescrView'
+import { galleryIntroInnerView } from './constructionSlideDescrView';
+import { createCustomSelect, createCustomSelectFromSelect } from './../common/customSelect';
 
-
-(async function () {
+(async function() {
   let galleryData = [];
 
   try {
@@ -26,7 +26,22 @@ import { galleryIntroInnerView } from './constructionSlideDescrView'
   const monthListMobileRef = document.querySelector('.construction-month-mobile');
   const constructionListRef = document.querySelector('.construction-list');
   const sliderTextRef = document.querySelector('.gallery-item-intro');
+  const yearSelectorRef = document.querySelector('#year');
+  const monthSelectorRef = document.querySelector('#month');
+  const monthSelectorPlaceholder = monthSelectorRef.dataset.placeholder;
 
+  const customMonthSelector = createCustomSelectFromSelect(monthSelectorRef, {
+    onChange: month => {
+      filters.setCurrentMonth(month.toLowerCase());
+    },
+    placeholder: monthSelectorPlaceholder,
+  });
+
+  const customYearSelector = createCustomSelectFromSelect(yearSelectorRef, {
+    onChange: year => {
+      filters.setCurrentYear(year);
+    },
+  });
 
   const filters = {
     constructions,
@@ -61,6 +76,7 @@ import { galleryIntroInnerView } from './constructionSlideDescrView'
     },
     setCurrentYear(year) {
       this.currentYear = year;
+      console.log(this.currentYear);
       this.currentMonth = '';
       this.render();
       this.renderMonth();
@@ -70,59 +86,68 @@ import { galleryIntroInnerView } from './constructionSlideDescrView'
       this.render();
     },
     render() {
+      console.log(this.currentMonth);
+      console.log('slides', this.currentSlides);
       this.cardListRef.innerHTML = cardsListView(this.currentSlides);
     },
     renderMonth() {
       const currentMonths = this.years.find(item => item.year === this.currentYear);
-      monthListRef.innerHTML = monthListButtonsView(currentMonths.months);
-      monthListMobileRef.innerHTML = monthListSelectView(currentMonths.months);
+      console.log(currentMonths);
+      const options = currentMonths.months.map(month => {
+        return {
+          label: month.name,
+          value: month.name,
+        };
+      });
+      console.log(customMonthSelector);
+      customMonthSelector.updateOptions(options);
     },
   };
 
-  let activeYearRef = null;
-  let activeMonthRef = null;
+  // let activeYearRef = document.querySelector('.construction-progress__years-item.active');
+  // let activeMonthRef = null;
 
-  const handleFilterByYear = (event) => {
-    const { target } = event;
-    const btnRef = target.closest('.construction-progress__years-item');
-    if (!btnRef) return;
+  // const handleFilterByYear = event => {
+  //   const { target } = event;
+  //   const btnRef = target.closest('.construction-progress__years-item');
+  //   if (!btnRef) return;
 
-    const { year } = btnRef.dataset;
-    filters.setCurrentYear(year);
-    btnRef.classList.add('active');
-    if (activeYearRef) {
-      activeYearRef.classList.remove('active');
-    }
-    activeYearRef = btnRef;
-  };
+  //   const { year } = btnRef.dataset;
+  //   filters.setCurrentYear(year);
+  //   btnRef.classList.add('active');
+  //   if (activeYearRef) {
+  //     activeYearRef.classList.remove('active');
+  //   }
+  //   activeYearRef = btnRef;
+  // };
 
-  const handleMobileYearChange = (event) => {
+  const handleMobileYearChange = event => {
     const { target } = event;
     const { value } = target;
     filters.setCurrentYear(value);
   };
 
-  const handleFilterByMonth = (event) => {
-    const { target } = event;
-    const btnRef = target.closest('.construction-month__item');
-    if (!btnRef) return;
+  // const handleFilterByMonth = event => {
+  //   const { target } = event;
+  //   const btnRef = target.closest('.construction-month__item');
+  //   if (!btnRef) return;
 
-    const { month } = btnRef.dataset;
-    filters.setCurrentMonth(month);
-    btnRef.classList.add('active');
-    if (activeMonthRef) {
-      activeMonthRef.classList.remove('active');
-    }
-    activeMonthRef = btnRef;
-  };
+  //   const { month } = btnRef.dataset;
+  //   filters.setCurrentMonth(month);
+  //   btnRef.classList.add('active');
+  //   if (activeMonthRef) {
+  //     activeMonthRef.classList.remove('active');
+  //   }
+  //   activeMonthRef = btnRef;
+  // };
 
-  const handleMobileMonthChange = (event) => {
+  const handleMobileMonthChange = event => {
     const { target } = event;
     const { value } = target;
     filters.setCurrentMonth(value.toLowerCase());
   };
 
-  const handleOpenConstructionPopup = (e) => {
+  const handleOpenConstructionPopup = e => {
     e.preventDefault();
     const { target } = e;
     const cardRef = target.closest('.construction-month__card');
@@ -132,18 +157,17 @@ import { galleryIntroInnerView } from './constructionSlideDescrView'
     const construction = filters.currentSlides.find(slide => slide.id === id);
     if (!construction) return;
 
-
     sliderTextRef.innerHTML = galleryIntroInnerView(construction);
     const slides = slidesView(construction.gallery);
     constructionPopup.openWithSlides(slides);
   };
 
   constructionListRef.addEventListener('click', handleOpenConstructionPopup);
-  yearListRef.addEventListener('click', handleFilterByYear);
-  monthListRef.addEventListener('click', handleFilterByMonth);
+  // yearListRef.addEventListener('click', handleFilterByYear);
+  // monthListRef.addEventListener('click', handleFilterByMonth);
   yearListMobileRef.addEventListener('change', handleMobileYearChange);
   monthListMobileRef.addEventListener('change', handleMobileMonthChange);
 
   filters.renderMonth();
   filters.render();
-}());
+})();

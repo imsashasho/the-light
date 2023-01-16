@@ -1,4 +1,4 @@
-export const monthButtonView = ({ name, description }) => `
+export const monthButtonView = ({ name }) => `
         <div class="construction-month__item construction-progress__months-item" data-month="${name.toLowerCase()}">
             <span>${name}</span>
         </div>

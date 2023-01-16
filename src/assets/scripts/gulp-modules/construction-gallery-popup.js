@@ -1,11 +1,9 @@
-import Swiper, { Navigation, Manipulation } from 'swiper';
+import Swiper from 'swiper-legacy';
 import { modalFactory } from './modal';
-
-
 
 const SWIPER_GALLERY = '.swiper-gallery';
 const POPUP_GALLERY = '.gallery-overlay';
-const CLOSE_GALLERY = '.gallery-close-btn'
+const CLOSE_GALLERY = '.gallery-close-btn';
 
 const constructionCloseBtnRef = document.querySelector(CLOSE_GALLERY);
 const galleryModal = modalFactory(POPUP_GALLERY);
@@ -34,8 +32,6 @@ const swiperGallery = new Swiper(SWIPER_GALLERY, {
   // },
 });
 
-console.log(swiperGallery)
-
 const openPopup = () => {
   galleryModal.open();
 };
@@ -44,14 +40,14 @@ const closePopup = () => {
   galleryModal.close();
 };
 
-const openPopupWithSlides = (slides) => {
+const openPopupWithSlides = slides => {
   openPopup();
   swiperGallery.removeAllSlides();
   swiperGallery.appendSlide(slides);
   swiperGallery.slideToLoop(0);
 };
 
-const handleVideoClick = (event) => {
+const handleVideoClick = event => {
   const { target } = event;
   const videoRef = target.closest('video');
   if (!videoRef) {
@@ -69,7 +65,7 @@ const handleVideoClick = (event) => {
 };
 
 swiperGallery.el.addEventListener('click', handleVideoClick);
-swiperGallery.on('slideChange', (slider) => {
+swiperGallery.on('slideChange', slider => {
   const { previousIndex, slides } = slider;
   const slide = slides[previousIndex];
   if (!slide) return;
@@ -82,12 +78,10 @@ swiperGallery.on('slideChange', (slider) => {
   playBtnRef.classList.remove('playing');
 });
 
-constructionCloseBtnRef.addEventListener('click', (e) => {
+constructionCloseBtnRef.addEventListener('click', e => {
   e.preventDefault();
   closePopup();
 });
-
-console.log(swiperGallery.navigation)
 
 export const constructionPopup = {
   gallery: swiperGallery,

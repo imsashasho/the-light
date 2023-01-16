@@ -3,7 +3,14 @@ import { gsap, ScrollTrigger } from 'gsap/all';
 import axios from 'axios';
 import $ from 'jquery';
 // import Swiper from 'swiper';
-import Swiper, { Navigation, Controller, Pagination, Virtual, EffectFade, EffectCoverflow} from 'swiper';
+import Swiper, {
+  Navigation,
+  Controller,
+  Pagination,
+  Virtual,
+  EffectFade,
+  EffectCoverflow,
+} from 'swiper';
 import { horizontal } from 'gsap/Observer';
 
 /** ******************************* */
@@ -23,7 +30,6 @@ global.axios = axios;
 // ------------ Запуск функций для desctop -------------
 if (window.matchMedia('(min-width: 1280px)').matches) {
 }
-
 
 (() => {
   const refs = {
@@ -98,7 +104,7 @@ const switchAllSlidesToPrevInAbout = () => {
   swiper_1.slidePrev(1000);
 };
 
-swiper_1.on('activeIndexChange', (e) => {
+swiper_1.on('activeIndexChange', e => {
   swiper_2.slideTo(e.realIndex, 1000);
   swiper_number_about.slideTo(e.realIndex, 1000);
   swiper_text.slideTo(e.realIndex, 1000);
@@ -107,7 +113,8 @@ swiper_1.on('activeIndexChange', (e) => {
 const aboutSliderTotal = document.querySelector('.about__slider-total');
 // const aboutSliderCurrent = document.querySelector('.about__slider-current');
 
-aboutSliderTotal.innerHTML = swiper_1.slides.length < 10 ? `0${swiper_1.slides.length}` : `${swiper_1.slides.length}`;
+aboutSliderTotal.innerHTML =
+  swiper_1.slides.length < 10 ? `0${swiper_1.slides.length}` : `${swiper_1.slides.length}`;
 
 [
   ...document
@@ -179,7 +186,7 @@ const swiper_benefits_text = new Swiper('.swiper_benefits_text', {
 });
 
 // swiper_benefits.controller.control = swiper_number_benefits;
-swiper_benefits.on('activeIndexChange', (e) => {
+swiper_benefits.on('activeIndexChange', e => {
   swiper_number_benefits.slideTo(e.realIndex, 1000);
   swiper_benefits_text.slideTo(e.realIndex, 1000);
 });
@@ -205,13 +212,14 @@ const benefitsSliderTotal = document.querySelector('.benefits__slider-total');
 const totalSlideFromFraction = document
   .querySelector('.benefits__slider-fraction')
   .querySelector('.swiper-pagination-total').innerHTML;
-benefitsSliderTotal.innerHTML = totalSlideFromFraction < 10 ? `0${totalSlideFromFraction}` : `${totalSlideFromFraction}`;
+benefitsSliderTotal.innerHTML =
+  totalSlideFromFraction < 10 ? `0${totalSlideFromFraction}` : `${totalSlideFromFraction}`;
 
 // ---------------------- paralax-logo ---------------------
 gsap.registerPlugin(ScrollTrigger);
 export default function paralax(selector, scroller, amplitude = 35) {
   const paralaxImages = document.querySelectorAll(selector);
-  paralaxImages.forEach((image) => {
+  paralaxImages.forEach(image => {
     gsap
       .timeline({
         ease: 'none',
@@ -237,7 +245,7 @@ export default function paralax(selector, scroller, amplitude = 35) {
 
 function paralaxFeather(selector, scroller, amplitude = 35) {
   const paralaxImages = document.querySelectorAll(selector);
-  paralaxImages.forEach((image) => {
+  paralaxImages.forEach(image => {
     gsap
       .timeline({
         ease: 'none',
@@ -307,8 +315,8 @@ if (window.matchMedia('(max-width: 767px)').matches) {
   paralax('.parallax-logo__feather', '', 70);
 }
 if (
-  window.matchMedia('(min-width: 768px)').matches
-  && window.matchMedia('(max-width: 1279px)').matches
+  window.matchMedia('(min-width: 768px)').matches &&
+  window.matchMedia('(max-width: 1279px)').matches
 ) {
   paralax('.parallax-logo__light', '', 30);
   paralax('.parallax-logo__the', '', 90);
@@ -316,8 +324,8 @@ if (
 }
 
 if (
-  window.matchMedia('(min-width: 1280px)').matches
-  && window.matchMedia('(max-width: 1920px)').matches
+  window.matchMedia('(min-width: 1280px)').matches &&
+  window.matchMedia('(max-width: 1920px)').matches
 ) {
   paralax('.parallax-logo__light', '', 60);
   paralax('.parallax-logo__the', '', 100);
@@ -339,6 +347,7 @@ if (window.matchMedia('(min-width: 1920px)').matches) {
 //   .querySelector('.btn-swiper-right');
 
 const swiper_gallery = new Swiper('.swiper_gallery', {
+  modules: [Navigation, Controller, Pagination],
   loop: true,
   centeredSlides: true,
   initialSlide: 0,
@@ -352,8 +361,8 @@ const swiper_gallery = new Swiper('.swiper_gallery', {
   // nextButton: '.btn-swiper-right',
   // prevButton: '.btn-swiper-right',
   navigation: {
-    nextEl: '.about__btn-swiper-left',
-    prevEl: '.about__btn-swiper-right',
+    nextEl: '.about__btn-swiper-right.btn-swiper-right',
+    prevEl: '.about__btn-swiper-left.btn-swiper-left',
   },
   slideToClickedSlide: true,
   breakpoints: {
@@ -362,13 +371,14 @@ const swiper_gallery = new Swiper('.swiper_gallery', {
   },
 });
 
-[...document.querySelector('.swiper_gallery').querySelectorAll('img')].forEach((img) => {
+[...document.querySelector('.swiper_gallery').querySelectorAll('img')].forEach(img => {
   img.addEventListener('click', () => {
     swiper_gallery.slideNext(1000);
   });
 });
 
 const big_swiper_gallery = new Swiper('.big-swiper_gallery', {
+  modules: [Navigation, Controller, Pagination],
   loop: true,
   centeredSlides: true,
   initialSlide: 0,
@@ -384,12 +394,12 @@ const big_swiper_gallery = new Swiper('.big-swiper_gallery', {
   // nextButton: '.big-swiper-gallery-swiper-right',
   // prevButton: '.big-swiper-gallery-swiper-left',
   navigation: {
-    nextEl: '.big-swiper-gallery-swiper-right',
-    prevEl:'.big-swiper-gallery-swiper-left',
+    nextEl: document.querySelector('.big-swiper-gallery-swiper-right'),
+    prevEl: document.querySelector('.big-swiper-gallery-swiper-left'),
   },
 });
 
-[...document.querySelector('.big-swiper_gallery').querySelectorAll('img')].forEach((img) => {
+[...document.querySelector('.big-swiper_gallery').querySelectorAll('img')].forEach(img => {
   img.addEventListener('click', () => {
     big_swiper_gallery.slideNext(1000);
   });
@@ -397,19 +407,20 @@ const big_swiper_gallery = new Swiper('.big-swiper_gallery', {
 
 // ----------------------------- open and close big_swiper_gallery ---------------------------
 
-[...document.querySelectorAll('.js-open-big-gallery')].forEach(img => img.addEventListener('click', () => {
-  document.body.classList.toggle('modal-open');
-  document.querySelector('.gallery-beckdrop').classList.toggle('is-hidden');
-}));
+[...document.querySelectorAll('.js-open-big-gallery')].forEach(img =>
+  img.addEventListener('click', () => {
+    document.body.classList.toggle('modal-open');
+    document.querySelector('.gallery-beckdrop').classList.toggle('is-hidden');
+  }),
+);
 document.querySelector('.js-close-big-gallery').addEventListener('click', () => {
   document.body.classList.toggle('modal-open');
   document.querySelector('.gallery-beckdrop').classList.toggle('is-hidden');
 });
-// console.log(big_swiper_gallery.params)
-// swiper_gallery.controller.control = big_swiper_gallery;
-// big_swiper_gallery.controller.control = swiper_gallery;
 
-
+console.log(big_swiper_gallery);
+swiper_gallery.controller.control = big_swiper_gallery;
+big_swiper_gallery.controller.control = swiper_gallery;
 
 // ---------------------------------------------------------------------------
 
@@ -481,7 +492,7 @@ const swiper_our_projects_title_text = new Swiper('.swiper_our_projects_title_te
 });
 
 // swiper_our_projects.controller.control = swiper_number_our_projects;
-swiper_our_projects.on('activeIndexChange', (e) => {
+swiper_our_projects.on('activeIndexChange', e => {
   swiper_number_our_projects.slideTo(e.realIndex, 1000);
   swiper_our_projects_text.slideTo(e.realIndex, 1000);
   swiper_our_projects_title_text.slideTo(e.realIndex, 1000);
@@ -510,9 +521,10 @@ const our_projectsSliderTotal = document.querySelector('.our_projects__slider-to
 const ourProjectsTotalSlideFromFraction = document
   .querySelector('.our_projects__slider-fraction')
   .querySelector('.swiper-pagination-total').innerHTML;
-our_projectsSliderTotal.innerHTML = ourProjectsTotalSlideFromFraction < 10
-  ? `0${ourProjectsTotalSlideFromFraction}`
-  : `${ourProjectsTotalSlideFromFraction}`;
+our_projectsSliderTotal.innerHTML =
+  ourProjectsTotalSlideFromFraction < 10
+    ? `0${ourProjectsTotalSlideFromFraction}`
+    : `${ourProjectsTotalSlideFromFraction}`;
 
 // ------------------------------- show active news on mobile ----------------------------------------
 // if (window.matchMedia('(max-width: 767px)').matches) {
@@ -573,7 +585,7 @@ document.querySelector('.layout__data-btn').addEventListener('click', () => {
   document.querySelector('.layout-beckdrop').classList.toggle('is-hidden');
 });
 
-const baseUrlFromBody = document.getElementsByTagName('body')[0].dataset.imgBaseUrl;
+// const baseUrlFromBody = document.getElementsByTagName('body')[0].dataset.imgBaseUrl;
 
 const layout__swiper = new Swiper('.layout__swiper', {
   modules: [Navigation, Controller, EffectFade],
@@ -592,16 +604,18 @@ const layout__swiper = new Swiper('.layout__swiper', {
 });
 const leftBtnPopUpLayout = document.querySelector('.floor-btn-left');
 const rightBtnPopUpLayout = document.querySelector('.floor-btn-right');
-layout__swiper.on('activeIndexChange', (e) => {
+layout__swiper.on('activeIndexChange', e => {
   leftBtnPopUpLayout.classList.toggle('active-floor-btn');
   rightBtnPopUpLayout.classList.toggle('active-floor-btn');
 });
-[leftBtnPopUpLayout, rightBtnPopUpLayout].forEach(btn => btn.addEventListener('click', () => {
-  if (btn.classList.contains('active-floor-btn')) return;
-  layout__swiper.slideNext(1000);
-}));
+[leftBtnPopUpLayout, rightBtnPopUpLayout].forEach(btn =>
+  btn.addEventListener('click', () => {
+    if (btn.classList.contains('active-floor-btn')) return;
+    layout__swiper.slideNext(1000);
+  }),
+);
 
-const openLayoutPopUpWithData = (path) => {
+const openLayoutPopUpWithData = path => {
   layout__swiper.slideTo(0);
   const dataForLayoutPopUp = layoutData[path.dataset.id];
   const layoutSwiper = document.querySelector('.layout-beckdrop').querySelector('.layout__swiper');
@@ -612,10 +626,10 @@ const openLayoutPopUpWithData = (path) => {
 
   layoutSliders[0].getElementsByTagName(
     'img',
-  )[0].src = `${baseUrlFromBody}${dataForLayoutPopUp.floorsImages.floorPlan[0]}`;
+  )[0].src = `${dataForLayoutPopUp.floorsImages.floorPlan[0]}`;
   layoutSliders[1].getElementsByTagName(
     'img',
-  )[0].src = `${baseUrlFromBody}${dataForLayoutPopUp.floorsImages.floorPlan[1]}`;
+  )[0].src = `${dataForLayoutPopUp.floorsImages.floorPlan[1]}`;
 
   const houseNumber = layoutDataRef
     .querySelector('.layout__data-house')
@@ -645,7 +659,7 @@ const openLayoutPopUpWithData = (path) => {
   document.querySelector('.layout-beckdrop').classList.toggle('is-hidden');
 };
 
-[...arrPathMobile, ...arrPathDesctop].forEach((path) => {
+[...arrPathMobile, ...arrPathDesctop].forEach(path => {
   path.addEventListener('click', () => openLayoutPopUpWithData(path));
 });
 
@@ -655,13 +669,16 @@ const arrLayoutPopUpImages = document
   .querySelector('.layout-beckdrop')
   .querySelectorAll('.layout__swiper-slide img');
 
-arrLayoutPopUpImages.forEach(img => img.addEventListener('click', () => {
-  const activeImg = document
-    .querySelector('.layout-beckdrop')
-    .querySelector('.layout__swiper-slide.swiper-slide-active img');
-  document.querySelector('.layout-img-beckdrop').querySelector('.layout-img-big').src = activeImg.src;
-  document.querySelector('.layout-img-beckdrop').classList.toggle('is-hidden');
-}));
+arrLayoutPopUpImages.forEach(img =>
+  img.addEventListener('click', () => {
+    const activeImg = document
+      .querySelector('.layout-beckdrop')
+      .querySelector('.layout__swiper-slide.swiper-slide-active img');
+    document.querySelector('.layout-img-beckdrop').querySelector('.layout-img-big').src =
+      activeImg.src;
+    document.querySelector('.layout-img-beckdrop').classList.toggle('is-hidden');
+  }),
+);
 
 document
   .querySelector('.layout-img-beckdrop')
@@ -671,7 +688,7 @@ document
   });
 //--------------------------------------------------------
 
-[...arrPathMobile, ...arrPathDesctop].forEach((path) => {
+[...arrPathMobile, ...arrPathDesctop].forEach(path => {
   path.addEventListener('mouseover', () => {
     path.classList.add('hover');
     document
@@ -770,7 +787,6 @@ document
 //     });
 //   });
 // }
-
 
 gsap
   .timeline({

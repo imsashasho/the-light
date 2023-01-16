@@ -11,8 +11,8 @@
           "10-16"
         ],
         "floorPlan": [
-          "/assets/images/layout/house-5-floor-5-8.png",
-          "/assets/images/layout/house-5-floor-10-16.png"
+          "/wp-content/themes/the-light/assets/images/layout/house-5-floor-5-8.png",
+          "/wp-content/themes/the-light/assets/images/layout/house-5-floor-10-16.png"
         ]
       }
     },
@@ -28,8 +28,8 @@
           "8"
         ],
         "floorPlan": [
-          "/assets/images/layout/house-6-floor-4-6.png",
-          "/assets/images/layout/house-6-floor-8.png"
+          "/wp-content/themes/the-light/assets/images/layout/house-6-floor-4-6.png",
+          "/wp-content/themes/the-light/assets/images/layout/house-6-floor-8.png"
         ]
       }
     },
@@ -45,8 +45,8 @@
           "16-22"
         ],
         "floorPlan": [
-          "/assets/images/layout/house-7-floor-5-14.png",
-          "/assets/images/layout/house-7-floor-16-22.png"
+          "/wp-content/themes/the-light/assets/images/layout/house-7-floor-5-14.png",
+          "/wp-content/themes/the-light/assets/images/layout/house-7-floor-16-22.png"
         ]
       }
     },
@@ -62,8 +62,8 @@
           "10-17"
         ],
         "floorPlan": [
-          "/assets/images/layout/house-8-floor-4-8.png",
-          "/assets/images/layout/house-8-floor-10-17.png"
+          "/wp-content/themes/the-light/assets/images/layout/house-8-floor-4-8.png",
+          "/wp-content/themes/the-light/assets/images/layout/house-8-floor-10-17.png"
         ]
       }
     }
