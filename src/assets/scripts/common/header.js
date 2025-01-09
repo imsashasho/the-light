@@ -24,7 +24,7 @@ function menuClose(menu) {
 }
 
 function init() {
-  const unSelectHandler = (container) => {
+  const unSelectHandler = container => {
     const elem = container.querySelector('.select-items');
     if (!elem.classList.contains('select-hide')) {
       container.classList.remove('select-arrow-active');
@@ -48,7 +48,7 @@ function init() {
 /** ******************************* */
 
 function handlerClickMenu(callback) {
-  [...document.querySelector('.header').querySelectorAll('.js-menu-item')].forEach((link) => {
+  [...document.querySelector('.header').querySelectorAll('.js-menu-item')].forEach(link => {
     link.addEventListener('click', callback);
   });
 }
@@ -99,20 +99,20 @@ function handlerClickMenu(callback) {
   refs.closeMenuBtn.addEventListener('click', toggleMenu);
 })();
 
-// (() => {
-//   const refs = {
-//     arrOpenPopUpNewsBtn: document.querySelectorAll('.js-open-pop-up-news'),
-//     closePopUpNewsBtn: document.querySelector('.js-close-pop-up-news'),
-//     popUpNews: document.querySelector('.pop-up-news-beckdrop'),
-//   };
+(() => {
+  const refs = {
+    arrOpenPopUpNewsBtn: document.querySelectorAll('.js-open-pop-up-news'),
+    closePopUpNewsBtn: document.querySelector('.js-close-pop-up-news'),
+    popUpNews: document.querySelector('.pop-up-news-beckdrop'),
+  };
 
-//   function togglePopUpNews() {
-//     document.body.classList.toggle('modal-open');
-//     refs.popUpNews.classList.toggle('is-hidden');
-//   }
-//   [...refs.arrOpenPopUpNewsBtn].map(btn => btn.addEventListener('click', togglePopUpNews));
-//   refs.closePopUpNewsBtn.addEventListener('click', togglePopUpNews);
-// })();
+  function togglePopUpNews() {
+    document.body.classList.toggle('modal-open');
+    refs.popUpNews.classList.toggle('is-hidden');
+  }
+  [...refs.arrOpenPopUpNewsBtn].map(btn => btn.addEventListener('click', togglePopUpNews));
+  refs.closePopUpNewsBtn.addEventListener('click', togglePopUpNews);
+})();
 
 const headerPositionHendler = () => {
   if (document.querySelector('.page__content').getBoundingClientRect().top === 0) {

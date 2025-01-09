@@ -6,7 +6,7 @@
   @include mobile {
     padding-top: 80px;
   }
-  
+
   @include from(768px) {
     padding-top: 250px;
   }
@@ -47,10 +47,10 @@
     }
 
     &.numbers__item-title-block {
-      position: absolute;
-      top: -140px;
+      position: relative;
       width: 100%;
       @include from(768px) {
+        position: absolute;
         top: -200px;
       }
       @include from(1280px) {
@@ -150,13 +150,12 @@
       font-weight: 400;
       font-size: 64px;
       line-height: 85%;
-      background: linear-gradient(235.14deg, #A2BDCA 0%, #BCD6DF 100.03%);
+      background: linear-gradient(235.14deg, #a2bdca 0%, #bcd6df 100.03%);
       -webkit-background-clip: text;
       text-transform: lowercase;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-fill-color: transparent;
-
     }
 
     .numbers__item-white-text {
@@ -168,11 +167,8 @@
       text-align: center;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: #E9F6FB;
-
+      color: #e9f6fb;
     }
-
-
   }
 
   @include tablet {
@@ -226,10 +222,7 @@
     &:nth-child(13) {
       order: 13;
     }
-
   }
-
-  
 
   .numbers__img {
     position: absolute;

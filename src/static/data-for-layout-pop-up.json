@@ -1,70 +1,58 @@
-  {
-    "5": {
-      "id": 5,
-      "totalFloors": 16,
-      "totalApartments": 108,
-      "totalArea": 688,
-      "flatCount": 959.8,
-      "floorsImages": {
-        "titles": [
-          "5-8",
-          "10-16"
-        ],
-        "floorPlan": [
-          "/wp-content/themes/the-light/assets/images/layout/house-5-floor-5-8.png",
-          "/wp-content/themes/the-light/assets/images/layout/house-5-floor-10-16.png"
-        ]
-      }
-    },
-    "6": {
-      "id": 6,
-      "totalFloors": 8,
-      "totalApartments": 108,
-      "totalArea": 688,
-      "flatCount": 959.8,
-      "floorsImages": {
-        "titles": [
-          "4-6",
-          "8"
-        ],
-        "floorPlan": [
-          "/wp-content/themes/the-light/assets/images/layout/house-6-floor-4-6.png",
-          "/wp-content/themes/the-light/assets/images/layout/house-6-floor-8.png"
-        ]
-      }
-    },
-    "7": {
-      "id": 7,
-      "totalFloors": 22,
-      "totalApartments": 108,
-      "totalArea": 688,
-      "flatCount": 959.8,
-      "floorsImages": {
-        "titles": [
-          "5-14",
-          "16-22"
-        ],
-        "floorPlan": [
-          "/wp-content/themes/the-light/assets/images/layout/house-7-floor-5-14.png",
-          "/wp-content/themes/the-light/assets/images/layout/house-7-floor-16-22.png"
-        ]
-      }
-    },
-    "8": {
-      "id": 8,
-      "totalFloors": 17,
-      "totalApartments": 108,
-      "totalArea": 688,
-      "flatCount": 959.8,
-      "floorsImages": {
-        "titles": [
-          "4-8",
-          "10-17"
-        ],
-        "floorPlan": [
-          "/wp-content/themes/the-light/assets/images/layout/house-8-floor-4-8.png",
-          "/wp-content/themes/the-light/assets/images/layout/house-8-floor-10-17.png"
-        ]
-      }
+{
+  "5": {
+    "id": 5,
+    "totalFloors": 16,
+    "totalApartments": 108,
+    "totalArea": 688,
+    "flatCount": 959.8,
+    "floorsImages": {
+      "titles": ["5-8", "10-16"],
+      "floorPlan": [
+        "/wp-content/themes/the-light/assets/images/layout/house-5-floor-5-8.png",
+        "/wp-content/themes/the-light/assets/images/layout/house-5-floor-10-16.png"
+      ]
+    }
+  },
+  "6": {
+    "id": 6,
+    "totalFloors": 8,
+    "totalApartments": 108,
+    "totalArea": 688,
+    "flatCount": 959.8,
+    "floorsImages": {
+      "titles": ["4-6", "8"],
+      "floorPlan": [
+        "/wp-content/themes/the-light/assets/images/layout/house-6-floor-4-6.png",
+        "/wp-content/themes/the-light/assets/images/layout/house-6-floor-8.png"
+      ]
+    }
+  },
+  "7": {
+    "id": 7,
+    "totalFloors": 24,
+    "totalApartments": 108,
+    "totalArea": 688,
+    "flatCount": 959.8,
+    "floorsImages": {
+      "titles": ["5-14", "16-24"],
+      "floorPlan": [
+        "/wp-content/themes/the-light/assets/images/layout/house-7-floor-5-14.png",
+        "/wp-content/themes/the-light/assets/images/layout/house-7-floor-16-22.png"
+      ]
+    }
+  },
+  "8": {
+    "id": 8,
+    "totalFloors": 17,
+    "totalApartments": 108,
+    "totalArea": 688,
+    "flatCount": 959.8,
+    "floorsImages": {
+      "titles": ["4-8", "10-17"],
+      "floorPlan": [
+        "/wp-content/themes/the-light/assets/images/layout/house-8-floor-4-8.png",
+        "/wp-content/themes/the-light/assets/images/layout/house-8-floor-10-17.png"
+      ]
     }
   }
+}

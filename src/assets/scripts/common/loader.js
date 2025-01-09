@@ -2,7 +2,7 @@
 
 const mask = document.querySelector('.mask');
 
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
   mask.classList.add('mask-hide');
   document.getElementsByTagName('body')[0].classList.remove('modal-open');
   setTimeout(() => {

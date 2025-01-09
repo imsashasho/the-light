@@ -58,6 +58,20 @@
     @include from(1920px) {
       margin-bottom: 32px;
     }
+
+    &--phone {
+      .feedback-form__label-wrap {
+        position: absolute;
+        top: -20px;
+        left: 0;
+        @include from(768px) {
+          top: -22px;
+        }
+        @include from(1920px) {
+          top: -26px;
+        }
+      }
+    }
   }
   &__input-wrapper {
     width: 100%;
@@ -93,17 +107,6 @@
     }
 
     &:focus + .feedback-form__label-wrap {
-      top: -20px;
-      left: 0;
-      @include from(768px) {
-        top: -22px;
-      }
-      @include from(1920px) {
-        top: -26px;
-      }
-    }
-
-    &.input-with-text + .feedback-form__label-wrap {
       top: -20px;
       left: 0;
       @include from(768px) {

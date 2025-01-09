@@ -3,7 +3,8 @@ import { getMarkers } from '../api';
 import { MARKER_ICONS, MAP_ICONS_NAME } from './iconsMap';
 import { mapsFiltersView } from './mapsFiltersView';
 
-const mapSrc = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBxK12fUzstWEjwLBlJU_ZxJE8fUAeH48I';
+const mapSrc =
+  'https://maps.googleapis.com/maps/api/js?key=AIzaSyBxK12fUzstWEjwLBlJU_ZxJE8fUAeH48I';
 
 const mapScript = document.createElement('script');
 mapScript.src = mapSrc;
@@ -23,19 +24,21 @@ async function initMap() {
     console.warn(error);
   }
 
-  const locations = markers.flatMap(item => item.list.map((marker) => {
-    const { coordinations, name } = marker;
-    return {
-      type: item.code,
-      title: name,
-      coords: [coordinations.latitude, coordinations.elevation],
-    };
-  }));
+  const locations = markers.flatMap(item =>
+    item.list.map(marker => {
+      const { coordinations, name } = marker;
+      return {
+        type: item.code,
+        title: name,
+        coords: [coordinations.latitude, coordinations.elevation],
+      };
+    }),
+  );
 
   // const mainMarkerData = markers.find(item => item.type === 'main');
   const mainMarker = {
     type: 'main',
-    coords: [50.22241606840825, 30.57392429635527],
+    coords: [50.41461521600195, 30.5289853423287],
     name: 'жк the Light',
   };
   // const mainMarkerCoords = mainMarkerData.coords.split(', ');
@@ -55,7 +58,7 @@ async function initMap() {
   });
   const DIRECTIONS_SERVIE = new google.maps.DirectionsService();
   const DIRECTIONS_RENDERER = new google.maps.DirectionsRenderer({ map });
-  const locationsWithMarkers = locations.map((item) => {
+  const locationsWithMarkers = locations.map(item => {
     const iconUrl = MARKER_ICONS[item.type];
     const marker = new google.maps.Marker({
       position: {
@@ -72,7 +75,7 @@ async function initMap() {
       infoWindow.open(marker.getMap(), marker);
     });
 
-    google.maps.event.addListener(marker, 'click', function (evbt) {
+    google.maps.event.addListener(marker, 'click', function(evbt) {
       DIRECTIONS_SERVIE.route(
         {
           origin: new google.maps.LatLng(mainMarker.coords[0], mainMarker.coords[1]),
@@ -100,15 +103,15 @@ async function initMap() {
   const filterMarkersListRef = document.querySelector('.map-navigation__markers');
   let activeFilterRef = null;
 
-  const filterMarkers = (type) => {
+  const filterMarkers = type => {
     if (type === null) {
-      locationsWithMarkers.forEach((location) => {
+      locationsWithMarkers.forEach(location => {
         location.marker.setMap(map);
       });
       return locationsWithMarkers;
     }
 
-    return locationsWithMarkers.filter((location) => {
+    return locationsWithMarkers.filter(location => {
       if (location.type === type) {
         location.marker.setMap(map);
       } else {
@@ -118,15 +121,15 @@ async function initMap() {
     });
   };
 
-  const renderMapFilters = (markers) => {
-    const filters = markers.map((marker) => {
+  const renderMapFilters = markers => {
+    const filters = markers.map(marker => {
       const { code, name } = marker;
       return { svgName: MAP_ICONS_NAME[code], type: code, name };
     });
     mapFiltersRef.innerHTML = mapsFiltersView(filters);
   };
 
-  const handleFilterChange = (e) => {
+  const handleFilterChange = e => {
     const { target } = e;
     const btn = target.closest('.map-navigation__button');
 
@@ -142,7 +145,7 @@ async function initMap() {
     }
 
     const items = filterMarkers(btn.dataset.type);
-    const markersList = items.map((item) => {
+    const markersList = items.map(item => {
       const button = document.createElement('button');
       button.classList.add('map-marker-active');
       button.addEventListener('click', () => {

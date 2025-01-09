@@ -15,6 +15,10 @@
 .swiper_gallery .swiper-slide {
   cursor: pointer;
 }
+
+.swiper_1 .swiper-slide {
+  height: auto;
+}
 .swiper_nuber {
   position: absolute;
   width: 54px;
@@ -179,6 +183,7 @@
   position: absolute;
   bottom: -260px;
   width: 100%;
+  z-index: 100;
   .btn-swiper {
     background: var(--white);
     rect {

@@ -99,7 +99,13 @@ header.header.header-start-position
     .video-popup.is-hidden
         .modal.video-modal
             .page-container
-                iframe(width="560" height="315" src="https://www.youtube.com/embed/wrFfW8Yulsc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen) 
+                //- iframe(width="560" height="315" src="https://www.youtube.com/embed/wrFfW8Yulsc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen) 
+                <video id="popup-video" loading="lazy" controls="" loop="" preload="auto" playsinline="">
+                    <source src="<?=get_template_directory_uri()?>/assets/images/hero/2_q.mp4" type="video/mp4" media="(min-width: 1024px)">
+                    <source src="<?=get_template_directory_uri()?>/assets/images/hero/2_q-mob.mp4" type="video/mp4" media="(max-width: 1024px)">
+                    <source src="<?=get_template_directory_uri()?>/assets/images/hero/2_q.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
                 button.video__btn-close-menu.js-video-popup-close(type="button")
                     <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 13L13 1M1 1L13 13"  stroke-width="2"/>

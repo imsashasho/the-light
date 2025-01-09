@@ -1,5 +1,6 @@
 import i18next from 'i18next';
-import { gsap, ScrollTrigger } from 'gsap/all';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import axios from 'axios';
 import $ from 'jquery';
 // import Swiper from 'swiper';
@@ -18,6 +19,8 @@ import layoutData from '../../../static/data-for-layout-pop-up.json';
 
 global.gsap = gsap;
 global.axios = axios;
+
+gsap.registerPlugin(ScrollTrigger);
 
 /* eslint-disable-next-line */
 // const locoScroll = new LocomotiveScroll({
@@ -38,12 +41,23 @@ if (window.matchMedia('(min-width: 1280px)').matches) {
     modal: document.querySelector('.video-popup'),
   };
 
-  function toggleModal() {
-    document.body.classList.toggle('modal-open');
-    refs.modal.classList.toggle('is-hidden');
+  const videoPlayer = document.querySelector('#popup-video');
+  const videoPopup = document.querySelector('.video-popup');
+
+  function openModal() {
+    document.body.classList.add('modal-open');
+    videoPopup.classList.remove('is-hidden');
+
+    videoPlayer.play();
   }
-  [...refs.openModalBtn].map(btn => btn.addEventListener('click', toggleModal));
-  refs.closeModalBtn.addEventListener('click', toggleModal);
+
+  function closeModal() {
+    document.body.classList.remove('modal-open');
+    videoPopup.classList.add('is-hidden');
+    videoPlayer.pause();
+  }
+  [...refs.openModalBtn].map(btn => btn.addEventListener('click', openModal));
+  refs.closeModalBtn.addEventListener('click', closeModal);
 })();
 
 // ******************** SWIPER ***********************************************************
@@ -130,12 +144,10 @@ aboutSliderTotal.innerHTML =
 ].map(activeSlide => activeSlide.addEventListener('click', switchAllSlidesToNextInAbout));
 
 // ----------------------- swiper_benefits ---------------------------------------------------
-
 const swiper_benefits = new Swiper('.swiper_benefits', {
-  modules: [Navigation, Controller, Pagination, EffectCoverflow],
-  loop: true,
+  modules: [Navigation, Controller, Pagination],
+  // loop: true,
   centeredSlides: true,
-  initialSlide: 0,
   speed: 1000,
   slidesPerView: 'auto',
   pagination: {
@@ -172,6 +184,7 @@ const swiper_number_benefits = new Swiper('.swiper_nuber_benefits', {
   allowTouchMove: false,
   rewind: true,
   direction: 'vertical',
+  loop: true,
 });
 
 const swiper_benefits_text = new Swiper('.swiper_benefits_text', {
@@ -179,6 +192,7 @@ const swiper_benefits_text = new Swiper('.swiper_benefits_text', {
   simulateTouch: false,
   allowTouchMove: false,
   rewind: true,
+  loop: true,
   effect: 'fade',
   fadeEffect: {
     crossFade: true,
@@ -216,7 +230,6 @@ benefitsSliderTotal.innerHTML =
   totalSlideFromFraction < 10 ? `0${totalSlideFromFraction}` : `${totalSlideFromFraction}`;
 
 // ---------------------- paralax-logo ---------------------
-gsap.registerPlugin(ScrollTrigger);
 export default function paralax(selector, scroller, amplitude = 35) {
   const paralaxImages = document.querySelectorAll(selector);
   paralaxImages.forEach(image => {
@@ -274,19 +287,20 @@ function paralaxFeather(selector, scroller, amplitude = 35) {
 // -----------------------------------------------------------------------------------------------
 
 // function paralaxNumbers(selector, amplitude = 35) {
+gsap.registerPlugin(ScrollTrigger);
 const paralaxNumbers = [...document.querySelectorAll('.numbers__item-blue-text')];
 const paralaxText = [...document.querySelectorAll('.numbers__item-white-text')];
 paralaxNumbers.forEach((item, index) => {
   gsap.from(item, {
     scrollTrigger: {
       trigger: item,
+      scrub: 1,
       // start: 'top 80%',
       // markers: true,
     },
     y: 20,
     opacity: 0.5,
     duration: 0.5,
-    scrub: 0.5,
     ease: 'none',
   });
   gsap.from(paralaxText[index], {
@@ -294,12 +308,12 @@ paralaxNumbers.forEach((item, index) => {
       trigger: paralaxText[index],
       // start: 'top 60%',
       // markers: true,
+      scrub: 1,
     },
     y: 30,
     opacity: 0.5,
     duration: 1,
     // delay: 0.5,
-    scrub: 1,
     ease: 'none',
   });
 });
@@ -705,88 +719,50 @@ document
   });
 });
 
-//---------------------------------------------------------------------
-
 // ------------------------------- news pop-up ------------------------------------------------------
-// const arrNewsItem = document.querySelector('.news').querySelectorAll('.js-news__content-item');
+const newsContainer = document.querySelector('.news');
+const popupElement = document.querySelector(
+  '.pop-up-news-beckdrop .page-container .pop-up-news .pop-up-news__content-block',
+);
 
-// const fillDataNewsPopup = () => {
-//   const elem = document.querySelector(
-//     '.pop-up-news-beckdrop .page-container .pop-up-news .pop-up-news__content-block',
-//   );
-//   arrNewsItem.forEach(item => item.addEventListener('click', () => {
-//     const dataFromItem = JSON.parse(item.dataset.dataForPopUp);
-//     const arrSecondTextBlock = [];
-//     [...dataFromItem.dataArray].map(({ title, text, img }) => {
-//       const secondTextBlock = `<li class="pop-up-news__content-item">
-//                                 ${
-//   title
-//     ? `<h2 class="pop-up-news__content-item-title">${title}</h2>`
-//     : ''
-// }
-//                                   ${
-//   text
-//     ? `<p class="pop-up-news__content-item-text">${text}</p>`
-//     : ''
-// }
-//                                     ${
-//   img
-//     ? `<img class="pop-up-news__content-item-img" src=${img} alt=""/>`
-//     : ''
-// }
-//                               </li>`;
-//       arrSecondTextBlock.push(secondTextBlock);
-//     });
-//     const markup = `<div class="pop-up-news__content-wrapper">
-//                           <div class="pop-up-news__content-header">
-//                             <div class="pop-up-news__content-date">${dataFromItem.date}</div>
-//                             <h1 class="pop-up-news__content-title">${dataFromItem.title}</h1>
-//                             <ul class="pop-up-news__content-list">${arrSecondTextBlock.join(
-//     '',
-//   )}</ul>
-//                           </div>
-//                         </div>`;
-//     elem.innerHTML = markup;
-//   }));
-// };
-// fillDataNewsPopup();
+// Ensure container exists
+if (newsContainer && popupElement) {
+  newsContainer.addEventListener('click', event => {
+    // Ensure click target is a news item or its child
+    const item = event.target.closest('.js-news__content-item');
+    if (!item) return;
 
-// if (window.matchMedia('(min-width: 1280px)').matches) {
-//   let IndexMouseover = 0;
-//   let IndexMouseout;
-//   let firstOver = true;
+    // Extract and parse data
+    const dataForPopUp = item.dataset.dataForPopUp;
+    if (!dataForPopUp) return; // Safeguard for missing data
+    const dataFromItem = JSON.parse(dataForPopUp);
 
-//   if (arrNewsItem.length === 1) {
-//     arrNewsItem.forEach((item, index) => {
-//       item.addEventListener('mouseover', (e) => {
-//         item.classList.remove('news__content-item-mouseout');
-//         item.classList.add('news__content-item-mouseover');
-//       });
+    // Create content blocks dynamically
+    const contentItemsMarkup = dataFromItem.dataArray
+      .map(
+        ({ title, text, img }) => `
+        <li class="pop-up-news__content-item">
+          ${title ? `<h2 class="pop-up-news__content-item-title">${title}</h2>` : ''}
+          ${text ? `<p class="pop-up-news__content-item-text">${text}</p>` : ''}
+          ${img ? `<img class="pop-up-news__content-item-img" src="${img}" alt=""/>` : ''}
+        </li>
+      `,
+      )
+      .join(''); // Join all content blocks into a single string
 
-//       item.addEventListener('mouseout', () => {
-//         item.classList.remove('news__content-item-mouseover');
-//         item.classList.add('news__content-item-mouseout');
-//       });
-//     });
-//   }
-//   arrNewsItem.forEach((item, index) => {
-//     item.addEventListener('mouseover', (e) => {
-//       IndexMouseover = index;
-//       if (!firstOver && IndexMouseover === IndexMouseout) return;
-//       arrNewsItem.forEach((item) => {
-//         item.classList.remove('news__content-item-mouseover');
-//         item.classList.remove('news__content-item-mouseout');
-//         firstOver = null;
-//       });
-//       arrNewsItem[IndexMouseover].classList.add('news__content-item-mouseover');
-//       arrNewsItem[IndexMouseout].classList.add('news__content-item-mouseout');
-//     });
-
-//     item.addEventListener('mouseout', () => {
-//       IndexMouseout = index;
-//     });
-//   });
-// }
+    // Set popup content
+    const markup = `
+      <div class="pop-up-news__content-wrapper">
+        <div class="pop-up-news__content-header">
+          <div class="pop-up-news__content-date">${dataFromItem.date}</div>
+          <h1 class="pop-up-news__content-title">${dataFromItem.title}</h1>
+        </div>
+        <ul class="pop-up-news__content-list">${contentItemsMarkup}</ul>
+      </div>
+    `;
+    popupElement.innerHTML = markup;
+  });
+}
 
 gsap
   .timeline({
