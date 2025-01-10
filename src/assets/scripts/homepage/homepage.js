@@ -631,6 +631,19 @@ layout__swiper.on('activeIndexChange', e => {
 
 const openLayoutPopUpWithData = path => {
   layout__swiper.slideTo(0);
+  //----AJAX Request-----//
+
+  const fd = new FormData();
+  fd.append('action', 'floorPlans');
+  fd.append('build', path.dataset.id);
+  axios.post('/wp-admin/admin-ajax.php', fd).then(res => {
+    console.log(res);
+    if (!res.data) return;
+
+    layoutSliders[0].getElementsByTagName('img')[0].src = `${res.data[0]}`;
+    layoutSliders[1].getElementsByTagName('img')[0].src = `${res.data[1]}`;
+  });
+  // const imgForLayoutPopUp =
   const dataForLayoutPopUp = layoutData[path.dataset.id];
   const layoutSwiper = document.querySelector('.layout-beckdrop').querySelector('.layout__swiper');
   const layoutDataRef = document
@@ -638,12 +651,12 @@ const openLayoutPopUpWithData = path => {
     .querySelector('.layout__data-wrapper');
   const layoutSliders = layoutSwiper.querySelectorAll('.layout__swiper-slide');
 
-  layoutSliders[0].getElementsByTagName(
-    'img',
-  )[0].src = `${dataForLayoutPopUp.floorsImages.floorPlan[0]}`;
-  layoutSliders[1].getElementsByTagName(
-    'img',
-  )[0].src = `${dataForLayoutPopUp.floorsImages.floorPlan[1]}`;
+  // layoutSliders[0].getElementsByTagName(
+  //   'img',
+  // )[0].src = `${dataForLayoutPopUp.floorsImages.floorPlan[0]}`;
+  // layoutSliders[1].getElementsByTagName(
+  //   'img',
+  // )[0].src = `${dataForLayoutPopUp.floorsImages.floorPlan[1]}`;
 
   const houseNumber = layoutDataRef
     .querySelector('.layout__data-house')
