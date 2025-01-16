@@ -8,7 +8,7 @@ header.header.header-start-position
                     a.header__lang-block-item-link(href="/dist") EN
         a.header__phone-number(href="tel: +380445000001")
             span (044) 500-00-01
-                   
+
     a(href='/dist').header__logo
         img.header__logo-img(src="./assets/images/header/logo-header.svg")
     .header__wrapper-btn
@@ -26,19 +26,19 @@ header.header.header-start-position
 
     //- Pop up (manager)
     .manager-modal-beckdrop.is-hidden
-      .modal.manager-modal
-        include ../components/form/manager-form.pug
+        .modal.manager-modal
+            include ../components/form/manager-form.pug
 
     //- Pop up
     .modal-beckdrop.is-hidden
-      .modal.feedback-modal
-        include ../components/form/form.pug
+        .modal.feedback-modal
+            include ../components/form/form.pug
 
     //- Pop up (Thanks)
     .pop-up-beckdrop.is-hidden
-      .modal.thanks-modal
-        include ../components/pop-up-thanks.pug
-       
+        .modal.thanks-modal
+            include ../components/pop-up-thanks.pug
+
     //- Menu
     .menu-beckdrop.is-hidden
         .modal.menu-modal
@@ -56,7 +56,7 @@ header.header.header-start-position
     .pop-up-news-beckdrop.is-hidden
         .modal.pop-up-news-modal
             .page-container
-              include ../components/pop-up-news/pop-up-news.pug
+                include ../components/pop-up-news/pop-up-news.pug
 
     //- Gallery
     .gallery-beckdrop.is-hidden
@@ -66,24 +66,24 @@ header.header.header-start-position
                     .big-swiper_gallery
                         .swiper-wrapper 
                             .swiper-slide.gallery__swiper-slide
-                                img(src="./assets/images/gallery/1.jpg", alt="")
+                                img(src="./assets/images/gallery/1.jpg" alt="")
                             .swiper-slide.gallery__swiper-slide
-                                img(src="./assets/images/gallery/3.jpg", alt="")
+                                img(src="./assets/images/gallery/3.jpg" alt="")
                             .swiper-slide.gallery__swiper-slidebig-
-                                img(src="./assets/images/gallery/2.jpg", alt="")
+                                img(src="./assets/images/gallery/2.jpg" alt="")
                             .swiper-slide.gallery__swiper-slide
-                                img(src="./assets/images/gallery/4.jpg", alt="")
+                                img(src="./assets/images/gallery/4.jpg" alt="")
                             .swiper-slide.gallery__swiper-slide
-                                img(src="./assets/images/gallery/5.jpg", alt="")
+                                img(src="./assets/images/gallery/5.jpg" alt="")
                             .swiper-slide.gallery__swiper-slide
-                                img(src="./assets/images/gallery/6.jpg", alt="")
+                                img(src="./assets/images/gallery/6.jpg" alt="")
                             .swiper-slide.gallery__swiper-slide
-                                img(src="./assets/images/gallery/7.jpg", alt="")
+                                img(src="./assets/images/gallery/7.jpg" alt="")
                             .swiper-slide.gallery__swiper-slide
-                                img(src="./assets/images/gallery/8.jpg", alt="")
+                                img(src="./assets/images/gallery/8.jpg" alt="")
                             .swiper-slide.gallery__swiper-slide
-                                img(src="./assets/images/gallery/9.jpg", alt="")
-                
+                                img(src="./assets/images/gallery/9.jpg" alt="")
+
                     .big-swiper-pagination.swiper-pagination
                     .big-swiper-gallery__wrappper-buttom
                         .about__wrapper-btn-swiper.btn-swiper-wrapper
@@ -119,10 +119,10 @@ header.header.header-start-position
                 .layout__swiper-wrapper
                     .layout__swiper
                         .swiper-wrapper 
-                            .swiper-slide.layout__swiper-slide
-                                img(src="./assets/images/layout/house-5-floor-5-8.png", alt="")
-                            .swiper-slide.layout__swiper-slide
-                                img(src="./assets/images/layout/house-5-floor-10-16.png", alt="")
+                            .swiper-slide.layout__swiper-slide(data-floor-img="1-3")
+                                img(src="./assets/images/layout/house-5-floor-5-8.png" alt="" )
+                            .swiper-slide.layout__swiper-slide(data-floor-img="2")
+                                img(src="./assets/images/layout/house-5-floor-10-16.png" alt="" )
                         .layout__wrapper-btn-swiper.btn-swiper-wrapper
                             .layout__btn-swiper-left.btn-swiper-left
                                 include ../components/btn-swiper.pug
@@ -142,14 +142,27 @@ header.header.header-start-position
                                 .layout__data-number 5
                         li.layout__data-item-left
                             .layout__data-floor-btn
-                                .layout__data-title Поверхи
+                                .layout__data-title Обрати поверх
+                                //- .wrapper-floor-btn
+                                //-     .floor-btn-left.layout__data-number.active-floor-btn 5-8
+                                //-     .floor-btn-right.layout__data-number 10-16
                                 .wrapper-floor-btn
-                                    .floor-btn-left.layout__data-number.active-floor-btn 5-8
-                                    .floor-btn-right.layout__data-number 10-16
+                                    .floor-dropdown__btn
+                                        span.layout__data-number.active-floor-btn 5-8
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                            <path d="M3.50009 19.5H21.5001C21.6823 19.4994 21.861 19.4491 22.0168 19.3546C22.1726 19.2601 22.2996 19.1248 22.3843 18.9634C22.4689 18.802 22.508 18.6206 22.4972 18.4387C22.4864 18.2568 22.4262 18.0812 22.3231 17.931L13.3231 4.93098C12.9501 4.39198 12.0521 4.39198 11.6781 4.93098L2.67809 17.931C2.57391 18.0809 2.51282 18.2566 2.50145 18.4388C2.49008 18.621 2.52887 18.8029 2.6136 18.9646C2.69833 19.1263 2.82576 19.2617 2.98205 19.3561C3.13834 19.4505 3.31751 19.5003 3.50009 19.5Z" fill="black"/>
+                                        </svg>
+                                    ul.floor-dropdown-list
+                                        li.floor-dropdown-item.layout__data-number(data-floor="1-3") 1-3
+                                        li.floor-dropdown-item.layout__data-number(data-floor="2") 2
+                                        li.floor-dropdown-item.layout__data-number(data-floor="3") 3
+                                        li.floor-dropdown-item.layout__data-number(data-floor="4") 4
+                                        li.floor-dropdown-item.layout__data-number(data-floor="15-20") 15-20
+
                     ul.layout__data-list-right  
                         li.layout__data-item-right
                             .layout__data-compass
-                                img.img-compass(src="./assets/images/layout/Compass.svg", alt="")
+                                img.img-compass(src="./assets/images/layout/Compass.svg" alt="")
                         li.layout__data-item-right
                             .layout__data-floor
                                 .layout__data-title Площа поверху
@@ -167,16 +180,15 @@ header.header.header-start-position
     .layout-img-beckdrop.is-hidden
         .modal.layout-img-modal
             .layout-img-wrapper 
-                img.layout-img-big(src="", alt="")
+                img.layout-img-big(src="" alt="")
                 button.header__btn-close-menu.js-close-big-layout-img(type="button")
                     <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 13L13 1M1 1L13 13"  stroke-width="2"/>
                     </svg>
-                        
+
 
 
     //- select.header__lang-blok(name='java-navigator' onchange='top.location.href = this.options[this.selectedIndex].value;' size='1')
     //-     option(value ='https://www.countryflags.com/flag-of-ukraine/') ук
     //-     option(value='https://www.countryflags.com/flag-of-united-states-the/') en
     //-     option(value='https://www.countryflags.com/flag-of-russia/') рус
-    

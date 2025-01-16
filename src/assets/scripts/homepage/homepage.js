@@ -597,6 +597,7 @@ const arrPathDesctop = document.querySelector('#layout_svg-desctop').querySelect
 document.querySelector('.layout__data-btn').addEventListener('click', () => {
   document.body.classList.toggle('modal-open');
   document.querySelector('.layout-beckdrop').classList.toggle('is-hidden');
+  document.removeEventListener('click', dropDownHandler);
 });
 
 // const baseUrlFromBody = document.getElementsByTagName('body')[0].dataset.imgBaseUrl;
@@ -616,18 +617,78 @@ const layout__swiper = new Swiper('.layout__swiper', {
   },
   speed: 2000,
 });
-const leftBtnPopUpLayout = document.querySelector('.floor-btn-left');
-const rightBtnPopUpLayout = document.querySelector('.floor-btn-right');
-layout__swiper.on('activeIndexChange', e => {
-  leftBtnPopUpLayout.classList.toggle('active-floor-btn');
-  rightBtnPopUpLayout.classList.toggle('active-floor-btn');
-});
-[leftBtnPopUpLayout, rightBtnPopUpLayout].forEach(btn =>
-  btn.addEventListener('click', () => {
-    if (btn.classList.contains('active-floor-btn')) return;
-    layout__swiper.slideNext(1000);
-  }),
-);
+// const leftBtnPopUpLayout = document.querySelector('.floor-btn-left');
+// const rightBtnPopUpLayout = document.querySelector('.floor-btn-right');
+// layout__swiper.on('activeIndexChange', e => {
+//   leftBtnPopUpLayout.classList.toggle('active-floor-btn');
+//   rightBtnPopUpLayout.classList.toggle('active-floor-btn');
+// });
+// [leftBtnPopUpLayout, rightBtnPopUpLayout].forEach(btn =>
+//   btn.addEventListener('click', () => {
+//     if (btn.classList.contains('active-floor-btn')) return;
+//     layout__swiper.slideNext(1000);
+//   }),
+// );
+
+//--Open/Close--Dropdown--//
+function dropDownHandler(evt) {
+  const dropDown = document.querySelector('.wrapper-floor-btn');
+  const floorBtnAll = document.querySelectorAll('.floor-dropdown-item');
+  const dropDownActive = document.querySelector('.floor-dropdown__btn .active-floor-btn');
+  const dropDownBtn = evt.target.closest('.floor-dropdown__btn');
+  const floorBtn = evt.target.closest('.floor-dropdown-item');
+  if (floorBtn) {
+    dropDownActive.textContent = floorBtn.textContent;
+    floorBtnAll.forEach(btn => (btn.style.display = 'flex'));
+    floorBtn.style.display = 'none';
+    const floor = floorBtn.getAttribute('data-floor');
+
+    const targetSlideIndex = Array.from(layout__swiper.slides).findIndex(
+      slide => slide.getAttribute('data-floor-img') === floor,
+    );
+
+    // Якщо знайдено слайд, переміщуємо до нього
+    if (targetSlideIndex !== -1) {
+      layout__swiper.slideTo(targetSlideIndex);
+    }
+  }
+  if (dropDownBtn) {
+    if (!dropDown.classList.contains('is-open')) {
+      console.log('open', dropDown);
+      dropDown.classList.add('is-open');
+    } else {
+      console.log('close btn', dropDown);
+      dropDown.classList.remove('is-open');
+    }
+  } else {
+    console.log('close', dropDown);
+    dropDown.classList.remove('is-open');
+  }
+}
+function dropDownFunc() {
+  const floorBtnAll = document.querySelectorAll('.floor-dropdown-item');
+  const dropDownActive = document.querySelector('.floor-dropdown__btn .active-floor-btn');
+  dropDownActive.textContent = floorBtnAll[0].dataset.floor;
+  floorBtnAll[0].style.display = 'none';
+  document.addEventListener('click', dropDownHandler);
+
+  //---slider hendler change dropdown--//
+
+  layout__swiper.on('slideChange', () => {
+    const activeSlide = layout__swiper.slides[layout__swiper.activeIndex];
+    const activeFloor = activeSlide.getAttribute('data-floor-img');
+
+    // Оновлюємо активний пункт у дропдауні
+    floorBtnAll.forEach(item => {
+      if (item.getAttribute('data-floor') === activeFloor) {
+        item.style.display = 'none';
+        dropDownActive.textContent = item.textContent; // Оновлюємо текст кнопки дропдауна
+      } else {
+        item.style.display = 'flex';
+      }
+    });
+  });
+}
 
 const openLayoutPopUpWithData = path => {
   layout__swiper.slideTo(0);
@@ -637,11 +698,23 @@ const openLayoutPopUpWithData = path => {
   fd.append('action', 'floorPlans');
   fd.append('build', path.dataset.id);
   axios.post('/wp-admin/admin-ajax.php', fd).then(res => {
-    console.log(res);
     if (!res.data) return;
-
-    layoutSliders[0].getElementsByTagName('img')[0].src = `${res.data[0]}`;
-    layoutSliders[1].getElementsByTagName('img')[0].src = `${res.data[1]}`;
+    const dropDownList = document.querySelector('.floor-dropdown-list');
+    const sliderList = document.querySelector('.layout__swiper .swiper-wrapper');
+    dropDownList.innerHTML = '';
+    sliderList.innerHTML = '';
+    res.data.forEach(floor => {
+      sliderList.insertAdjacentHTML(
+        'beforeend',
+        `<div class="swiper-slide layout__swiper-slide" data-floor-img="${floor.floor}"><img src="${floor.plan}" alt="floor plan" /></div>`,
+      );
+      dropDownList.insertAdjacentHTML(
+        'beforeend',
+        `<li class="floor-dropdown-item layout__data-number" data-floor="${floor.floor}">${floor.floor}</li>`,
+      );
+    });
+    layout__swiper.update();
+    dropDownFunc();
   });
   // const imgForLayoutPopUp =
   const dataForLayoutPopUp = layoutData[path.dataset.id];
@@ -663,14 +736,14 @@ const openLayoutPopUpWithData = path => {
     .querySelector('.layout__data-number');
   houseNumber.textContent = `${dataForLayoutPopUp.id}`;
 
-  const floorNumberLeft = layoutDataRef
-    .querySelector('.wrapper-floor-btn')
-    .querySelector('.floor-btn-left');
-  floorNumberLeft.textContent = `${dataForLayoutPopUp.floorsImages.titles[0]}`;
-  const floorNumberRight = layoutDataRef
-    .querySelector('.wrapper-floor-btn')
-    .querySelector('.floor-btn-right');
-  floorNumberRight.textContent = `${dataForLayoutPopUp.floorsImages.titles[1]}`;
+  // const floorNumberLeft = layoutDataRef
+  //   .querySelector('.wrapper-floor-btn')
+  //   .querySelector('.floor-btn-left');
+  // floorNumberLeft.textContent = `${dataForLayoutPopUp.floorsImages.titles[0]}`;
+  // const floorNumberRight = layoutDataRef
+  //   .querySelector('.wrapper-floor-btn')
+  //   .querySelector('.floor-btn-right');
+  // floorNumberRight.textContent = `${dataForLayoutPopUp.floorsImages.titles[1]}`;
 
   const floorNumber = layoutDataRef
     .querySelector('.layout__data-floor')
