@@ -55,6 +55,23 @@ function handlerClickMenu(callback) {
 
 (() => {
   const refs = {
+    openModalBtn: document.querySelectorAll('.js-pdf-form-open'),
+    closeModalBtn: document.querySelector('.js-pdf-form-close'),
+    modal: document.querySelector('.pdf-beckdrop'),
+  };
+
+  function toggleModal(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    document.body.classList.toggle('modal-open');
+    refs.modal.classList.toggle('is-hidden');
+  }
+  [...refs.openModalBtn].map(btn => btn.addEventListener('click', toggleModal));
+  refs.closeModalBtn.addEventListener('click', toggleModal);
+})();
+
+(() => {
+  const refs = {
     openModalBtn: document.querySelectorAll('.js-feedback-form-open'),
     closeModalBtn: document.querySelector('.js-feedback-form-close'),
     modal: document.querySelector('.modal-beckdrop'),

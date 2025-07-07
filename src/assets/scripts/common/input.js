@@ -37,6 +37,8 @@ const formsWithRedirect = [
   '[data-feedback-contact-screen-form]',
 ];
 
+const pdfForm = ['[data-pdf-form]'];
+
 // function putValueFromSelectToInput(selectSelector) {
 //   const el = document.querySelector(selectSelector);
 //   if (el === null) return;
@@ -98,11 +100,62 @@ formsWithRedirect.forEach(form => {
   }
 });
 
+pdfForm.forEach(form => {
+  const $form = document.querySelector(form);
+  if ($form) {
+    /* eslint-disable */
+    new FormMonster({
+      /* eslint-enable */
+      elements: {
+        $form,
+        showSuccessMessage: false,
+        successAction: () => {
+          document.querySelector('.pdf-beckdrop').classList.add('is-hidden');
+          document.querySelector('.pop-up-beckdrop').classList.add('is-hidden');
+        },
+        $btnSubmit: $form.querySelector('[data-btn-submit]'),
+        fields: {
+          name: {
+            inputWrapper: new SexyInput({
+              animation: 'none',
+              $field: $form.querySelector('[data-field-name]'),
+            }),
+            rule: yup
+              .string()
+              .required(i18next.t('required'))
+              .matches(/^[aA-zZа-яА-ЯёЁа-щА-ЩЬьЮюЯяЇїІіЄєҐґ'\s]+$/, i18next.t('field_only_letters'))
+              .trim(),
+            defaultMessage: i18next.t('name'),
+            valid: false,
+            error: [],
+          },
+          phone: {
+            inputWrapper: new SexyInput({
+              animation: 'none',
+              $field: $form.querySelector('[data-field-phone]'),
+              typeInput: 'phone',
+            }),
+            rule: yup
+              .string()
+              .required(i18next.t('required'))
+              .min(16, i18next.t('field_too_short', { cnt: 19 - 7 })),
+
+            defaultMessage: i18next.t('phone'),
+            valid: false,
+            error: [],
+          },
+        },
+      },
+    });
+  }
+});
+
 // ---------------------------------- feedback form input handler ------------------------------
 
 const inputArrey = [
   ...document.querySelectorAll('.feedback-form__input'),
   ...document.querySelectorAll('.manager-feedback-form__input'),
+  ...document.querySelectorAll('.pdf-form__input'),
 ];
 
 inputArrey.forEach(input => {
@@ -125,6 +178,16 @@ btnCloseFeedbackForm.addEventListener('click', () => {
   const inputsFeedbackForm = feedbackForm.querySelectorAll('.feedback-form__input');
   inputsFeedbackForm[0].classList.remove('input-with-text');
   inputsFeedbackForm[1].classList.remove('input-with-text');
+});
+
+const btnClosePdfForm = document.querySelector('.js-pdf-form-close');
+const PdfForm = document.querySelector('.pdf-modal').querySelector('.pdf-form');
+
+btnClosePdfForm.addEventListener('click', () => {
+  PdfForm.reset();
+  const inputsPdfForm = PdfForm.querySelectorAll('.pdf-form__input');
+  inputsPdfForm[0].classList.remove('input-with-text');
+  inputsPdfForm[1].classList.remove('input-with-text');
 });
 
 const btnCloseManagerFeedbackForm = document.querySelector('.js-manager-feedback-form-close');

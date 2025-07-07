@@ -1,0 +1,27 @@
+form.pdf-form(autocomplete="off" data-pdf-form)
+  h3.pdf-form__title Презентація комплексу
+  p Для завантаження pdf-файлу заповніть будь ласка ім'я та телефон.
+  .pdf-form__input-wrapper
+    label.pdf-form__label.hidden-field(data-field-input data-field-name-form data-status="field--inactive")
+      span.pdf-form__label-required *
+      input.pdf-form__input(type="text" name="name-form" placeholder="" value="PDF")
+      .pdf-form__label-wrap  Ваше ім'я
+      .input-message(data-input-message)
+    label.pdf-form__label(data-field-input data-field-name data-status="field--inactive")
+      span.pdf-form__label-required *
+      input.pdf-form__input(type="text" name="name" placeholder="")
+      .pdf-form__label-wrap  Ваше ім'я
+      .input-message(data-input-message)
+    label.pdf-form__label(data-field-input data-field-phone data-status="field--inactive")
+      span.pdf-form__label-required *
+      input.pdf-form__input(type="text" name="phone" placeholder="")
+      .pdf-form__label-wrap Номер телефону
+      .input-message(data-input-message)
+  
+  button.pdf-form__btn.open-pdf(type="submit" data-btn-submit) 
+      span(data-btn-submit-text).link__text.usn Завантажити
+  
+  button.btn-pdf-form-close.js-pdf-form-close(type="button")
+    <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 13L13 1M1 1L13 13"  stroke-width="2"/>
+    </svg>

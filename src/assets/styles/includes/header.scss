@@ -407,6 +407,7 @@
 .pop-up-news-beckdrop,
 .pop-up-beckdrop,
 .manager-modal-beckdrop,
+.pdf-beckdrop,
 .video-popup {
   // padding: 20px 15px;
   position: fixed;
@@ -418,6 +419,14 @@
   background: rgba(33, 38, 48, 0.9);
   transition: all 1s var(--cubic);
   overflow-y: scroll;
+}
+.pdf-beckdrop {
+  display: flex;
+  align-items: end;
+  width: 100vw;
+  .modal.pdf-modal {
+    width: 100vw;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -483,6 +492,15 @@
   transition: all 1s var(--cubic);
 }
 .manager-modal-beckdrop .modal.manager-modal .manager-feedback-form {
+  transform: translateY(0%);
+  transition: all 1s var(--cubic);
+}
+
+.pdf-beckdrop.is-hidden .modal.pdf-modal .pdf-form {
+  transform: translateY(100%);
+  transition: all 1s var(--cubic);
+}
+.pdf-beckdrop .modal.pdf-modal .pdf-form {
   transform: translateY(0%);
   transition: all 1s var(--cubic);
 }
