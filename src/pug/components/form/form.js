@@ -192,6 +192,25 @@ export default class FormMonster {
           const formData = new FormData(this.elements.$form);
           formData.append('action', 'app');
 
+          // --- Підготовка даних для CRM
+        const phone = formData.get('phone').replace(/[^+\d]/g, ''); // назва поля в формі має бути "phone"
+        const name = formData.get('name');
+        // const formType = formData.get('form_type');
+        // const message = formData.get('message');
+console.log(phone)
+        // Створення об'єкта параметрів
+        const crmParams = {
+          Name: name,
+          
+          Website: window.location.href
+          // Можна додати інші поля за потреби
+        };
+        console.log(crmParams)
+        // --- Надсилання в CRM
+        if (window.custom_crm && typeof window.custom_crm.feedback === 'function') {
+          console.log("data flow to CRM")
+          await window.custom_crm.feedback(phone, crmParams);
+        }
           /* eslint-disable-next-line */
           const { error, code_error } = await sendForm(formData);
 
@@ -199,7 +218,7 @@ export default class FormMonster {
             this.watchedState.status = 'successSand';
             if (e.target.classList.contains('pdf-form')) {
               window.open(
-                'https://the-light.com.ua/wp-content/themes/the-light/assets/the_light.pdf',
+                '/wp-content/themes/3d/assets/the_light.pdf',
                 '_blank',
               );
             }

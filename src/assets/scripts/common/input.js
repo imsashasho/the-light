@@ -112,6 +112,7 @@ pdfForm.forEach(form => {
         successAction: () => {
           document.querySelector('.pdf-beckdrop').classList.add('is-hidden');
           document.querySelector('.pop-up-beckdrop').classList.add('is-hidden');
+          document.body.classList.toggle('modal-open');
         },
         $btnSubmit: $form.querySelector('[data-btn-submit]'),
         fields: {
