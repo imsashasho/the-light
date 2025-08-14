@@ -695,77 +695,12 @@ const openLayoutPopUpWithData = path => {
   
 const dataForLayoutPopUp = path.dataset.id;
 console.log('dataForLayoutPopUp', dataForLayoutPopUp);
-  if (!dataForLayoutPopUp || dataForLayoutPopUp != 6 && dataForLayoutPopUp != 8 ) return;
-
+  if (!dataForLayoutPopUp || dataForLayoutPopUp == 7 ) return;
   const baseUrl = window.location.origin + window.location.pathname.replace(/#.*$/, '');
-
   const queryParams = `3d/?favourites=&type=plannings&id=4&fil_build_${dataForLayoutPopUp}=${dataForLayoutPopUp}`;
-
   window.location.href = `${baseUrl}${queryParams}`;
 
-  // const fd = new FormData();
-  // fd.append('action', 'floorPlans');
-  // fd.append('build', path.dataset.id);
-  // axios.post('/wp-admin/admin-ajax.php', fd).then(res => {
-  //   if (!res.data) return;
-  //   const dropDownList = document.querySelector('.floor-dropdown-list');
-  //   const sliderList = document.querySelector('.layout__swiper .swiper-wrapper');
-  //   dropDownList.innerHTML = '';
-  //   sliderList.innerHTML = '';
-  //   res.data.forEach(floor => {
-  //     sliderList.insertAdjacentHTML(
-  //       'beforeend',
-  //       `<div class="swiper-slide layout__swiper-slide" data-floor-img="${floor.floor}"><img src="${floor.plan}" alt="floor plan" /></div>`,
-  //     );
-  //     dropDownList.insertAdjacentHTML(
-  //       'beforeend',
-  //       `<li class="floor-dropdown-item layout__data-number" data-floor="${floor.floor}">${floor.floor}</li>`,
-  //     );
-  //   });
-  //   layout__swiper.update();
-  //   dropDownFunc();
-  // });
-  // const imgForLayoutPopUp =
-  // const dataForLayoutPopUp = layoutData[path.dataset.id];
-  // const layoutSwiper = document.querySelector('.layout-beckdrop').querySelector('.layout__swiper');
-  // const layoutDataRef = document
-  //   .querySelector('.layout-beckdrop')
-  //   .querySelector('.layout__data-wrapper');
-  // const layoutSliders = layoutSwiper.querySelectorAll('.layout__swiper-slide');
-
-  // layoutSliders[0].getElementsByTagName(
-  //   'img',
-  // )[0].src = `${dataForLayoutPopUp.floorsImages.floorPlan[0]}`;
-  // layoutSliders[1].getElementsByTagName(
-  //   'img',
-  // )[0].src = `${dataForLayoutPopUp.floorsImages.floorPlan[1]}`;
-
-  // const houseNumber = layoutDataRef
-  //   .querySelector('.layout__data-house')
-  //   .querySelector('.layout__data-number');
-  // houseNumber.textContent = `${dataForLayoutPopUp.id}`;
-
-  // const floorNumberLeft = layoutDataRef
-  //   .querySelector('.wrapper-floor-btn')
-  //   .querySelector('.floor-btn-left');
-  // floorNumberLeft.textContent = `${dataForLayoutPopUp.floorsImages.titles[0]}`;
-  // const floorNumberRight = layoutDataRef
-  //   .querySelector('.wrapper-floor-btn')
-  //   .querySelector('.floor-btn-right');
-  // floorNumberRight.textContent = `${dataForLayoutPopUp.floorsImages.titles[1]}`;
-
-  // const floorNumber = layoutDataRef
-  //   .querySelector('.layout__data-floor')
-  //   .querySelector('.layout__data-number');
-  // floorNumber.textContent = `${dataForLayoutPopUp.flatCount} м²`;
-
-  // const apartmentsNumber = layoutDataRef
-  //   .querySelector('.layout__data-apartments')
-  //   .querySelector('.layout__data-number');
-  // apartmentsNumber.textContent = `${dataForLayoutPopUp.totalArea} м²`;
-
-  // document.body.classList.toggle('modal-open');
-  // document.querySelector('.layout-beckdrop').classList.toggle('is-hidden');
+  
 };
 
 [...arrPathMobile, ...arrPathDesctop].forEach(path => {
