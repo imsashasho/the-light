@@ -12,7 +12,7 @@ async function newsRendering() {
   newsCard = newsData.result;
   newsContainerRef.innerHTML = '';
 
-  newsCard.forEach((card) => {
+  newsCard.forEach(card => {
     newsContainerRef.innerHTML += card;
   });
 }

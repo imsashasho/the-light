@@ -17,6 +17,33 @@ import { horizontal } from 'gsap/Observer';
 /** ******************************* */
 // import layoutData from '../../../static/data-for-layout-pop-up.json';
 
+Swiper.use([Navigation, Pagination, Controller]);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const swiperContainers = document.querySelectorAll('.news__content-list.swiper');
+
+  swiperContainers.forEach(container => {
+    new Swiper(container, {
+      loop: false,
+      slidesPerView: '2',
+      spaceBetween: 32,
+      speed: 600,
+      navigation: {
+        nextEl: '.news .news__title-block-btn-right',
+        prevEl: '.news .news__title-block-btn-left',
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        600: {
+          slidesPerView: 2,
+        },
+      },
+    });
+  });
+});
+
 global.gsap = gsap;
 global.axios = axios;
 
@@ -692,15 +719,13 @@ function dropDownFunc() {
 
 const openLayoutPopUpWithData = path => {
   // layout__swiper.slideTo(0);
-  
-const dataForLayoutPopUp = path.dataset.id;
-console.log('dataForLayoutPopUp', dataForLayoutPopUp);
-  if (!dataForLayoutPopUp || dataForLayoutPopUp == 7 ) return;
+
+  const dataForLayoutPopUp = path.dataset.id;
+  console.log('dataForLayoutPopUp', dataForLayoutPopUp);
+  if (!dataForLayoutPopUp || dataForLayoutPopUp == 7) return;
   const baseUrl = window.location.origin + window.location.pathname.replace(/#.*$/, '');
   const queryParams = `3d/?favourites=&type=plannings&id=4&fil_build_${dataForLayoutPopUp}=${dataForLayoutPopUp}`;
   window.location.href = `${baseUrl}${queryParams}`;
-
-  
 };
 
 [...arrPathMobile, ...arrPathDesctop].forEach(path => {
