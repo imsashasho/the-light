@@ -722,7 +722,7 @@ const openLayoutPopUpWithData = path => {
 
   const dataForLayoutPopUp = path.dataset.id;
   console.log('dataForLayoutPopUp', dataForLayoutPopUp);
-  if (!dataForLayoutPopUp || dataForLayoutPopUp == 7) return;
+  if (!dataForLayoutPopUp) return;
   const baseUrl = window.location.origin + window.location.pathname.replace(/#.*$/, '');
   const queryParams = `3d/?favourites=&type=plannings&id=4&fil_build_${dataForLayoutPopUp}=${dataForLayoutPopUp}`;
   window.location.href = `${baseUrl}${queryParams}`;
