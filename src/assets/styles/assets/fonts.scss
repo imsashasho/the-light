@@ -1,18 +1,37 @@
 @font-face {
-  font-family: 'Century Gothic';
-  font-weight: 400;
-  src: url('../fonts/Century-Gothic-400.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'Century Gothic';
-  font-weight: 700;
-  src: url('../fonts/Century-Gothic-700.ttf') format('truetype');
-}
-@font-face {
   font-family: 'Palace Script MT';
-  font-weight: 400;
-  font-style: italic;
-  src: url('../fonts/PalaceScriptMT.ttf') format('truetype');
+  src: url('PalaceScriptMT.eot');
+  src: local('Palace Script MT'), local('PalaceScriptMT'),
+    url('../fonts/PalaceScriptMT.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/PalaceScriptMT.woff2') format('woff2'),
+    url('../fonts/PalaceScriptMT.woff') format('woff'),
+    url('../fonts/PalaceScriptMT.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('CenturyGothic.eot');
+  src: local('Century Gothic'), local('CenturyGothic'),
+    url('../fonts/CenturyGothic.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/CenturyGothic.woff2') format('woff2'),
+    url('../fonts/CenturyGothic.woff') format('woff'),
+    url('../fonts/CenturyGothic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('CenturyGothic-Bold.eot');
+  src: local('Century Gothic Bold'), local('CenturyGothic-Bold'),
+    url('../fonts/CenturyGothic-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/CenturyGothic-Bold.woff2') format('woff2'),
+    url('../fonts/CenturyGothic-Bold.woff') format('woff'),
+    url('../fonts/CenturyGothic-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
 }
 
 // @font-face {

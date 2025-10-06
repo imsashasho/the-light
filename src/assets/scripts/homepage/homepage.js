@@ -17,7 +17,7 @@ import { horizontal } from 'gsap/Observer';
 /** ******************************* */
 // import layoutData from '../../../static/data-for-layout-pop-up.json';
 
-Swiper.use([Navigation, Pagination, Controller]);
+Swiper.use([Navigation, Pagination, Controller, Virtual, EffectFade, EffectCoverflow]);
 
 document.addEventListener('DOMContentLoaded', () => {
   const swiperContainers = document.querySelectorAll('.news__content-list.swiper');
@@ -91,31 +91,49 @@ if (window.matchMedia('(min-width: 1280px)').matches) {
 
 // -------------------swiper in about section -------------------------
 
+// Ініціалізація основного слайдера
 const swiper_1 = new Swiper('.swiper_1', {
-  modules: [Navigation, Controller, Pagination],
+  // modules: [Navigation, Controller, Pagination],
   simulateTouch: false,
   rewind: true,
-  speed: 1000,
+  speed: 1200,
+  loop: true,
   navigation: {
-    nextEl: document.querySelector('.about__btn-swiper-right'),
-    prevEl: document.querySelector('.about__btn-swiper-left'),
+    nextEl: '.about__btn-swiper-right',
+    prevEl: '.about__btn-swiper-left',
+  },
+  // on: {
+  //   init() {
+  //     duplicateSlidesInAbout();
+  //   },
+  // },
+});
+
+// Другий слайдер
+const swiper_2 = new Swiper('.swiper_2', {
+  // modules: [Navigation, Controller],
+  simulateTouch: false,
+  rewind: true,
+  speed: 1100,
+  allowTouchMove: false,
+  loop: true,
+  navigation: {
+    nextEl: '.about__btn-swiper-right',
+    prevEl: '.about__btn-swiper-left',
   },
 });
 
-const swiper_2 = new Swiper('.swiper_2', {
-  modules: [Navigation, Controller],
-  simulateTouch: false,
-  rewind: true,
-  allowTouchMove: false,
-});
-
+// Слайдер з номерами - виправлена назва класу
 const swiper_number_about = new Swiper('.swiper_nuber_about', {
-  modules: [Navigation, Controller, Virtual],
+  // Виправлено з 'swiper_nuber_about'
+  // modules: [Navigation, Controller, Virtual],
   spaceBetween: 10,
   virtual: {
     slides: (() => {
       const slides = [];
-      for (let i = 1; i <= swiper_1.slides.length; i++) {
+      // Використовуємо правильну кількість слайдів після ініціалізації
+      const slidesCount = swiper_1.slides ? swiper_1.slides.length : 1;
+      for (let i = 1; i <= slidesCount; i++) {
         slides.push(`${i}`);
       }
       return slides;
@@ -127,8 +145,9 @@ const swiper_number_about = new Swiper('.swiper_nuber_about', {
   allowTouchMove: false,
 });
 
+// Текстовий слайдер
 const swiper_text = new Swiper('.swiper_text', {
-  modules: [Navigation, Controller, EffectFade],
+  // modules: [Navigation, Controller, EffectFade],
   simulateTouch: false,
   allowTouchMove: false,
   rewind: true,
@@ -138,37 +157,47 @@ const swiper_text = new Swiper('.swiper_text', {
   },
 });
 
+// Функції для перемикання слайдів
 const switchAllSlidesToNextInAbout = () => {
-  swiper_1.slideNext(1000);
-};
-const switchAllSlidesToPrevInAbout = () => {
-  swiper_1.slidePrev(1000);
+  swiper_1.slideNext();
 };
 
-swiper_1.on('activeIndexChange', e => {
-  swiper_2.slideTo(e.realIndex, 1000);
-  swiper_number_about.slideTo(e.realIndex, 1000);
-  swiper_text.slideTo(e.realIndex, 1000);
+const switchAllSlidesToPrevInAbout = () => {
+  swiper_1.slidePrev();
+};
+
+// Синхронізація слайдерів
+swiper_1.on('slideChange', () => {
+  // Змінено з 'activeIndexChange' на 'slideChange'
+  const activeIndex = swiper_1.realIndex;
+  // swiper_2.slideTo(activeIndex, 1000);
+  swiper_number_about.slideTo(activeIndex, 1000);
+  swiper_text.slideTo(activeIndex, 1000);
 });
 
+// Оновлення загальної кількості слайдів
 const aboutSliderTotal = document.querySelector('.about__slider-total');
-// const aboutSliderCurrent = document.querySelector('.about__slider-current');
+if (aboutSliderTotal) {
+  const totalSlides = swiper_1.slides.length;
+  aboutSliderTotal.innerHTML = totalSlides < 10 ? `0${totalSlides}` : `${totalSlides}`;
+}
 
-aboutSliderTotal.innerHTML =
-  swiper_1.slides.length < 10 ? `0${swiper_1.slides.length}` : `${swiper_1.slides.length}`;
+// Додавання обробників кліків - оптимізована версія
+const addClickHandlers = swiperSelector => {
+  const swiperElement = document.querySelector(`.about ${swiperSelector}`);
+  if (swiperElement) {
+    const slides = swiperElement.querySelectorAll('.swiper-slide');
+    slides.forEach(slide => {
+      slide.addEventListener('click', switchAllSlidesToNextInAbout);
+    });
+  }
+};
 
-[
-  ...document
-    .querySelector('.about')
-    .querySelector('.swiper_1')
-    .querySelectorAll('.swiper-slide'),
-].map(activeSlide => activeSlide.addEventListener('click', switchAllSlidesToNextInAbout));
-[
-  ...document
-    .querySelector('.about')
-    .querySelector('.swiper_2')
-    .querySelectorAll('.swiper-slide'),
-].map(activeSlide => activeSlide.addEventListener('click', switchAllSlidesToNextInAbout));
+// Ініціалізація після завантаження DOM
+document.addEventListener('DOMContentLoaded', () => {
+  addClickHandlers('.swiper_1');
+  addClickHandlers('.swiper_2');
+});
 
 // ----------------------- swiper_benefits ---------------------------------------------------
 const swiper_benefits = new Swiper('.swiper_benefits', {
