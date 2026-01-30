@@ -58,6 +58,7 @@
     font-size: 14px;
     line-height: 1.4;
     color: var(--light);
+    white-space: pre-wrap;
     @include from(768px) {
       margin-bottom: 32px;
       font-size: 18px;
