@@ -1,0 +1,231 @@
+{
+  "key": "group_construction_page",
+  "title": "Construction Page",
+  "fields": [
+    {
+      "key": "field_construction_page_title",
+      "label": "Page title",
+      "name": "construction_page_title",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "Хід будівництва",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_construction_status_default",
+      "label": "Default status text",
+      "name": "construction_status_default",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "Shown before month selection and used as fallback.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "rows": 4,
+      "placeholder": "",
+      "new_lines": "br"
+    },
+    {
+      "key": "field_construction_progress_items",
+      "label": "Progress items",
+      "name": "construction_progress_items",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "Top-right progress circles on construction page.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "table",
+      "pagination": 0,
+      "min": 0,
+      "max": 0,
+      "collapsed": "",
+      "button_label": "Add progress item",
+      "rows_per_page": 20,
+      "sub_fields": [
+        {
+          "key": "field_construction_progress_label",
+          "label": "Label",
+          "name": "label",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "60",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "parent_repeater": "field_construction_progress_items"
+        },
+        {
+          "key": "field_construction_progress_percent",
+          "label": "Percent",
+          "name": "percent",
+          "aria-label": "",
+          "type": "number",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "40",
+            "class": "",
+            "id": ""
+          },
+          "default_value": 0,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "prepend": "",
+          "append": "%",
+          "parent_repeater": "field_construction_progress_items"
+        }
+      ]
+    },
+    {
+      "key": "field_construction_filters",
+      "label": "Year/Month filter descriptions",
+      "name": "construction_filters",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "Optional. If empty, filters are generated from posts only.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "pagination": 0,
+      "min": 0,
+      "max": 0,
+      "collapsed": "",
+      "button_label": "Add year",
+      "rows_per_page": 20,
+      "sub_fields": [
+        {
+          "key": "field_construction_filter_year",
+          "label": "Year",
+          "name": "year",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "Example: 2026",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "20",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "2026",
+          "prepend": "",
+          "append": "",
+          "parent_repeater": "field_construction_filters"
+        },
+        {
+          "key": "field_construction_filter_months",
+          "label": "Months",
+          "name": "months",
+          "aria-label": "",
+          "type": "repeater",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "80",
+            "class": "",
+            "id": ""
+          },
+          "layout": "table",
+          "pagination": 0,
+          "min": 0,
+          "max": 0,
+          "collapsed": "",
+          "button_label": "Add month",
+          "rows_per_page": 20,
+          "sub_fields": [
+            {
+              "key": "field_construction_filter_month_name",
+              "label": "Month name",
+              "name": "name",
+              "aria-label": "",
+              "type": "text",
+              "required": 1,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "parent_repeater": "field_construction_filter_months"
+            },
+            {
+              "key": "field_construction_filter_month_description",
+              "label": "Description",
+              "name": "description",
+              "aria-label": "",
+              "type": "textarea",
+              "required": 0,
+              "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+              },
+              "new_lines": "br",
+              "parent_repeater": "field_construction_filter_months"
+            }
+          ],
+          "parent_repeater": "field_construction_filters"
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "construction.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1774370001
+}

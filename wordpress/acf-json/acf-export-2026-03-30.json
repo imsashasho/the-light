@@ -1,0 +1,148 @@
+[
+    {
+        "key": "group_construction_item",
+        "title": "Construction Item",
+        "fields": [
+            {
+                "key": "field_construction_date",
+                "label": "Construction date",
+                "name": "construction_date",
+                "type": "date_picker",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                },
+                "aria-label": "",
+                "display_format": "d.m.Y",
+                "return_format": "Y-m-d",
+                "first_day": 1
+            },
+            {
+                "key": "field_construction_description",
+                "label": "Description",
+                "name": "construction_description",
+                "type": "textarea",
+                "instructions": "Description shown in card and popup.",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "70",
+                    "class": "",
+                    "id": ""
+                },
+                "aria-label": "",
+                "default_value": "",
+                "maxlength": "",
+                "rows": 4,
+                "placeholder": "",
+                "new_lines": "br"
+            },
+            {
+                "key": "field_construction_gallery",
+                "label": "Photo gallery",
+                "name": "construction_gallery",
+                "type": "repeater",
+                "instructions": "Images for card preview and popup slider.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "",
+                "sub_fields": [
+                    {
+                        "key": "field_69c9cb08cdbb2",
+                        "label": "image",
+                        "name": "img",
+                        "type": "image",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "return_format": "array",
+                        "preview_size": "thumbnail",
+                        "library": "all",
+                        "min_width": "",
+                        "min_height": "",
+                        "min_size": "",
+                        "max_width": "",
+                        "max_height": "",
+                        "max_size": "",
+                        "mime_types": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_construction_videos",
+                "label": "Videos",
+                "name": "construction_videos",
+                "type": "repeater",
+                "instructions": "YouTube links or direct mp4 URLs.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "aria-label": "",
+                "layout": "table",
+                "pagination": 0,
+                "min": 0,
+                "max": 0,
+                "collapsed": "",
+                "button_label": "Add video",
+                "rows_per_page": 20,
+                "sub_fields": [
+                    {
+                        "key": "field_construction_video_url",
+                        "label": "Video URL",
+                        "name": "video_url",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "https:\/\/..."
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_category",
+                    "operator": "==",
+                    "value": "category:hid-budivnytstva-storinka-zapysiv"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": ""
+    }
+]
